@@ -1,0 +1,2437 @@
+[ {
+  "arrivalTime" : "14:03",
+  "durationInMin" : 63,
+  "transfers" : 2,
+  "walkDistanceInMeters" : 126.0,
+  "cost" : 0.0,
+  "stopCounter" : 21,
+  "legs" : [ {
+    "legId" : 1,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTime" : "13:08:42",
+    "arrivalTime" : "13:34:42",
+    "vehicle" : null,
+    "stopCounter" : 11,
+    "stops" : [ {
+      "stopId" : "060200000105",
+      "stopName" : "S Hennigsdorf Bhf",
+      "location" : {
+        "lat" : 52.637867,
+        "lon" : 13.205874,
+        "locationName" : null
+      },
+      "departureTick" : 8,
+      "departureTime" : "13:08:42",
+      "arrivalTick" : 0,
+      "arrivalTime" : "13:00"
+    }, {
+      "stopId" : "060091203001",
+      "stopName" : "S Heiligensee (Berlin)",
+      "location" : {
+        "lat" : 52.625148,
+        "lon" : 13.228667,
+        "locationName" : null
+      },
+      "departureTick" : 11,
+      "departureTime" : "13:11:24",
+      "arrivalTick" : 11,
+      "arrivalTime" : "13:11"
+    }, {
+      "stopId" : "060091205001",
+      "stopName" : "S Schulzendorf (Berlin)",
+      "location" : {
+        "lat" : 52.613513,
+        "lon" : 13.24563,
+        "locationName" : null
+      },
+      "departureTick" : 13,
+      "departureTime" : "13:13:42",
+      "arrivalTick" : 13,
+      "arrivalTime" : "13:13:18"
+    }, {
+      "stopId" : "060089303005",
+      "stopName" : "S Tegel (Berlin)",
+      "location" : {
+        "lat" : 52.588805,
+        "lon" : 13.288695,
+        "locationName" : null
+      },
+      "departureTick" : 18,
+      "departureTime" : "13:18:12",
+      "arrivalTick" : 17,
+      "arrivalTime" : "13:17:30"
+    }, {
+      "stopId" : "060096405002",
+      "stopName" : "S Eichborndamm (Berlin)",
+      "location" : {
+        "lat" : 52.577545,
+        "lon" : 13.315583,
+        "locationName" : null
+      },
+      "departureTick" : 21,
+      "departureTime" : "13:21:12",
+      "arrivalTick" : 20,
+      "arrivalTime" : "13:20:48"
+    }, {
+      "stopId" : "060096458002",
+      "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+      "location" : {
+        "lat" : 52.578169,
+        "lon" : 13.332921,
+        "locationName" : null
+      },
+      "departureTick" : 22,
+      "departureTime" : "13:22:54",
+      "arrivalTick" : 22,
+      "arrivalTime" : "13:22:30"
+    }, {
+      "stopId" : "060085105001",
+      "stopName" : "S Alt-Reinickendorf (Berlin)",
+      "location" : {
+        "lat" : 52.577969,
+        "lon" : 13.349747,
+        "locationName" : null
+      },
+      "departureTick" : 25,
+      "departureTime" : "13:25:18",
+      "arrivalTick" : 24,
+      "arrivalTime" : "13:24:48"
+    }, {
+      "stopId" : "060085201684",
+      "stopName" : "S Schönholz (Berlin)",
+      "location" : {
+        "lat" : 52.571901,
+        "lon" : 13.380242,
+        "locationName" : null
+      },
+      "departureTick" : 28,
+      "departureTime" : "13:28:30",
+      "arrivalTick" : 28,
+      "arrivalTime" : "13:28"
+    }, {
+      "stopId" : "060130003654",
+      "stopName" : "S Wollankstr. (Berlin)",
+      "location" : {
+        "lat" : 52.564974,
+        "lon" : 13.39315,
+        "locationName" : null
+      },
+      "departureTick" : 30,
+      "departureTime" : "13:30:18",
+      "arrivalTick" : 29,
+      "arrivalTime" : "13:29:48"
+    }, {
+      "stopId" : "060110011611",
+      "stopName" : "S Bornholmer Str. (Berlin)",
+      "location" : {
+        "lat" : 52.554763,
+        "lon" : 13.397841,
+        "locationName" : null
+      },
+      "departureTick" : 33,
+      "departureTime" : "13:33:12",
+      "arrivalTick" : 31,
+      "arrivalTime" : "13:31:54"
+    }, {
+      "stopId" : "060007102721",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 34,
+      "arrivalTime" : "13:34:42"
+    } ]
+  }, {
+    "legId" : 2,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTime" : "13:40:54",
+    "arrivalTime" : "13:53:06",
+    "vehicle" : null,
+    "stopCounter" : 7,
+    "stops" : [ {
+      "stopId" : "060007102723",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : 40,
+      "departureTime" : "13:40:54",
+      "arrivalTick" : 34,
+      "arrivalTime" : "13:34:42"
+    }, {
+      "stopId" : "060110001771",
+      "stopName" : "S+U Schönhauser Allee (Berlin)",
+      "location" : {
+        "lat" : 52.549336,
+        "lon" : 13.415138,
+        "locationName" : null
+      },
+      "departureTick" : 43,
+      "departureTime" : "13:43:24",
+      "arrivalTick" : 42,
+      "arrivalTime" : "13:42:48"
+    }, {
+      "stopId" : "060110002781",
+      "stopName" : "S Prenzlauer Allee (Berlin)",
+      "location" : {
+        "lat" : 52.544802,
+        "lon" : 13.427419,
+        "locationName" : null
+      },
+      "departureTick" : 45,
+      "departureTime" : "13:45:12",
+      "arrivalTick" : 44,
+      "arrivalTime" : "13:44:42"
+    }, {
+      "stopId" : "060110003511",
+      "stopName" : "S Greifswalder Str. (Berlin)",
+      "location" : {
+        "lat" : 52.540724,
+        "lon" : 13.438356,
+        "locationName" : null
+      },
+      "departureTick" : 47,
+      "departureTime" : "13:47:12",
+      "arrivalTick" : 46,
+      "arrivalTime" : "13:46:42"
+    }, {
+      "stopId" : "060110004531",
+      "stopName" : "S Landsberger Allee (Berlin)",
+      "location" : {
+        "lat" : 52.528772,
+        "lon" : 13.455944,
+        "locationName" : null
+      },
+      "departureTick" : 49,
+      "departureTime" : "13:49:36",
+      "arrivalTick" : 49,
+      "arrivalTime" : "13:49:06"
+    }, {
+      "stopId" : "060110012541",
+      "stopName" : "S Storkower Str. (Berlin)",
+      "location" : {
+        "lat" : 52.524049,
+        "lon" : 13.464835,
+        "locationName" : null
+      },
+      "departureTick" : 51,
+      "departureTime" : "13:51:36",
+      "arrivalTick" : 51,
+      "arrivalTime" : "13:51:06"
+    }, {
+      "stopId" : "060120001541",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 53,
+      "arrivalTime" : "13:53:06"
+    } ]
+  }, {
+    "legId" : 3,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTime" : "13:55:30",
+    "arrivalTime" : "14:01",
+    "vehicle" : null,
+    "stopCounter" : 5,
+    "stops" : [ {
+      "stopId" : "070201053401",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : 55,
+      "departureTime" : "13:55:30",
+      "arrivalTick" : 53,
+      "arrivalTime" : "13:53:06"
+    }, {
+      "stopId" : "070201053501",
+      "stopName" : "U Samariterstr. (Berlin)",
+      "location" : {
+        "lat" : 52.514662,
+        "lon" : 13.465347,
+        "locationName" : null
+      },
+      "departureTick" : 57,
+      "departureTime" : "13:57",
+      "arrivalTick" : 57,
+      "arrivalTime" : "13:57"
+    }, {
+      "stopId" : "070201053601",
+      "stopName" : "U Frankfurter Tor (Berlin)",
+      "location" : {
+        "lat" : 52.515772,
+        "lon" : 13.454085,
+        "locationName" : null
+      },
+      "departureTick" : 58,
+      "departureTime" : "13:58:30",
+      "arrivalTick" : 58,
+      "arrivalTime" : "13:58:30"
+    }, {
+      "stopId" : "070201053701",
+      "stopName" : "U Weberwiese (Berlin)",
+      "location" : {
+        "lat" : 52.516848,
+        "lon" : 13.443278,
+        "locationName" : null
+      },
+      "departureTick" : 59,
+      "departureTime" : "13:59:30",
+      "arrivalTick" : 59,
+      "arrivalTime" : "13:59:30"
+    }, {
+      "stopId" : "070201053801",
+      "stopName" : "U Strausberger Platz (Berlin)",
+      "location" : {
+        "lat" : 52.518025,
+        "lon" : 13.432208,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 61,
+      "arrivalTime" : "14:01"
+    } ]
+  }, {
+    "legId" : 4,
+    "legType" : "walk",
+    "startLocation" : {
+      "lat" : 52.518028822199156,
+      "lon" : 13.432208748881715,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.51801906860331,
+      "lon" : 13.431554857161817,
+      "locationName" : null
+    },
+    "departureTime" : "14:01",
+    "arrivalTime" : "14:02:30",
+    "vehicle" : null,
+    "stopCounter" : 0,
+    "stops" : null
+  } ],
+  "stops" : [ {
+    "stopId" : "060200000105",
+    "stopName" : "S Hennigsdorf Bhf",
+    "location" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "departureTick" : 8,
+    "departureTime" : "13:08:42",
+    "arrivalTick" : 0,
+    "arrivalTime" : "13:00"
+  }, {
+    "stopId" : "060091203001",
+    "stopName" : "S Heiligensee (Berlin)",
+    "location" : {
+      "lat" : 52.625148,
+      "lon" : 13.228667,
+      "locationName" : null
+    },
+    "departureTick" : 11,
+    "departureTime" : "13:11:24",
+    "arrivalTick" : 11,
+    "arrivalTime" : "13:11"
+  }, {
+    "stopId" : "060091205001",
+    "stopName" : "S Schulzendorf (Berlin)",
+    "location" : {
+      "lat" : 52.613513,
+      "lon" : 13.24563,
+      "locationName" : null
+    },
+    "departureTick" : 13,
+    "departureTime" : "13:13:42",
+    "arrivalTick" : 13,
+    "arrivalTime" : "13:13:18"
+  }, {
+    "stopId" : "060089303005",
+    "stopName" : "S Tegel (Berlin)",
+    "location" : {
+      "lat" : 52.588805,
+      "lon" : 13.288695,
+      "locationName" : null
+    },
+    "departureTick" : 18,
+    "departureTime" : "13:18:12",
+    "arrivalTick" : 17,
+    "arrivalTime" : "13:17:30"
+  }, {
+    "stopId" : "060096405002",
+    "stopName" : "S Eichborndamm (Berlin)",
+    "location" : {
+      "lat" : 52.577545,
+      "lon" : 13.315583,
+      "locationName" : null
+    },
+    "departureTick" : 21,
+    "departureTime" : "13:21:12",
+    "arrivalTick" : 20,
+    "arrivalTime" : "13:20:48"
+  }, {
+    "stopId" : "060096458002",
+    "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+    "location" : {
+      "lat" : 52.578169,
+      "lon" : 13.332921,
+      "locationName" : null
+    },
+    "departureTick" : 22,
+    "departureTime" : "13:22:54",
+    "arrivalTick" : 22,
+    "arrivalTime" : "13:22:30"
+  }, {
+    "stopId" : "060085105001",
+    "stopName" : "S Alt-Reinickendorf (Berlin)",
+    "location" : {
+      "lat" : 52.577969,
+      "lon" : 13.349747,
+      "locationName" : null
+    },
+    "departureTick" : 25,
+    "departureTime" : "13:25:18",
+    "arrivalTick" : 24,
+    "arrivalTime" : "13:24:48"
+  }, {
+    "stopId" : "060085201684",
+    "stopName" : "S Schönholz (Berlin)",
+    "location" : {
+      "lat" : 52.571901,
+      "lon" : 13.380242,
+      "locationName" : null
+    },
+    "departureTick" : 28,
+    "departureTime" : "13:28:30",
+    "arrivalTick" : 28,
+    "arrivalTime" : "13:28"
+  }, {
+    "stopId" : "060130003654",
+    "stopName" : "S Wollankstr. (Berlin)",
+    "location" : {
+      "lat" : 52.564974,
+      "lon" : 13.39315,
+      "locationName" : null
+    },
+    "departureTick" : 30,
+    "departureTime" : "13:30:18",
+    "arrivalTick" : 29,
+    "arrivalTime" : "13:29:48"
+  }, {
+    "stopId" : "060110011611",
+    "stopName" : "S Bornholmer Str. (Berlin)",
+    "location" : {
+      "lat" : 52.554763,
+      "lon" : 13.397841,
+      "locationName" : null
+    },
+    "departureTick" : 33,
+    "departureTime" : "13:33:12",
+    "arrivalTick" : 31,
+    "arrivalTime" : "13:31:54"
+  }, {
+    "stopId" : "060007102721",
+    "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+    "location" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTick" : 40,
+    "departureTime" : "13:40:54",
+    "arrivalTick" : 34,
+    "arrivalTime" : "13:34:42"
+  }, {
+    "stopId" : "060110001771",
+    "stopName" : "S+U Schönhauser Allee (Berlin)",
+    "location" : {
+      "lat" : 52.549336,
+      "lon" : 13.415138,
+      "locationName" : null
+    },
+    "departureTick" : 43,
+    "departureTime" : "13:43:24",
+    "arrivalTick" : 42,
+    "arrivalTime" : "13:42:48"
+  }, {
+    "stopId" : "060110002781",
+    "stopName" : "S Prenzlauer Allee (Berlin)",
+    "location" : {
+      "lat" : 52.544802,
+      "lon" : 13.427419,
+      "locationName" : null
+    },
+    "departureTick" : 45,
+    "departureTime" : "13:45:12",
+    "arrivalTick" : 44,
+    "arrivalTime" : "13:44:42"
+  }, {
+    "stopId" : "060110003511",
+    "stopName" : "S Greifswalder Str. (Berlin)",
+    "location" : {
+      "lat" : 52.540724,
+      "lon" : 13.438356,
+      "locationName" : null
+    },
+    "departureTick" : 47,
+    "departureTime" : "13:47:12",
+    "arrivalTick" : 46,
+    "arrivalTime" : "13:46:42"
+  }, {
+    "stopId" : "060110004531",
+    "stopName" : "S Landsberger Allee (Berlin)",
+    "location" : {
+      "lat" : 52.528772,
+      "lon" : 13.455944,
+      "locationName" : null
+    },
+    "departureTick" : 49,
+    "departureTime" : "13:49:36",
+    "arrivalTick" : 49,
+    "arrivalTime" : "13:49:06"
+  }, {
+    "stopId" : "060110012541",
+    "stopName" : "S Storkower Str. (Berlin)",
+    "location" : {
+      "lat" : 52.524049,
+      "lon" : 13.464835,
+      "locationName" : null
+    },
+    "departureTick" : 51,
+    "departureTime" : "13:51:36",
+    "arrivalTick" : 51,
+    "arrivalTime" : "13:51:06"
+  }, {
+    "stopId" : "060120001541",
+    "stopName" : "S+U Frankfurter Allee (Berlin)",
+    "location" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTick" : 55,
+    "departureTime" : "13:55:30",
+    "arrivalTick" : 53,
+    "arrivalTime" : "13:53:06"
+  }, {
+    "stopId" : "070201053501",
+    "stopName" : "U Samariterstr. (Berlin)",
+    "location" : {
+      "lat" : 52.514662,
+      "lon" : 13.465347,
+      "locationName" : null
+    },
+    "departureTick" : 57,
+    "departureTime" : "13:57",
+    "arrivalTick" : 57,
+    "arrivalTime" : "13:57"
+  }, {
+    "stopId" : "070201053601",
+    "stopName" : "U Frankfurter Tor (Berlin)",
+    "location" : {
+      "lat" : 52.515772,
+      "lon" : 13.454085,
+      "locationName" : null
+    },
+    "departureTick" : 58,
+    "departureTime" : "13:58:30",
+    "arrivalTick" : 58,
+    "arrivalTime" : "13:58:30"
+  }, {
+    "stopId" : "070201053701",
+    "stopName" : "U Weberwiese (Berlin)",
+    "location" : {
+      "lat" : 52.516848,
+      "lon" : 13.443278,
+      "locationName" : null
+    },
+    "departureTick" : 59,
+    "departureTime" : "13:59:30",
+    "arrivalTick" : 59,
+    "arrivalTime" : "13:59:30"
+  }, {
+    "stopId" : "070201053801",
+    "stopName" : "U Strausberger Platz (Berlin)",
+    "location" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTick" : -780,
+    "departureTime" : "00:00",
+    "arrivalTick" : 61,
+    "arrivalTime" : "14:01"
+  } ]
+}, {
+  "arrivalTime" : "14:23",
+  "durationInMin" : 83,
+  "transfers" : 2,
+  "walkDistanceInMeters" : 126.0,
+  "cost" : 0.0,
+  "stopCounter" : 21,
+  "legs" : [ {
+    "legId" : 1,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTime" : "13:28:42",
+    "arrivalTime" : "13:54:42",
+    "vehicle" : null,
+    "stopCounter" : 11,
+    "stops" : [ {
+      "stopId" : "060200000101",
+      "stopName" : "S Hennigsdorf Bhf",
+      "location" : {
+        "lat" : 52.637867,
+        "lon" : 13.205874,
+        "locationName" : null
+      },
+      "departureTick" : 28,
+      "departureTime" : "13:28:42",
+      "arrivalTick" : 0,
+      "arrivalTime" : "13:00"
+    }, {
+      "stopId" : "060091203001",
+      "stopName" : "S Heiligensee (Berlin)",
+      "location" : {
+        "lat" : 52.625148,
+        "lon" : 13.228667,
+        "locationName" : null
+      },
+      "departureTick" : 31,
+      "departureTime" : "13:31:24",
+      "arrivalTick" : 31,
+      "arrivalTime" : "13:31"
+    }, {
+      "stopId" : "060091205001",
+      "stopName" : "S Schulzendorf (Berlin)",
+      "location" : {
+        "lat" : 52.613513,
+        "lon" : 13.24563,
+        "locationName" : null
+      },
+      "departureTick" : 33,
+      "departureTime" : "13:33:42",
+      "arrivalTick" : 33,
+      "arrivalTime" : "13:33:18"
+    }, {
+      "stopId" : "060089303005",
+      "stopName" : "S Tegel (Berlin)",
+      "location" : {
+        "lat" : 52.588805,
+        "lon" : 13.288695,
+        "locationName" : null
+      },
+      "departureTick" : 38,
+      "departureTime" : "13:38:12",
+      "arrivalTick" : 37,
+      "arrivalTime" : "13:37:30"
+    }, {
+      "stopId" : "060096405002",
+      "stopName" : "S Eichborndamm (Berlin)",
+      "location" : {
+        "lat" : 52.577545,
+        "lon" : 13.315583,
+        "locationName" : null
+      },
+      "departureTick" : 41,
+      "departureTime" : "13:41:12",
+      "arrivalTick" : 40,
+      "arrivalTime" : "13:40:48"
+    }, {
+      "stopId" : "060096458002",
+      "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+      "location" : {
+        "lat" : 52.578169,
+        "lon" : 13.332921,
+        "locationName" : null
+      },
+      "departureTick" : 42,
+      "departureTime" : "13:42:54",
+      "arrivalTick" : 42,
+      "arrivalTime" : "13:42:30"
+    }, {
+      "stopId" : "060085105001",
+      "stopName" : "S Alt-Reinickendorf (Berlin)",
+      "location" : {
+        "lat" : 52.577969,
+        "lon" : 13.349747,
+        "locationName" : null
+      },
+      "departureTick" : 45,
+      "departureTime" : "13:45:18",
+      "arrivalTick" : 44,
+      "arrivalTime" : "13:44:48"
+    }, {
+      "stopId" : "060085201684",
+      "stopName" : "S Schönholz (Berlin)",
+      "location" : {
+        "lat" : 52.571901,
+        "lon" : 13.380242,
+        "locationName" : null
+      },
+      "departureTick" : 48,
+      "departureTime" : "13:48:30",
+      "arrivalTick" : 48,
+      "arrivalTime" : "13:48"
+    }, {
+      "stopId" : "060130003654",
+      "stopName" : "S Wollankstr. (Berlin)",
+      "location" : {
+        "lat" : 52.564974,
+        "lon" : 13.39315,
+        "locationName" : null
+      },
+      "departureTick" : 50,
+      "departureTime" : "13:50:18",
+      "arrivalTick" : 49,
+      "arrivalTime" : "13:49:48"
+    }, {
+      "stopId" : "060110011611",
+      "stopName" : "S Bornholmer Str. (Berlin)",
+      "location" : {
+        "lat" : 52.554763,
+        "lon" : 13.397841,
+        "locationName" : null
+      },
+      "departureTick" : 53,
+      "departureTime" : "13:53:12",
+      "arrivalTick" : 51,
+      "arrivalTime" : "13:51:54"
+    }, {
+      "stopId" : "060007102721",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 54,
+      "arrivalTime" : "13:54:42"
+    } ]
+  }, {
+    "legId" : 2,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTime" : "14:00:54",
+    "arrivalTime" : "14:13:06",
+    "vehicle" : null,
+    "stopCounter" : 7,
+    "stops" : [ {
+      "stopId" : "060007102723",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : 60,
+      "departureTime" : "14:00:54",
+      "arrivalTick" : 54,
+      "arrivalTime" : "13:54:42"
+    }, {
+      "stopId" : "060110001771",
+      "stopName" : "S+U Schönhauser Allee (Berlin)",
+      "location" : {
+        "lat" : 52.549336,
+        "lon" : 13.415138,
+        "locationName" : null
+      },
+      "departureTick" : 63,
+      "departureTime" : "14:03:24",
+      "arrivalTick" : 62,
+      "arrivalTime" : "14:02:48"
+    }, {
+      "stopId" : "060110002781",
+      "stopName" : "S Prenzlauer Allee (Berlin)",
+      "location" : {
+        "lat" : 52.544802,
+        "lon" : 13.427419,
+        "locationName" : null
+      },
+      "departureTick" : 65,
+      "departureTime" : "14:05:12",
+      "arrivalTick" : 64,
+      "arrivalTime" : "14:04:42"
+    }, {
+      "stopId" : "060110003511",
+      "stopName" : "S Greifswalder Str. (Berlin)",
+      "location" : {
+        "lat" : 52.540724,
+        "lon" : 13.438356,
+        "locationName" : null
+      },
+      "departureTick" : 67,
+      "departureTime" : "14:07:12",
+      "arrivalTick" : 66,
+      "arrivalTime" : "14:06:42"
+    }, {
+      "stopId" : "060110004531",
+      "stopName" : "S Landsberger Allee (Berlin)",
+      "location" : {
+        "lat" : 52.528772,
+        "lon" : 13.455944,
+        "locationName" : null
+      },
+      "departureTick" : 69,
+      "departureTime" : "14:09:36",
+      "arrivalTick" : 69,
+      "arrivalTime" : "14:09:06"
+    }, {
+      "stopId" : "060110012541",
+      "stopName" : "S Storkower Str. (Berlin)",
+      "location" : {
+        "lat" : 52.524049,
+        "lon" : 13.464835,
+        "locationName" : null
+      },
+      "departureTick" : 71,
+      "departureTime" : "14:11:36",
+      "arrivalTick" : 71,
+      "arrivalTime" : "14:11:06"
+    }, {
+      "stopId" : "060120001541",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 73,
+      "arrivalTime" : "14:13:06"
+    } ]
+  }, {
+    "legId" : 3,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTime" : "14:15:30",
+    "arrivalTime" : "14:21",
+    "vehicle" : null,
+    "stopCounter" : 5,
+    "stops" : [ {
+      "stopId" : "070201053401",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : 75,
+      "departureTime" : "14:15:30",
+      "arrivalTick" : 73,
+      "arrivalTime" : "14:13:06"
+    }, {
+      "stopId" : "070201053501",
+      "stopName" : "U Samariterstr. (Berlin)",
+      "location" : {
+        "lat" : 52.514662,
+        "lon" : 13.465347,
+        "locationName" : null
+      },
+      "departureTick" : 77,
+      "departureTime" : "14:17",
+      "arrivalTick" : 77,
+      "arrivalTime" : "14:17"
+    }, {
+      "stopId" : "070201053601",
+      "stopName" : "U Frankfurter Tor (Berlin)",
+      "location" : {
+        "lat" : 52.515772,
+        "lon" : 13.454085,
+        "locationName" : null
+      },
+      "departureTick" : 78,
+      "departureTime" : "14:18:30",
+      "arrivalTick" : 78,
+      "arrivalTime" : "14:18:30"
+    }, {
+      "stopId" : "070201053701",
+      "stopName" : "U Weberwiese (Berlin)",
+      "location" : {
+        "lat" : 52.516848,
+        "lon" : 13.443278,
+        "locationName" : null
+      },
+      "departureTick" : 79,
+      "departureTime" : "14:19:30",
+      "arrivalTick" : 79,
+      "arrivalTime" : "14:19:30"
+    }, {
+      "stopId" : "070201053801",
+      "stopName" : "U Strausberger Platz (Berlin)",
+      "location" : {
+        "lat" : 52.518025,
+        "lon" : 13.432208,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 81,
+      "arrivalTime" : "14:21"
+    } ]
+  }, {
+    "legId" : 4,
+    "legType" : "walk",
+    "startLocation" : {
+      "lat" : 52.518028822199156,
+      "lon" : 13.432208748881715,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.51801906860331,
+      "lon" : 13.431554857161817,
+      "locationName" : null
+    },
+    "departureTime" : "14:21",
+    "arrivalTime" : "14:22:30",
+    "vehicle" : null,
+    "stopCounter" : 0,
+    "stops" : null
+  } ],
+  "stops" : [ {
+    "stopId" : "060200000101",
+    "stopName" : "S Hennigsdorf Bhf",
+    "location" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "departureTick" : 28,
+    "departureTime" : "13:28:42",
+    "arrivalTick" : 0,
+    "arrivalTime" : "13:00"
+  }, {
+    "stopId" : "060091203001",
+    "stopName" : "S Heiligensee (Berlin)",
+    "location" : {
+      "lat" : 52.625148,
+      "lon" : 13.228667,
+      "locationName" : null
+    },
+    "departureTick" : 31,
+    "departureTime" : "13:31:24",
+    "arrivalTick" : 31,
+    "arrivalTime" : "13:31"
+  }, {
+    "stopId" : "060091205001",
+    "stopName" : "S Schulzendorf (Berlin)",
+    "location" : {
+      "lat" : 52.613513,
+      "lon" : 13.24563,
+      "locationName" : null
+    },
+    "departureTick" : 33,
+    "departureTime" : "13:33:42",
+    "arrivalTick" : 33,
+    "arrivalTime" : "13:33:18"
+  }, {
+    "stopId" : "060089303005",
+    "stopName" : "S Tegel (Berlin)",
+    "location" : {
+      "lat" : 52.588805,
+      "lon" : 13.288695,
+      "locationName" : null
+    },
+    "departureTick" : 38,
+    "departureTime" : "13:38:12",
+    "arrivalTick" : 37,
+    "arrivalTime" : "13:37:30"
+  }, {
+    "stopId" : "060096405002",
+    "stopName" : "S Eichborndamm (Berlin)",
+    "location" : {
+      "lat" : 52.577545,
+      "lon" : 13.315583,
+      "locationName" : null
+    },
+    "departureTick" : 41,
+    "departureTime" : "13:41:12",
+    "arrivalTick" : 40,
+    "arrivalTime" : "13:40:48"
+  }, {
+    "stopId" : "060096458002",
+    "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+    "location" : {
+      "lat" : 52.578169,
+      "lon" : 13.332921,
+      "locationName" : null
+    },
+    "departureTick" : 42,
+    "departureTime" : "13:42:54",
+    "arrivalTick" : 42,
+    "arrivalTime" : "13:42:30"
+  }, {
+    "stopId" : "060085105001",
+    "stopName" : "S Alt-Reinickendorf (Berlin)",
+    "location" : {
+      "lat" : 52.577969,
+      "lon" : 13.349747,
+      "locationName" : null
+    },
+    "departureTick" : 45,
+    "departureTime" : "13:45:18",
+    "arrivalTick" : 44,
+    "arrivalTime" : "13:44:48"
+  }, {
+    "stopId" : "060085201684",
+    "stopName" : "S Schönholz (Berlin)",
+    "location" : {
+      "lat" : 52.571901,
+      "lon" : 13.380242,
+      "locationName" : null
+    },
+    "departureTick" : 48,
+    "departureTime" : "13:48:30",
+    "arrivalTick" : 48,
+    "arrivalTime" : "13:48"
+  }, {
+    "stopId" : "060130003654",
+    "stopName" : "S Wollankstr. (Berlin)",
+    "location" : {
+      "lat" : 52.564974,
+      "lon" : 13.39315,
+      "locationName" : null
+    },
+    "departureTick" : 50,
+    "departureTime" : "13:50:18",
+    "arrivalTick" : 49,
+    "arrivalTime" : "13:49:48"
+  }, {
+    "stopId" : "060110011611",
+    "stopName" : "S Bornholmer Str. (Berlin)",
+    "location" : {
+      "lat" : 52.554763,
+      "lon" : 13.397841,
+      "locationName" : null
+    },
+    "departureTick" : 53,
+    "departureTime" : "13:53:12",
+    "arrivalTick" : 51,
+    "arrivalTime" : "13:51:54"
+  }, {
+    "stopId" : "060007102721",
+    "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+    "location" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTick" : 60,
+    "departureTime" : "14:00:54",
+    "arrivalTick" : 54,
+    "arrivalTime" : "13:54:42"
+  }, {
+    "stopId" : "060110001771",
+    "stopName" : "S+U Schönhauser Allee (Berlin)",
+    "location" : {
+      "lat" : 52.549336,
+      "lon" : 13.415138,
+      "locationName" : null
+    },
+    "departureTick" : 63,
+    "departureTime" : "14:03:24",
+    "arrivalTick" : 62,
+    "arrivalTime" : "14:02:48"
+  }, {
+    "stopId" : "060110002781",
+    "stopName" : "S Prenzlauer Allee (Berlin)",
+    "location" : {
+      "lat" : 52.544802,
+      "lon" : 13.427419,
+      "locationName" : null
+    },
+    "departureTick" : 65,
+    "departureTime" : "14:05:12",
+    "arrivalTick" : 64,
+    "arrivalTime" : "14:04:42"
+  }, {
+    "stopId" : "060110003511",
+    "stopName" : "S Greifswalder Str. (Berlin)",
+    "location" : {
+      "lat" : 52.540724,
+      "lon" : 13.438356,
+      "locationName" : null
+    },
+    "departureTick" : 67,
+    "departureTime" : "14:07:12",
+    "arrivalTick" : 66,
+    "arrivalTime" : "14:06:42"
+  }, {
+    "stopId" : "060110004531",
+    "stopName" : "S Landsberger Allee (Berlin)",
+    "location" : {
+      "lat" : 52.528772,
+      "lon" : 13.455944,
+      "locationName" : null
+    },
+    "departureTick" : 69,
+    "departureTime" : "14:09:36",
+    "arrivalTick" : 69,
+    "arrivalTime" : "14:09:06"
+  }, {
+    "stopId" : "060110012541",
+    "stopName" : "S Storkower Str. (Berlin)",
+    "location" : {
+      "lat" : 52.524049,
+      "lon" : 13.464835,
+      "locationName" : null
+    },
+    "departureTick" : 71,
+    "departureTime" : "14:11:36",
+    "arrivalTick" : 71,
+    "arrivalTime" : "14:11:06"
+  }, {
+    "stopId" : "060120001541",
+    "stopName" : "S+U Frankfurter Allee (Berlin)",
+    "location" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTick" : 75,
+    "departureTime" : "14:15:30",
+    "arrivalTick" : 73,
+    "arrivalTime" : "14:13:06"
+  }, {
+    "stopId" : "070201053501",
+    "stopName" : "U Samariterstr. (Berlin)",
+    "location" : {
+      "lat" : 52.514662,
+      "lon" : 13.465347,
+      "locationName" : null
+    },
+    "departureTick" : 77,
+    "departureTime" : "14:17",
+    "arrivalTick" : 77,
+    "arrivalTime" : "14:17"
+  }, {
+    "stopId" : "070201053601",
+    "stopName" : "U Frankfurter Tor (Berlin)",
+    "location" : {
+      "lat" : 52.515772,
+      "lon" : 13.454085,
+      "locationName" : null
+    },
+    "departureTick" : 78,
+    "departureTime" : "14:18:30",
+    "arrivalTick" : 78,
+    "arrivalTime" : "14:18:30"
+  }, {
+    "stopId" : "070201053701",
+    "stopName" : "U Weberwiese (Berlin)",
+    "location" : {
+      "lat" : 52.516848,
+      "lon" : 13.443278,
+      "locationName" : null
+    },
+    "departureTick" : 79,
+    "departureTime" : "14:19:30",
+    "arrivalTick" : 79,
+    "arrivalTime" : "14:19:30"
+  }, {
+    "stopId" : "070201053801",
+    "stopName" : "U Strausberger Platz (Berlin)",
+    "location" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTick" : -780,
+    "departureTime" : "00:00",
+    "arrivalTick" : 81,
+    "arrivalTime" : "14:21"
+  } ]
+}, {
+  "arrivalTime" : "14:43",
+  "durationInMin" : 103,
+  "transfers" : 2,
+  "walkDistanceInMeters" : 126.0,
+  "cost" : 0.0,
+  "stopCounter" : 21,
+  "legs" : [ {
+    "legId" : 1,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTime" : "13:48:42",
+    "arrivalTime" : "14:14:42",
+    "vehicle" : null,
+    "stopCounter" : 11,
+    "stops" : [ {
+      "stopId" : "060200000105",
+      "stopName" : "S Hennigsdorf Bhf",
+      "location" : {
+        "lat" : 52.637867,
+        "lon" : 13.205874,
+        "locationName" : null
+      },
+      "departureTick" : 48,
+      "departureTime" : "13:48:42",
+      "arrivalTick" : 0,
+      "arrivalTime" : "13:00"
+    }, {
+      "stopId" : "060091203001",
+      "stopName" : "S Heiligensee (Berlin)",
+      "location" : {
+        "lat" : 52.625148,
+        "lon" : 13.228667,
+        "locationName" : null
+      },
+      "departureTick" : 51,
+      "departureTime" : "13:51:24",
+      "arrivalTick" : 51,
+      "arrivalTime" : "13:51"
+    }, {
+      "stopId" : "060091205001",
+      "stopName" : "S Schulzendorf (Berlin)",
+      "location" : {
+        "lat" : 52.613513,
+        "lon" : 13.24563,
+        "locationName" : null
+      },
+      "departureTick" : 53,
+      "departureTime" : "13:53:42",
+      "arrivalTick" : 53,
+      "arrivalTime" : "13:53:18"
+    }, {
+      "stopId" : "060089303005",
+      "stopName" : "S Tegel (Berlin)",
+      "location" : {
+        "lat" : 52.588805,
+        "lon" : 13.288695,
+        "locationName" : null
+      },
+      "departureTick" : 58,
+      "departureTime" : "13:58:12",
+      "arrivalTick" : 57,
+      "arrivalTime" : "13:57:30"
+    }, {
+      "stopId" : "060096405002",
+      "stopName" : "S Eichborndamm (Berlin)",
+      "location" : {
+        "lat" : 52.577545,
+        "lon" : 13.315583,
+        "locationName" : null
+      },
+      "departureTick" : 61,
+      "departureTime" : "14:01:12",
+      "arrivalTick" : 60,
+      "arrivalTime" : "14:00:48"
+    }, {
+      "stopId" : "060096458002",
+      "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+      "location" : {
+        "lat" : 52.578169,
+        "lon" : 13.332921,
+        "locationName" : null
+      },
+      "departureTick" : 62,
+      "departureTime" : "14:02:54",
+      "arrivalTick" : 62,
+      "arrivalTime" : "14:02:30"
+    }, {
+      "stopId" : "060085105001",
+      "stopName" : "S Alt-Reinickendorf (Berlin)",
+      "location" : {
+        "lat" : 52.577969,
+        "lon" : 13.349747,
+        "locationName" : null
+      },
+      "departureTick" : 65,
+      "departureTime" : "14:05:18",
+      "arrivalTick" : 64,
+      "arrivalTime" : "14:04:48"
+    }, {
+      "stopId" : "060085201684",
+      "stopName" : "S Schönholz (Berlin)",
+      "location" : {
+        "lat" : 52.571901,
+        "lon" : 13.380242,
+        "locationName" : null
+      },
+      "departureTick" : 68,
+      "departureTime" : "14:08:30",
+      "arrivalTick" : 68,
+      "arrivalTime" : "14:08"
+    }, {
+      "stopId" : "060130003654",
+      "stopName" : "S Wollankstr. (Berlin)",
+      "location" : {
+        "lat" : 52.564974,
+        "lon" : 13.39315,
+        "locationName" : null
+      },
+      "departureTick" : 70,
+      "departureTime" : "14:10:18",
+      "arrivalTick" : 69,
+      "arrivalTime" : "14:09:48"
+    }, {
+      "stopId" : "060110011611",
+      "stopName" : "S Bornholmer Str. (Berlin)",
+      "location" : {
+        "lat" : 52.554763,
+        "lon" : 13.397841,
+        "locationName" : null
+      },
+      "departureTick" : 73,
+      "departureTime" : "14:13:12",
+      "arrivalTick" : 71,
+      "arrivalTime" : "14:11:54"
+    }, {
+      "stopId" : "060007102721",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 74,
+      "arrivalTime" : "14:14:42"
+    } ]
+  }, {
+    "legId" : 2,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTime" : "14:20:54",
+    "arrivalTime" : "14:33:06",
+    "vehicle" : null,
+    "stopCounter" : 7,
+    "stops" : [ {
+      "stopId" : "060007102723",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : 80,
+      "departureTime" : "14:20:54",
+      "arrivalTick" : 74,
+      "arrivalTime" : "14:14:42"
+    }, {
+      "stopId" : "060110001771",
+      "stopName" : "S+U Schönhauser Allee (Berlin)",
+      "location" : {
+        "lat" : 52.549336,
+        "lon" : 13.415138,
+        "locationName" : null
+      },
+      "departureTick" : 83,
+      "departureTime" : "14:23:24",
+      "arrivalTick" : 82,
+      "arrivalTime" : "14:22:48"
+    }, {
+      "stopId" : "060110002781",
+      "stopName" : "S Prenzlauer Allee (Berlin)",
+      "location" : {
+        "lat" : 52.544802,
+        "lon" : 13.427419,
+        "locationName" : null
+      },
+      "departureTick" : 85,
+      "departureTime" : "14:25:12",
+      "arrivalTick" : 84,
+      "arrivalTime" : "14:24:42"
+    }, {
+      "stopId" : "060110003511",
+      "stopName" : "S Greifswalder Str. (Berlin)",
+      "location" : {
+        "lat" : 52.540724,
+        "lon" : 13.438356,
+        "locationName" : null
+      },
+      "departureTick" : 87,
+      "departureTime" : "14:27:12",
+      "arrivalTick" : 86,
+      "arrivalTime" : "14:26:42"
+    }, {
+      "stopId" : "060110004531",
+      "stopName" : "S Landsberger Allee (Berlin)",
+      "location" : {
+        "lat" : 52.528772,
+        "lon" : 13.455944,
+        "locationName" : null
+      },
+      "departureTick" : 89,
+      "departureTime" : "14:29:36",
+      "arrivalTick" : 89,
+      "arrivalTime" : "14:29:06"
+    }, {
+      "stopId" : "060110012541",
+      "stopName" : "S Storkower Str. (Berlin)",
+      "location" : {
+        "lat" : 52.524049,
+        "lon" : 13.464835,
+        "locationName" : null
+      },
+      "departureTick" : 91,
+      "departureTime" : "14:31:36",
+      "arrivalTick" : 91,
+      "arrivalTime" : "14:31:06"
+    }, {
+      "stopId" : "060120001541",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 93,
+      "arrivalTime" : "14:33:06"
+    } ]
+  }, {
+    "legId" : 3,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTime" : "14:35:30",
+    "arrivalTime" : "14:41",
+    "vehicle" : null,
+    "stopCounter" : 5,
+    "stops" : [ {
+      "stopId" : "070201053401",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : 95,
+      "departureTime" : "14:35:30",
+      "arrivalTick" : 93,
+      "arrivalTime" : "14:33:06"
+    }, {
+      "stopId" : "070201053501",
+      "stopName" : "U Samariterstr. (Berlin)",
+      "location" : {
+        "lat" : 52.514662,
+        "lon" : 13.465347,
+        "locationName" : null
+      },
+      "departureTick" : 97,
+      "departureTime" : "14:37",
+      "arrivalTick" : 97,
+      "arrivalTime" : "14:37"
+    }, {
+      "stopId" : "070201053601",
+      "stopName" : "U Frankfurter Tor (Berlin)",
+      "location" : {
+        "lat" : 52.515772,
+        "lon" : 13.454085,
+        "locationName" : null
+      },
+      "departureTick" : 98,
+      "departureTime" : "14:38:30",
+      "arrivalTick" : 98,
+      "arrivalTime" : "14:38:30"
+    }, {
+      "stopId" : "070201053701",
+      "stopName" : "U Weberwiese (Berlin)",
+      "location" : {
+        "lat" : 52.516848,
+        "lon" : 13.443278,
+        "locationName" : null
+      },
+      "departureTick" : 99,
+      "departureTime" : "14:39:30",
+      "arrivalTick" : 99,
+      "arrivalTime" : "14:39:30"
+    }, {
+      "stopId" : "070201053801",
+      "stopName" : "U Strausberger Platz (Berlin)",
+      "location" : {
+        "lat" : 52.518025,
+        "lon" : 13.432208,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 101,
+      "arrivalTime" : "14:41"
+    } ]
+  }, {
+    "legId" : 4,
+    "legType" : "walk",
+    "startLocation" : {
+      "lat" : 52.518028822199156,
+      "lon" : 13.432208748881715,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.51801906860331,
+      "lon" : 13.431554857161817,
+      "locationName" : null
+    },
+    "departureTime" : "14:41",
+    "arrivalTime" : "14:42:30",
+    "vehicle" : null,
+    "stopCounter" : 0,
+    "stops" : null
+  } ],
+  "stops" : [ {
+    "stopId" : "060200000105",
+    "stopName" : "S Hennigsdorf Bhf",
+    "location" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "departureTick" : 48,
+    "departureTime" : "13:48:42",
+    "arrivalTick" : 0,
+    "arrivalTime" : "13:00"
+  }, {
+    "stopId" : "060091203001",
+    "stopName" : "S Heiligensee (Berlin)",
+    "location" : {
+      "lat" : 52.625148,
+      "lon" : 13.228667,
+      "locationName" : null
+    },
+    "departureTick" : 51,
+    "departureTime" : "13:51:24",
+    "arrivalTick" : 51,
+    "arrivalTime" : "13:51"
+  }, {
+    "stopId" : "060091205001",
+    "stopName" : "S Schulzendorf (Berlin)",
+    "location" : {
+      "lat" : 52.613513,
+      "lon" : 13.24563,
+      "locationName" : null
+    },
+    "departureTick" : 53,
+    "departureTime" : "13:53:42",
+    "arrivalTick" : 53,
+    "arrivalTime" : "13:53:18"
+  }, {
+    "stopId" : "060089303005",
+    "stopName" : "S Tegel (Berlin)",
+    "location" : {
+      "lat" : 52.588805,
+      "lon" : 13.288695,
+      "locationName" : null
+    },
+    "departureTick" : 58,
+    "departureTime" : "13:58:12",
+    "arrivalTick" : 57,
+    "arrivalTime" : "13:57:30"
+  }, {
+    "stopId" : "060096405002",
+    "stopName" : "S Eichborndamm (Berlin)",
+    "location" : {
+      "lat" : 52.577545,
+      "lon" : 13.315583,
+      "locationName" : null
+    },
+    "departureTick" : 61,
+    "departureTime" : "14:01:12",
+    "arrivalTick" : 60,
+    "arrivalTime" : "14:00:48"
+  }, {
+    "stopId" : "060096458002",
+    "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+    "location" : {
+      "lat" : 52.578169,
+      "lon" : 13.332921,
+      "locationName" : null
+    },
+    "departureTick" : 62,
+    "departureTime" : "14:02:54",
+    "arrivalTick" : 62,
+    "arrivalTime" : "14:02:30"
+  }, {
+    "stopId" : "060085105001",
+    "stopName" : "S Alt-Reinickendorf (Berlin)",
+    "location" : {
+      "lat" : 52.577969,
+      "lon" : 13.349747,
+      "locationName" : null
+    },
+    "departureTick" : 65,
+    "departureTime" : "14:05:18",
+    "arrivalTick" : 64,
+    "arrivalTime" : "14:04:48"
+  }, {
+    "stopId" : "060085201684",
+    "stopName" : "S Schönholz (Berlin)",
+    "location" : {
+      "lat" : 52.571901,
+      "lon" : 13.380242,
+      "locationName" : null
+    },
+    "departureTick" : 68,
+    "departureTime" : "14:08:30",
+    "arrivalTick" : 68,
+    "arrivalTime" : "14:08"
+  }, {
+    "stopId" : "060130003654",
+    "stopName" : "S Wollankstr. (Berlin)",
+    "location" : {
+      "lat" : 52.564974,
+      "lon" : 13.39315,
+      "locationName" : null
+    },
+    "departureTick" : 70,
+    "departureTime" : "14:10:18",
+    "arrivalTick" : 69,
+    "arrivalTime" : "14:09:48"
+  }, {
+    "stopId" : "060110011611",
+    "stopName" : "S Bornholmer Str. (Berlin)",
+    "location" : {
+      "lat" : 52.554763,
+      "lon" : 13.397841,
+      "locationName" : null
+    },
+    "departureTick" : 73,
+    "departureTime" : "14:13:12",
+    "arrivalTick" : 71,
+    "arrivalTime" : "14:11:54"
+  }, {
+    "stopId" : "060007102721",
+    "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+    "location" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTick" : 80,
+    "departureTime" : "14:20:54",
+    "arrivalTick" : 74,
+    "arrivalTime" : "14:14:42"
+  }, {
+    "stopId" : "060110001771",
+    "stopName" : "S+U Schönhauser Allee (Berlin)",
+    "location" : {
+      "lat" : 52.549336,
+      "lon" : 13.415138,
+      "locationName" : null
+    },
+    "departureTick" : 83,
+    "departureTime" : "14:23:24",
+    "arrivalTick" : 82,
+    "arrivalTime" : "14:22:48"
+  }, {
+    "stopId" : "060110002781",
+    "stopName" : "S Prenzlauer Allee (Berlin)",
+    "location" : {
+      "lat" : 52.544802,
+      "lon" : 13.427419,
+      "locationName" : null
+    },
+    "departureTick" : 85,
+    "departureTime" : "14:25:12",
+    "arrivalTick" : 84,
+    "arrivalTime" : "14:24:42"
+  }, {
+    "stopId" : "060110003511",
+    "stopName" : "S Greifswalder Str. (Berlin)",
+    "location" : {
+      "lat" : 52.540724,
+      "lon" : 13.438356,
+      "locationName" : null
+    },
+    "departureTick" : 87,
+    "departureTime" : "14:27:12",
+    "arrivalTick" : 86,
+    "arrivalTime" : "14:26:42"
+  }, {
+    "stopId" : "060110004531",
+    "stopName" : "S Landsberger Allee (Berlin)",
+    "location" : {
+      "lat" : 52.528772,
+      "lon" : 13.455944,
+      "locationName" : null
+    },
+    "departureTick" : 89,
+    "departureTime" : "14:29:36",
+    "arrivalTick" : 89,
+    "arrivalTime" : "14:29:06"
+  }, {
+    "stopId" : "060110012541",
+    "stopName" : "S Storkower Str. (Berlin)",
+    "location" : {
+      "lat" : 52.524049,
+      "lon" : 13.464835,
+      "locationName" : null
+    },
+    "departureTick" : 91,
+    "departureTime" : "14:31:36",
+    "arrivalTick" : 91,
+    "arrivalTime" : "14:31:06"
+  }, {
+    "stopId" : "060120001541",
+    "stopName" : "S+U Frankfurter Allee (Berlin)",
+    "location" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTick" : 95,
+    "departureTime" : "14:35:30",
+    "arrivalTick" : 93,
+    "arrivalTime" : "14:33:06"
+  }, {
+    "stopId" : "070201053501",
+    "stopName" : "U Samariterstr. (Berlin)",
+    "location" : {
+      "lat" : 52.514662,
+      "lon" : 13.465347,
+      "locationName" : null
+    },
+    "departureTick" : 97,
+    "departureTime" : "14:37",
+    "arrivalTick" : 97,
+    "arrivalTime" : "14:37"
+  }, {
+    "stopId" : "070201053601",
+    "stopName" : "U Frankfurter Tor (Berlin)",
+    "location" : {
+      "lat" : 52.515772,
+      "lon" : 13.454085,
+      "locationName" : null
+    },
+    "departureTick" : 98,
+    "departureTime" : "14:38:30",
+    "arrivalTick" : 98,
+    "arrivalTime" : "14:38:30"
+  }, {
+    "stopId" : "070201053701",
+    "stopName" : "U Weberwiese (Berlin)",
+    "location" : {
+      "lat" : 52.516848,
+      "lon" : 13.443278,
+      "locationName" : null
+    },
+    "departureTick" : 99,
+    "departureTime" : "14:39:30",
+    "arrivalTick" : 99,
+    "arrivalTime" : "14:39:30"
+  }, {
+    "stopId" : "070201053801",
+    "stopName" : "U Strausberger Platz (Berlin)",
+    "location" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTick" : -780,
+    "departureTime" : "00:00",
+    "arrivalTick" : 101,
+    "arrivalTime" : "14:41"
+  } ]
+}, {
+  "arrivalTime" : "15:03",
+  "durationInMin" : 123,
+  "transfers" : 2,
+  "walkDistanceInMeters" : 126.0,
+  "cost" : 0.0,
+  "stopCounter" : 21,
+  "legs" : [ {
+    "legId" : 1,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTime" : "14:08:42",
+    "arrivalTime" : "14:34:42",
+    "vehicle" : null,
+    "stopCounter" : 11,
+    "stops" : [ {
+      "stopId" : "060200000101",
+      "stopName" : "S Hennigsdorf Bhf",
+      "location" : {
+        "lat" : 52.637867,
+        "lon" : 13.205874,
+        "locationName" : null
+      },
+      "departureTick" : 68,
+      "departureTime" : "14:08:42",
+      "arrivalTick" : 0,
+      "arrivalTime" : "13:00"
+    }, {
+      "stopId" : "060091203001",
+      "stopName" : "S Heiligensee (Berlin)",
+      "location" : {
+        "lat" : 52.625148,
+        "lon" : 13.228667,
+        "locationName" : null
+      },
+      "departureTick" : 71,
+      "departureTime" : "14:11:24",
+      "arrivalTick" : 71,
+      "arrivalTime" : "14:11"
+    }, {
+      "stopId" : "060091205001",
+      "stopName" : "S Schulzendorf (Berlin)",
+      "location" : {
+        "lat" : 52.613513,
+        "lon" : 13.24563,
+        "locationName" : null
+      },
+      "departureTick" : 73,
+      "departureTime" : "14:13:42",
+      "arrivalTick" : 73,
+      "arrivalTime" : "14:13:18"
+    }, {
+      "stopId" : "060089303005",
+      "stopName" : "S Tegel (Berlin)",
+      "location" : {
+        "lat" : 52.588805,
+        "lon" : 13.288695,
+        "locationName" : null
+      },
+      "departureTick" : 78,
+      "departureTime" : "14:18:12",
+      "arrivalTick" : 77,
+      "arrivalTime" : "14:17:30"
+    }, {
+      "stopId" : "060096405002",
+      "stopName" : "S Eichborndamm (Berlin)",
+      "location" : {
+        "lat" : 52.577545,
+        "lon" : 13.315583,
+        "locationName" : null
+      },
+      "departureTick" : 81,
+      "departureTime" : "14:21:12",
+      "arrivalTick" : 80,
+      "arrivalTime" : "14:20:48"
+    }, {
+      "stopId" : "060096458002",
+      "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+      "location" : {
+        "lat" : 52.578169,
+        "lon" : 13.332921,
+        "locationName" : null
+      },
+      "departureTick" : 82,
+      "departureTime" : "14:22:54",
+      "arrivalTick" : 82,
+      "arrivalTime" : "14:22:30"
+    }, {
+      "stopId" : "060085105001",
+      "stopName" : "S Alt-Reinickendorf (Berlin)",
+      "location" : {
+        "lat" : 52.577969,
+        "lon" : 13.349747,
+        "locationName" : null
+      },
+      "departureTick" : 85,
+      "departureTime" : "14:25:18",
+      "arrivalTick" : 84,
+      "arrivalTime" : "14:24:48"
+    }, {
+      "stopId" : "060085201684",
+      "stopName" : "S Schönholz (Berlin)",
+      "location" : {
+        "lat" : 52.571901,
+        "lon" : 13.380242,
+        "locationName" : null
+      },
+      "departureTick" : 88,
+      "departureTime" : "14:28:30",
+      "arrivalTick" : 88,
+      "arrivalTime" : "14:28"
+    }, {
+      "stopId" : "060130003654",
+      "stopName" : "S Wollankstr. (Berlin)",
+      "location" : {
+        "lat" : 52.564974,
+        "lon" : 13.39315,
+        "locationName" : null
+      },
+      "departureTick" : 90,
+      "departureTime" : "14:30:18",
+      "arrivalTick" : 89,
+      "arrivalTime" : "14:29:48"
+    }, {
+      "stopId" : "060110011611",
+      "stopName" : "S Bornholmer Str. (Berlin)",
+      "location" : {
+        "lat" : 52.554763,
+        "lon" : 13.397841,
+        "locationName" : null
+      },
+      "departureTick" : 93,
+      "departureTime" : "14:33:12",
+      "arrivalTick" : 91,
+      "arrivalTime" : "14:31:54"
+    }, {
+      "stopId" : "060007102721",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 94,
+      "arrivalTime" : "14:34:42"
+    } ]
+  }, {
+    "legId" : 2,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTime" : "14:40:54",
+    "arrivalTime" : "14:53:06",
+    "vehicle" : null,
+    "stopCounter" : 7,
+    "stops" : [ {
+      "stopId" : "060007102723",
+      "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+      "location" : {
+        "lat" : 52.548637,
+        "lon" : 13.388372,
+        "locationName" : null
+      },
+      "departureTick" : 100,
+      "departureTime" : "14:40:54",
+      "arrivalTick" : 94,
+      "arrivalTime" : "14:34:42"
+    }, {
+      "stopId" : "060110001771",
+      "stopName" : "S+U Schönhauser Allee (Berlin)",
+      "location" : {
+        "lat" : 52.549336,
+        "lon" : 13.415138,
+        "locationName" : null
+      },
+      "departureTick" : 103,
+      "departureTime" : "14:43:24",
+      "arrivalTick" : 102,
+      "arrivalTime" : "14:42:48"
+    }, {
+      "stopId" : "060110002781",
+      "stopName" : "S Prenzlauer Allee (Berlin)",
+      "location" : {
+        "lat" : 52.544802,
+        "lon" : 13.427419,
+        "locationName" : null
+      },
+      "departureTick" : 105,
+      "departureTime" : "14:45:12",
+      "arrivalTick" : 104,
+      "arrivalTime" : "14:44:42"
+    }, {
+      "stopId" : "060110003511",
+      "stopName" : "S Greifswalder Str. (Berlin)",
+      "location" : {
+        "lat" : 52.540724,
+        "lon" : 13.438356,
+        "locationName" : null
+      },
+      "departureTick" : 107,
+      "departureTime" : "14:47:12",
+      "arrivalTick" : 106,
+      "arrivalTime" : "14:46:42"
+    }, {
+      "stopId" : "060110004531",
+      "stopName" : "S Landsberger Allee (Berlin)",
+      "location" : {
+        "lat" : 52.528772,
+        "lon" : 13.455944,
+        "locationName" : null
+      },
+      "departureTick" : 109,
+      "departureTime" : "14:49:36",
+      "arrivalTick" : 109,
+      "arrivalTime" : "14:49:06"
+    }, {
+      "stopId" : "060110012541",
+      "stopName" : "S Storkower Str. (Berlin)",
+      "location" : {
+        "lat" : 52.524049,
+        "lon" : 13.464835,
+        "locationName" : null
+      },
+      "departureTick" : 111,
+      "departureTime" : "14:51:36",
+      "arrivalTick" : 111,
+      "arrivalTime" : "14:51:06"
+    }, {
+      "stopId" : "060120001541",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 113,
+      "arrivalTime" : "14:53:06"
+    } ]
+  }, {
+    "legId" : 3,
+    "legType" : "pt",
+    "startLocation" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTime" : "14:55:30",
+    "arrivalTime" : "15:01",
+    "vehicle" : null,
+    "stopCounter" : 5,
+    "stops" : [ {
+      "stopId" : "070201053401",
+      "stopName" : "S+U Frankfurter Allee (Berlin)",
+      "location" : {
+        "lat" : 52.513613,
+        "lon" : 13.4753,
+        "locationName" : null
+      },
+      "departureTick" : 115,
+      "departureTime" : "14:55:30",
+      "arrivalTick" : 113,
+      "arrivalTime" : "14:53:06"
+    }, {
+      "stopId" : "070201053501",
+      "stopName" : "U Samariterstr. (Berlin)",
+      "location" : {
+        "lat" : 52.514662,
+        "lon" : 13.465347,
+        "locationName" : null
+      },
+      "departureTick" : 117,
+      "departureTime" : "14:57",
+      "arrivalTick" : 117,
+      "arrivalTime" : "14:57"
+    }, {
+      "stopId" : "070201053601",
+      "stopName" : "U Frankfurter Tor (Berlin)",
+      "location" : {
+        "lat" : 52.515772,
+        "lon" : 13.454085,
+        "locationName" : null
+      },
+      "departureTick" : 118,
+      "departureTime" : "14:58:30",
+      "arrivalTick" : 118,
+      "arrivalTime" : "14:58:30"
+    }, {
+      "stopId" : "070201053701",
+      "stopName" : "U Weberwiese (Berlin)",
+      "location" : {
+        "lat" : 52.516848,
+        "lon" : 13.443278,
+        "locationName" : null
+      },
+      "departureTick" : 119,
+      "departureTime" : "14:59:30",
+      "arrivalTick" : 119,
+      "arrivalTime" : "14:59:30"
+    }, {
+      "stopId" : "070201053801",
+      "stopName" : "U Strausberger Platz (Berlin)",
+      "location" : {
+        "lat" : 52.518025,
+        "lon" : 13.432208,
+        "locationName" : null
+      },
+      "departureTick" : -780,
+      "departureTime" : "00:00",
+      "arrivalTick" : 121,
+      "arrivalTime" : "15:01"
+    } ]
+  }, {
+    "legId" : 4,
+    "legType" : "walk",
+    "startLocation" : {
+      "lat" : 52.518028822199156,
+      "lon" : 13.432208748881715,
+      "locationName" : null
+    },
+    "endLocation" : {
+      "lat" : 52.51801906860331,
+      "lon" : 13.431554857161817,
+      "locationName" : null
+    },
+    "departureTime" : "15:01",
+    "arrivalTime" : "15:02:30",
+    "vehicle" : null,
+    "stopCounter" : 0,
+    "stops" : null
+  } ],
+  "stops" : [ {
+    "stopId" : "060200000101",
+    "stopName" : "S Hennigsdorf Bhf",
+    "location" : {
+      "lat" : 52.637867,
+      "lon" : 13.205874,
+      "locationName" : null
+    },
+    "departureTick" : 68,
+    "departureTime" : "14:08:42",
+    "arrivalTick" : 0,
+    "arrivalTime" : "13:00"
+  }, {
+    "stopId" : "060091203001",
+    "stopName" : "S Heiligensee (Berlin)",
+    "location" : {
+      "lat" : 52.625148,
+      "lon" : 13.228667,
+      "locationName" : null
+    },
+    "departureTick" : 71,
+    "departureTime" : "14:11:24",
+    "arrivalTick" : 71,
+    "arrivalTime" : "14:11"
+  }, {
+    "stopId" : "060091205001",
+    "stopName" : "S Schulzendorf (Berlin)",
+    "location" : {
+      "lat" : 52.613513,
+      "lon" : 13.24563,
+      "locationName" : null
+    },
+    "departureTick" : 73,
+    "departureTime" : "14:13:42",
+    "arrivalTick" : 73,
+    "arrivalTime" : "14:13:18"
+  }, {
+    "stopId" : "060089303005",
+    "stopName" : "S Tegel (Berlin)",
+    "location" : {
+      "lat" : 52.588805,
+      "lon" : 13.288695,
+      "locationName" : null
+    },
+    "departureTick" : 78,
+    "departureTime" : "14:18:12",
+    "arrivalTick" : 77,
+    "arrivalTime" : "14:17:30"
+  }, {
+    "stopId" : "060096405002",
+    "stopName" : "S Eichborndamm (Berlin)",
+    "location" : {
+      "lat" : 52.577545,
+      "lon" : 13.315583,
+      "locationName" : null
+    },
+    "departureTick" : 81,
+    "departureTime" : "14:21:12",
+    "arrivalTick" : 80,
+    "arrivalTime" : "14:20:48"
+  }, {
+    "stopId" : "060096458002",
+    "stopName" : "S+U Karl-Bonhoeffer-Nervenklinik (Berlin)",
+    "location" : {
+      "lat" : 52.578169,
+      "lon" : 13.332921,
+      "locationName" : null
+    },
+    "departureTick" : 82,
+    "departureTime" : "14:22:54",
+    "arrivalTick" : 82,
+    "arrivalTime" : "14:22:30"
+  }, {
+    "stopId" : "060085105001",
+    "stopName" : "S Alt-Reinickendorf (Berlin)",
+    "location" : {
+      "lat" : 52.577969,
+      "lon" : 13.349747,
+      "locationName" : null
+    },
+    "departureTick" : 85,
+    "departureTime" : "14:25:18",
+    "arrivalTick" : 84,
+    "arrivalTime" : "14:24:48"
+  }, {
+    "stopId" : "060085201684",
+    "stopName" : "S Schönholz (Berlin)",
+    "location" : {
+      "lat" : 52.571901,
+      "lon" : 13.380242,
+      "locationName" : null
+    },
+    "departureTick" : 88,
+    "departureTime" : "14:28:30",
+    "arrivalTick" : 88,
+    "arrivalTime" : "14:28"
+  }, {
+    "stopId" : "060130003654",
+    "stopName" : "S Wollankstr. (Berlin)",
+    "location" : {
+      "lat" : 52.564974,
+      "lon" : 13.39315,
+      "locationName" : null
+    },
+    "departureTick" : 90,
+    "departureTime" : "14:30:18",
+    "arrivalTick" : 89,
+    "arrivalTime" : "14:29:48"
+  }, {
+    "stopId" : "060110011611",
+    "stopName" : "S Bornholmer Str. (Berlin)",
+    "location" : {
+      "lat" : 52.554763,
+      "lon" : 13.397841,
+      "locationName" : null
+    },
+    "departureTick" : 93,
+    "departureTime" : "14:33:12",
+    "arrivalTick" : 91,
+    "arrivalTime" : "14:31:54"
+  }, {
+    "stopId" : "060007102721",
+    "stopName" : "S+U Gesundbrunnen Bhf (Berlin)",
+    "location" : {
+      "lat" : 52.548637,
+      "lon" : 13.388372,
+      "locationName" : null
+    },
+    "departureTick" : 100,
+    "departureTime" : "14:40:54",
+    "arrivalTick" : 94,
+    "arrivalTime" : "14:34:42"
+  }, {
+    "stopId" : "060110001771",
+    "stopName" : "S+U Schönhauser Allee (Berlin)",
+    "location" : {
+      "lat" : 52.549336,
+      "lon" : 13.415138,
+      "locationName" : null
+    },
+    "departureTick" : 103,
+    "departureTime" : "14:43:24",
+    "arrivalTick" : 102,
+    "arrivalTime" : "14:42:48"
+  }, {
+    "stopId" : "060110002781",
+    "stopName" : "S Prenzlauer Allee (Berlin)",
+    "location" : {
+      "lat" : 52.544802,
+      "lon" : 13.427419,
+      "locationName" : null
+    },
+    "departureTick" : 105,
+    "departureTime" : "14:45:12",
+    "arrivalTick" : 104,
+    "arrivalTime" : "14:44:42"
+  }, {
+    "stopId" : "060110003511",
+    "stopName" : "S Greifswalder Str. (Berlin)",
+    "location" : {
+      "lat" : 52.540724,
+      "lon" : 13.438356,
+      "locationName" : null
+    },
+    "departureTick" : 107,
+    "departureTime" : "14:47:12",
+    "arrivalTick" : 106,
+    "arrivalTime" : "14:46:42"
+  }, {
+    "stopId" : "060110004531",
+    "stopName" : "S Landsberger Allee (Berlin)",
+    "location" : {
+      "lat" : 52.528772,
+      "lon" : 13.455944,
+      "locationName" : null
+    },
+    "departureTick" : 109,
+    "departureTime" : "14:49:36",
+    "arrivalTick" : 109,
+    "arrivalTime" : "14:49:06"
+  }, {
+    "stopId" : "060110012541",
+    "stopName" : "S Storkower Str. (Berlin)",
+    "location" : {
+      "lat" : 52.524049,
+      "lon" : 13.464835,
+      "locationName" : null
+    },
+    "departureTick" : 111,
+    "departureTime" : "14:51:36",
+    "arrivalTick" : 111,
+    "arrivalTime" : "14:51:06"
+  }, {
+    "stopId" : "060120001541",
+    "stopName" : "S+U Frankfurter Allee (Berlin)",
+    "location" : {
+      "lat" : 52.513613,
+      "lon" : 13.4753,
+      "locationName" : null
+    },
+    "departureTick" : 115,
+    "departureTime" : "14:55:30",
+    "arrivalTick" : 113,
+    "arrivalTime" : "14:53:06"
+  }, {
+    "stopId" : "070201053501",
+    "stopName" : "U Samariterstr. (Berlin)",
+    "location" : {
+      "lat" : 52.514662,
+      "lon" : 13.465347,
+      "locationName" : null
+    },
+    "departureTick" : 117,
+    "departureTime" : "14:57",
+    "arrivalTick" : 117,
+    "arrivalTime" : "14:57"
+  }, {
+    "stopId" : "070201053601",
+    "stopName" : "U Frankfurter Tor (Berlin)",
+    "location" : {
+      "lat" : 52.515772,
+      "lon" : 13.454085,
+      "locationName" : null
+    },
+    "departureTick" : 118,
+    "departureTime" : "14:58:30",
+    "arrivalTick" : 118,
+    "arrivalTime" : "14:58:30"
+  }, {
+    "stopId" : "070201053701",
+    "stopName" : "U Weberwiese (Berlin)",
+    "location" : {
+      "lat" : 52.516848,
+      "lon" : 13.443278,
+      "locationName" : null
+    },
+    "departureTick" : 119,
+    "departureTime" : "14:59:30",
+    "arrivalTick" : 119,
+    "arrivalTime" : "14:59:30"
+  }, {
+    "stopId" : "070201053801",
+    "stopName" : "U Strausberger Platz (Berlin)",
+    "location" : {
+      "lat" : 52.518025,
+      "lon" : 13.432208,
+      "locationName" : null
+    },
+    "departureTick" : -780,
+    "departureTime" : "00:00",
+    "arrivalTick" : 121,
+    "arrivalTime" : "15:01"
+  } ]
+} ]
