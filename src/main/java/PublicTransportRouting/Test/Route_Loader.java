@@ -35,7 +35,7 @@ public class Route_Loader {
         for (PT_Stop stop : route.getStops()){
             System.out.println("-------------------------------------------------------------");
             System.out.println(stop.getStopId());
-            System.out.println(stop.getStopName());
+            System.out.println(stop.getLocation().getLocationName());
             System.out.println(stop.getLocation().getLat()+","+stop.getLocation().getLon());
             System.out.println("Zeiten: "+stop.getArrivalTime()+"  "+stop.getDepartureTime());
             System.out.println("Tick´s: "+stop.getArrivalTick()+"  "+stop.getDepartureTick());

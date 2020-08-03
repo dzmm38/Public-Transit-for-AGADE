@@ -218,7 +218,7 @@ public class PT_Route_Builder {
             stop = route.getStops().get(i);
             if( i < route.getStops().size()-1){
                 //for each stop it is checked if the name of the location is the same as the name of the next stop
-                if (stop.getStopName() == route.getNextStop(stop.getLocation()).getStopName()){
+                if (stop.getLocation().getLocationName() == route.getNextStop(stop.getLocation()).getLocation().getLocationName()){
                     deleteList.add(stop);
                 }
             }

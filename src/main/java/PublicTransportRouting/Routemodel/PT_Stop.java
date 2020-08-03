@@ -14,7 +14,6 @@ import java.time.LocalTime;
 public class PT_Stop implements Serializable {
     //------------------------------------------ Variable -------------------------------------------//
     private String stopId;
-    private String stopName;
     private Location location;
     private int departureTick;
     private LocalTime departureTime;
@@ -28,8 +27,8 @@ public class PT_Stop implements Serializable {
 
     public PT_Stop(Location location,String stopName,String stopId,LocalTime departureTime,LocalTime arrivalTime,int departureTick,int arrivalTick){
         this.stopId = stopId;
-        this.stopName = stopName;
         this.location = location;
+        this.location.setLocationName(stopName);
         this.departureTick = departureTick;
         this.departureTime = departureTime;
         this.arrivalTick = arrivalTick;
@@ -50,13 +49,15 @@ public class PT_Stop implements Serializable {
         this.stopId = stopId;
     }
 
-    public String getStopName() {
-        return stopName;
-    }
+    //TODO kann vllt raus da name jetzt über die Location an sich geregelt wird getStopName
+//    public String getStopName() {
+//        return this.location.getLocationName();
+//    }
 
-    public void setStopName(String stopName) {
-        this.stopName = stopName;
-    }
+    //TODO kann vllt raus da name jetzt über die Location an sich geregelt wird setStopName
+//    public void setStopName(String stopName) {
+//        this.location.setLocationName(stopName);
+//    }
 
     public Location getLocation() {
         return location;
