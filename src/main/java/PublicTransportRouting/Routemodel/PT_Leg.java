@@ -21,7 +21,9 @@ public class PT_Leg implements Serializable {
     private Location startLocation;
     private Location endLocation;
     private LocalTime departureTime;
+    private int departureTick;
     private LocalTime arrivalTime;
+    private int arrivalTick;
     private String vehicle;
     private long stopCounter;
 
@@ -32,21 +34,23 @@ public class PT_Leg implements Serializable {
         //only to create a PT_Leg from a JSON File
     }
 
-    public PT_Leg(Location startLocation, Location endLocation, LocalTime departureTime, LocalTime arrivalTime, String legType, int legId){
+    public PT_Leg(Location startLocation, Location endLocation, LocalTime departureTime, LocalTime arrivalTime, String legType, int legId, int departureTick, int arrivalTick) {
         this.legId = legId;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.departureTime = departureTime;
+        this.departureTick = departureTick;
         this.arrivalTime = arrivalTime;
+        this.arrivalTick = arrivalTick;
         this.legType = legType;
         this.vehicle = null;                        //isn´t implemented yet, gtfs files need to contain this information, listed because seems like an important information
         this.stopCounter = 0;
 
         //Only creates a list of stops, if the type of the leg is an public transit (pt) leg,
         //because legs of the type walk don´t have stops
-        if (legType == "pt"){
-            stops = new LinkedList<PT_Stop>();
-        }else {
+        if (legType.equals("pt")) {
+            stops = new LinkedList<>();
+        } else {
             stops = null;
         }
     }
@@ -129,15 +133,31 @@ public class PT_Leg implements Serializable {
         return vehicle;
     }
 
+    public int getDepartureTick() {
+        return departureTick;
+    }
+
+    public void setDepartureTick(int departureTick) {
+        this.departureTick = departureTick;
+    }
+
+    public int getArrivalTick() {
+        return arrivalTick;
+    }
+
+    public void setArrivalTick(int arrivalTick) {
+        this.arrivalTick = arrivalTick;
+    }
+
     /*
-    ---------------------------------------------------------------------------------------------------
-    Getter for times are give back Strings because if a LocalTime is written in JSON there would be four
-    entries for hour, minute, second, and millisecond. Not all of them are necessary an would make the
-    JSON file less clear. (there should be no drawbacks to this)
-    ---------------------------------------------------------------------------------------------------
-    Setter need String´s to build the LocalTime´s. Reason why are explained above and so are needed
-    ---------------------------------------------------------------------------------------------------
-     */
+        ---------------------------------------------------------------------------------------------------
+        Getter for times are give back Strings because if a LocalTime is written in JSON there would be four
+        entries for hour, minute, second, and millisecond. Not all of them are necessary an would make the
+        JSON file less clear. (there should be no drawbacks to this)
+        ---------------------------------------------------------------------------------------------------
+        Setter need String´s to build the LocalTime´s. Reason why are explained above and so are needed
+        ---------------------------------------------------------------------------------------------------
+         */
     public String getDepartureTime() {
         return departureTime.toString();
     }

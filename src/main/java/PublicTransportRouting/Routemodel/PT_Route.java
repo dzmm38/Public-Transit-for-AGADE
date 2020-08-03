@@ -41,23 +41,24 @@ public class PT_Route implements Serializable {
         this.transfers = transfers;                                 //is set if legs are added. Because without legs or stops the transfers are always 0
         this.stopCounter = 0;                               //is set if stops are added.
 
-        this.legs = new LinkedList<PT_Leg>();
-        this.stops = new LinkedList<PT_Stop>();
+        this.legs = new LinkedList<>();
+        this.stops = new LinkedList<>();
     }
 
     //------------------------------------------- Methods -------------------------------------------//
+
     /**
      * Method to create a leg an then add it to given route
      *
-     * @param start location from where the leg starts
-     * @param end location to where the leg ends
+     * @param start         location from where the leg starts
+     * @param end           location to where the leg ends
      * @param departureTime time at which the first stop of the leg is left (time at which the leg starts)
-     * @param arrivalTime time at which the last stop of the leg is reached (time at which the leg ends)
-     * @param legType type of the leg which defines its functions and information (atm. only "pt" and "walk")
+     * @param arrivalTime   time at which the last stop of the leg is reached (time at which the leg ends)
+     * @param legType       type of the leg which defines its functions and information (atm. only "pt" and "walk")
      */
-    public void addLeg(Location start, Location end, LocalTime departureTime, LocalTime arrivalTime, String legType){
+    public void addLeg(Location start, Location end, LocalTime departureTime, LocalTime arrivalTime, String legType, int departureTick, int arrivalTick) {
         legCounter++;                                       //if a leg ist added the counter goes up by one to receive a unique leg id
-        legs.add(new PT_Leg(start,end,departureTime,arrivalTime,legType,legCounter));
+        legs.add(new PT_Leg(start, end, departureTime, arrivalTime, legType, legCounter, departureTick, arrivalTick));
     }
 
     /**
@@ -98,7 +99,7 @@ public class PT_Route implements Serializable {
     public PT_Stop getNextStop(Location location){
         int index = getStopIndex(location);
         ListIterator<PT_Stop> it = stops.listIterator(index);
-        PT_Stop nextStop = it.next();
+        PT_Stop nextStop;
 
         //Check if the given stop has a successor, if not then it´s the last stop of the route an the nex stop equals null
         if (it.hasNext()){
@@ -152,20 +153,17 @@ public class PT_Route implements Serializable {
      * @param location location of a stop of the route
      * @return index of a stop (of List stops) which belongs to given location
      */
-    public Integer getStopIndex(Location location){
-        boolean stopFound = false;
+    public Integer getStopIndex(Location location) {
         PT_Stop stop;
         int index = -1;                                     //-1 because first entry of the list has the index 0
-        ListIterator<PT_Stop> it = stops.listIterator();
 
         //iterates over the list until the stop is found or the list ends
-        while(it.hasNext()){
-            stop = it.next();
+        for (PT_Stop pt_stop : stops) {
+            stop = pt_stop;
             index++;
 
             //checks if the given location and the location of the current stop are the same
-            if (stop.getLocation().getLat() == location.getLat() && stop.getLocation().getLon() == location.getLon()){
-                stopFound = true;
+            if (stop.getLocation().getLat() == location.getLat() && stop.getLocation().getLon() == location.getLon()) {
                 return index;
             }
         }
@@ -180,42 +178,42 @@ public class PT_Route implements Serializable {
          */
     }
 
-/*
-------------------------------------------------------------------------------------------
-MUSS NOCHMAL NEU GEMACHT UND ÜBERARBEITET WERDEN WIE BEI DEN STOPS für alle legs
-------------------------------------------------------------------------------------------
- */
-    public PT_Leg getNextLeg(Location end){
-        boolean legGefunden = false;
-        PT_Leg nextLeg = null;
-        Iterator<PT_Leg> it = legs.iterator();
+    /*
+    ------------------------------------------------------------------------------------------
+    MUSS NOCHMAL NEU GEMACHT UND ÜBERARBEITET WERDEN WIE BEI DEN STOPS für alle legs
+    ------------------------------------------------------------------------------------------
+     */
+    public PT_Leg getNextLeg(int legId) {
+        ListIterator<PT_Leg> it = legs.listIterator(legId);
+        if (it.hasNext()) {
+            return it.next();
+        } else {
+            System.out.println("Leg has no successor");
+            return null;
+        }
+    }
 
-        while (legGefunden = false && it.hasNext()){
-            nextLeg = it.next();
-            if (nextLeg.getEndLocation().equals(end)){
-                nextLeg = it.next();
-                legGefunden = true;
+    public PT_Leg getPreviousLeg(int legId) {
+        ListIterator<PT_Leg> it = legs.listIterator(legId);
+        if (it.hasPrevious()) {
+            return it.previous();
+        } else {
+            System.out.println("Leg has no predecessor");
+            return null;
+        }
+    }
+
+    public PT_Leg getcurrentLeg(int legId) {
+        boolean legFound = false;
+        PT_Leg currentLeg = null;
+        ListIterator<PT_Leg> it = legs.listIterator();
+        while (!legFound & it.hasNext()) {
+            currentLeg = it.next();
+            if (currentLeg.getLegId() == legId) {
+                legFound = true;
             }
         }
-        if (legGefunden = false){
-            return null;
-        }else {
-            return nextLeg;
-        }
-        /*
-        suche anhand der end Location eines Legs nach dem nächsten dort müsste
-        die anfangs Location gleich der gegebenen End Location sein
-        nutze List<PT_Leg> legs
-         */
-    }
-
-    public void getPreviousLeg(Location start){
-        boolean previousLeg = false;
-        ListIterator<PT_Leg> it = legs.listIterator();
-    }
-
-    public void getcurrentLeg(){
-
+        return currentLeg;
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//

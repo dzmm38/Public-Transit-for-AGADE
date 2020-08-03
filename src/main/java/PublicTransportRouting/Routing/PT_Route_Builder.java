@@ -34,7 +34,7 @@ public class PT_Route_Builder {
     TimeConverter converter;
     ZoneOffset offset;                              //time difference between the given zone and the UTC (Coordinated Universal Time)
     boolean firstStopOfRoute = true;                //to check which is the first stop of an route, to set later the arrival time to the start time
-    PT_Stop lastStopOfLeg = null;            //to save the last stop of an leg to then set it´s correct departure time an the correct arrival time of the first stop of the next leg
+    PT_Stop lastStopOfLeg = null;                   //to save the last stop of an leg to then set it´s correct departure time an the correct arrival time of the first stop of the next leg
 
     //----------------------------------------- Constructor -----------------------------------------//
     public PT_Route_Builder(ResponsePath path, ZoneId zoneId,LocalDateTime dateTime){
@@ -83,7 +83,7 @@ public class PT_Route_Builder {
         for (Trip.Leg leg : path.getLegs()){
             //Checks for all legs the type to either convert them to a Trip.PtLeg or a Trip.WalkLeg
             //Each of the special legs have different attributes to create the legs an stops
-            if (leg.type == "pt") {
+            if (leg.type.equals("pt")) {
                 Trip.PtLeg ptLeg = (Trip.PtLeg) leg;
 
                 //Always null because the location data for the first/last stop is only available if the first/last stop of the leg is created thus, location is set later
@@ -96,29 +96,37 @@ public class PT_Route_Builder {
                 The offset is set above an since there isn´t any nano seconds given it can be set to 0.
                 Last its needed to get the LocalTime from the LocalDateTime an set it as departure an arrival time.
                  */
-                LocalTime departureTime = LocalDateTime.ofEpochSecond(ptLeg.getDepartureTime().getTime()/1000,0,offset).toLocalTime();
-                LocalTime arrivalTime = LocalDateTime.ofEpochSecond(ptLeg.getArrivalTime().getTime()/1000,0,offset).toLocalTime();
+                LocalTime departureTime = LocalDateTime.ofEpochSecond(ptLeg.getDepartureTime().getTime() / 1000, 0, offset).toLocalTime();
+                LocalTime arrivalTime = LocalDateTime.ofEpochSecond(ptLeg.getArrivalTime().getTime() / 1000, 0, offset).toLocalTime();
+                int departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departureTime));             //transform time to simulation tick
+                int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrivalTime));                 //transform time to simulation tick
                 String legType = ptLeg.type;
                 String vehicle;                                                 // TODO MUSS NOCH GEMACHT WERDEN !!!!!  IDEE: ptleg.trip_headsign / dort sind die ersten x char´s dann fast immer eine linie oder Fahrzeug
 
-                PT_Leg routeLeg = new PT_Leg(start,end,departureTime,arrivalTime,legType,0);             //legId 0 because if the leg is later added to it´s route the legId is set correctly
-                buildStops(ptLeg,routeLeg);            //build and adds all stop to the route
+
+                PT_Leg routeLeg = new PT_Leg(start, end, departureTime, arrivalTime, legType, 0, departureTick, arrivalTick);  //legId 0 because if the leg is later added to it´s route the legId is set correctly
+                buildStops(ptLeg, routeLeg);            //build and adds all stop to the route
                 route.addLeg(routeLeg);
-            }else{
+            } else {
                 Trip.WalkLeg walkLeg = (Trip.WalkLeg) leg;
 
                 //Please refer to where the departure and arrival times are set for the ptleg (also in this Method)
-                LocalTime departure = LocalDateTime.ofEpochSecond(walkLeg.getDepartureTime().getTime()/1000,0,offset).toLocalTime();
-                LocalTime arrival = LocalDateTime.ofEpochSecond(walkLeg.getArrivalTime().getTime()/1000,0,offset).toLocalTime();
+                //TODO diese methode und die Methode bei ptleg in eigene Methode da hier complett gleich --> spart platz !!!
+                LocalTime departure = LocalDateTime.ofEpochSecond(walkLeg.getDepartureTime().getTime() / 1000, 0, offset).toLocalTime();
+                LocalTime arrival = LocalDateTime.ofEpochSecond(walkLeg.getArrivalTime().getTime() / 1000, 0, offset).toLocalTime();
+                int departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departure));
+                int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrival));
 
                 String legType = walkLeg.type;
                 Coordinate[] coordinates = walkLeg.geometry.getCoordinates();                                           //array of all corner points coordinates of the walk leg
-                Location start = new Location(coordinates[0].y,coordinates[0].x);                                       //first point in the list is then the start point of the walkleg
-                Location end = new Location(coordinates[coordinates.length-1].y,coordinates[coordinates.length-1].x);   //last point in  the list is then the end point of the walkleg
+                Location start = new Location(coordinates[0].y, coordinates[0].x);                                       //first point in the list is then the start point of the walkleg
+                Location end = new Location(coordinates[coordinates.length - 1].y, coordinates[coordinates.length - 1].x);   //last point in  the list is then the end point of the walkleg
 
-                route.addLeg(start,end,departure,arrival,legType);
+                route.addLeg(start, end, departure, arrival, legType, departureTick, arrivalTick);
             }
+
         }
+        fixLegs();
     }
 
     /*
@@ -144,14 +152,14 @@ public class PT_Route_Builder {
             Hier wird überprüft ob es sich um den Anfang/Ende der Route oder eines Legs handelt, welche keine departure
             oder arrival Zeit besitzt und dann eingefügt
              */
-            if (stop.arrivalTime == null){
+            if (stop.arrivalTime == null) {
 
-                if (firstStopOfRoute == true){
-                    departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime()/1000),0,offset).toLocalTime();
+                if (firstStopOfRoute) {
+                    departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime() / 1000), 0, offset).toLocalTime();
                     arrivalTime = startTime.toLocalTime();          //sets the arrivalTime to the time of the request
                     firstStopOfRoute = false;
-                }else{
-                    departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime()/1000),0,offset).toLocalTime();
+                } else {
+                    departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime() / 1000), 0, offset).toLocalTime();
                     //if the arrival time is null an this isn´t the first stop of the route, then it´s have to be the first of the leg
                     //fixStops to solve the missing times for this stop an the one before
                     arrivalTime = fixStops(departureTime);
@@ -196,7 +204,7 @@ public class PT_Route_Builder {
     Returns then a Local time of stop x-1 arrival time (can then be set to x stop arrival time)
     So no stop is missing a time
      */
-    private LocalTime fixStops(LocalTime departureTime){
+    private LocalTime fixStops(LocalTime departureTime) {
         LocalTime arrivalTime = LocalTime.parse(lastStopOfLeg.getArrivalTime());                        //parse arrival time because the getter is returning a String
 
         PT_Stop stop = route.getStops().get(route.getStopIndex(lastStopOfLeg.getLocation()));           //gets the index of the last stop of the leg to edit the stop in the list
@@ -206,23 +214,40 @@ public class PT_Route_Builder {
         return arrivalTime;
     }
 
+    private void fixLegs() {
+        for (PT_Leg legs : route.getLegs()) {
+            if (legs.getLegType().equals("pt")) {
+                PT_Stop stop;
+                stop = legs.getStops().get((int) legs.getStopCounter() - 1);
+                PT_Leg nextLeg = route.getNextLeg(legs.getLegId());
+                stop.setDepartureTime(nextLeg.getDepartureTime());
+                stop.setDepartureTick(calculator.tickAfterStart(calculator.convertTimeToTick(LocalTime.parse(stop.getDepartureTime()))));
+            }
+        }
+    }
+
     /*
     Deletes the stops in the PT_Route stop list which are doubled
     (stops are doubled because if during the route an transfer occurs the same stop is used as last stop of the current
     leg and first stop of the next leg)
      */
-    private void deleteDoubleStops(){
-        ArrayList<PT_Stop> deleteList = new ArrayList<PT_Stop>();
+    private void deleteDoubleStops() {
+        ArrayList<PT_Stop> deleteList = new ArrayList<>();
         PT_Stop stop;
-        for (int i=0;i<route.getStops().size();i++){
+        for (int i = 0; i < route.getStops().size(); i++) {
             stop = route.getStops().get(i);
-            if( i < route.getStops().size()-1){
+            if (i < route.getStops().size() - 1) {
                 //for each stop it is checked if the name of the location is the same as the name of the next stop
-                if (stop.getLocation().getLocationName() == route.getNextStop(stop.getLocation()).getLocation().getLocationName()){
+                if (stop.getLocation().getLocationName().equals(route.getNextStop(stop.getLocation()).getLocation().getLocationName())) {
                     deleteList.add(stop);
                 }
             }
+            if (i == route.getStops().size() - 1) {
+                stop.setDepartureTime(route.getArrivalTime());
+                stop.setDepartureTick(calculator.tickAfterStart(calculator.convertTimeToTick(LocalTime.parse(stop.getArrivalTime()))));
+            }
         }
+
         //for every entry in the list the associated stop is deleted in PT_Route stops list
         for (PT_Stop deleteStop : deleteList){
             route.getStops().remove(deleteStop);
