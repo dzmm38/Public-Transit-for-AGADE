@@ -42,7 +42,7 @@ public class PT_Route_Builder {
         this.zoneId = zoneId;
         this.startTime = dateTime;
 
-        calculator = new TimeCalculator(startTime.toLocalTime());
+        calculator = new TimeCalculator();
         converter = new TimeConverter();
     }
 
@@ -57,6 +57,7 @@ public class PT_Route_Builder {
         buildLegs();
         deleteDoubleStops();
 
+        System.out.println("Route created");
         return route;
     }
 
@@ -253,7 +254,6 @@ public class PT_Route_Builder {
             route.getStops().remove(deleteStop);
         }
         route.setStopCounter(route.getStopCounter() - deleteList.size());
-        System.out.println("Stop list cleaned ..........");
     }
 
     private String getVehicleLine(String trip_headsign) {

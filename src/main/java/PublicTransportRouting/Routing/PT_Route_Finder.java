@@ -54,11 +54,15 @@ public class PT_Route_Finder {
 
 
         switch (routeSelection){
-            case "best" : path.add(response.getBest()); break;
-            case "all"  :
+            case "best":
+                path.add(response.getBest());
+                break;
+            case "all":
                 path.addAll(response.getAll());
                 break;
-            default: path.add(response.getBest()); break;
+            default:
+                path.add(response.getBest());
+                break;
         }
         createRoute(saveFileFormat);
     }

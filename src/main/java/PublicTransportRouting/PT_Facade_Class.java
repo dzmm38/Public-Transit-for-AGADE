@@ -3,6 +3,7 @@ package PublicTransportRouting;
 import PublicTransportRouting.PT_Graph.PT_Graph;
 import PublicTransportRouting.Routing.PT_Query;
 import PublicTransportRouting.Routing.PT_Route_Finder;
+import PublicTransportRouting.Time.TimeCalculator;
 import PublicTransportRouting.supClass.FileDownloader;
 import PublicTransportRouting.supClass.Location;
 import com.graphhopper.reader.gtfs.PtRouteResource;
@@ -31,6 +32,7 @@ public class PT_Facade_Class {
         this.zoneId = ZoneId.of(zoneId);
         this.dateTime = LocalDateTime.of(year,month,day,hour,min);
         this.fileFormat = fileFormat;
+        new TimeCalculator().calculateTickZero(dateTime.toLocalTime());
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -69,7 +71,7 @@ public class PT_Facade_Class {
         System.out.println("Constructing Query ..........");
         PT_Query abfrage = new PT_Query(from,to,queryTime,zoneId);
 
-        PT_Route_Finder finder = new PT_Route_Finder(zoneId,dateTime);
+        PT_Route_Finder finder = new PT_Route_Finder(zoneId, queryTime);
         finder.findRoute(abfrage,PT,routeSelection,fileFormat);
 
     }

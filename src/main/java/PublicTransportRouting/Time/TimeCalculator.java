@@ -11,12 +11,11 @@ import java.time.LocalTime;
 public class TimeCalculator {
     //------------------------------------------ Variable -------------------------------------------//
     private TimeConverter timeConverter;
-    private int tickZero;
+    private static int tickZero;
 
     //----------------------------------------- Constructor -----------------------------------------//
-    public TimeCalculator(LocalTime startTime){
+    public TimeCalculator() {
         timeConverter = new TimeConverter();
-        calculateTickZero(startTime);
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -30,9 +29,8 @@ public class TimeCalculator {
     public double convertLocalTimeToTime(LocalTime time){
         double hour = time.getHour();
         double min = time.getMinute();
-        double tickZero_Time = hour + (min/100);
 
-        return tickZero_Time;
+        return (hour + (min / 100));
     }
 
     /*
@@ -41,7 +39,7 @@ public class TimeCalculator {
     compared to, to get the Tick of the simulation
     Sets the TickZero
      */
-    private void calculateTickZero(LocalTime startTime) {
+    public void calculateTickZero(LocalTime startTime) {
 
         double tickZero_Time;
         tickZero_Time = convertLocalTimeToTime(startTime);
@@ -49,7 +47,7 @@ public class TimeCalculator {
         double result;
         result = timeConverter.hours_to_min(timeConverter.Time_To_DecimalTime(tickZero_Time));        //the time needs to be in Minutes because 1 Tick = 1 Min
 
-        System.out.println("TickZero is set to : "+ result+" Minutes of the Day");
+        System.out.println("TickZero is set to : " + result + " Minutes of the Day");
         this.tickZero = (int) result;           //result should no longer have decimals so to set to TickZero it needs to be casted to int
     }
 
