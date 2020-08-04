@@ -8,6 +8,8 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.graphhopper.GHResponse;
 import com.graphhopper.ResponsePath;
 import com.graphhopper.reader.gtfs.PtRouteResource;
+import com.graphhopper.util.PointList;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -48,15 +50,13 @@ public class PT_Route_Finder {
     public void findRoute(PT_Query ptQuery, PtRouteResource PT, String routeSelection, String saveFileFormat){
         System.out.println("Searching Routes ..........");
         response = PT.route(ptQuery.getRequest());              //routing form graphhopper and setting the response
-        path = new ArrayList<ResponsePath>();
+        path = new ArrayList<>();
 
 
         switch (routeSelection){
             case "best" : path.add(response.getBest()); break;
             case "all"  :
-                for (ResponsePath responsePath : response.getAll()){
-                    path.add(responsePath);
-            }
+                path.addAll(response.getAll());
                 break;
             default: path.add(response.getBest()); break;
         }
@@ -70,7 +70,7 @@ public class PT_Route_Finder {
      */
     private void createRoute(String fileFormat){
         System.out.println("Creating Routes ..........");
-        routes = new ArrayList<PT_Route>();
+        routes = new ArrayList<>();
         PT_Route route;
 
         for (ResponsePath responsePath : path){
@@ -103,17 +103,25 @@ public class PT_Route_Finder {
     /*
     Methode to create a JSON file which contains the route
      */
-    private void toJSON(){
-        String extraFileName =  path.get(0).getWaypoints().getLat(0)+","+path.get(0).getWaypoints().getLon(0)+"_" +
-                                path.get(0).getWaypoints().getLat(1)+","+path.get(0).getWaypoints().getLon(1);
-        System.out.println("Creates and saves Route_"+extraFileName+".json ..........");
+    private void toJSON() {
+        String extraFileName = cutDecimals(path.get(0).getWaypoints(), 0) + " -- " + cutDecimals(path.get(0).getWaypoints(), 1);
+        System.out.println("Creates and saves Route_" + extraFileName + ".json ..........");
         ObjectMapper om = new ObjectMapper(new JsonFactory());
         om.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            om.writeValue(new File("src\\main\\resources\\Routes\\Route_"+extraFileName+".json"),routes);
+            om.writeValue(new File("src\\main\\resources\\Routes\\Route_" + extraFileName + ".json"), routes);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String cutDecimals(PointList pointList, int index) {
+        long lat = (long) (pointList.getLat(index) * 1000000);
+        long lon = (long) (pointList.getLon(index) * 1000000);
+        double latfertig = ((double) lat) / 1000000;
+        double lonfertig = ((double) lon) / 1000000;
+
+        return latfertig + "," + lonfertig;
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//

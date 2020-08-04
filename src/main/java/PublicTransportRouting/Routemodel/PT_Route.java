@@ -38,7 +38,7 @@ public class PT_Route implements Serializable {
         this.durationInMin = durationInMin;
         this.walkDistanceInMeters = walkDistanceInMeters;
         this.cost = 0.0;                                    //not implemented yet, also gtfs files need to have both of the fare files with corresponding content, but could be an important information later on
-        this.transfers = transfers;                                 //is set if legs are added. Because without legs or stops the transfers are always 0
+        this.transfers = transfers;                         //is set if legs are added. Because without legs or stops the transfers are always 0
         this.stopCounter = 0;                               //is set if stops are added.
 
         this.legs = new LinkedList<>();
@@ -56,9 +56,9 @@ public class PT_Route implements Serializable {
      * @param arrivalTime   time at which the last stop of the leg is reached (time at which the leg ends)
      * @param legType       type of the leg which defines its functions and information (atm. only "pt" and "walk")
      */
-    public void addLeg(Location start, Location end, LocalTime departureTime, LocalTime arrivalTime, String legType, int departureTick, int arrivalTick) {
+    public void addLeg(Location start, Location end, LocalTime departureTime, LocalTime arrivalTime, String legType, int departureTick, int arrivalTick, String vehicle) {
         legCounter++;                                       //if a leg ist added the counter goes up by one to receive a unique leg id
-        legs.add(new PT_Leg(start, end, departureTime, arrivalTime, legType, legCounter, departureTick, arrivalTick));
+        legs.add(new PT_Leg(start, end, departureTime, arrivalTime, legType, legCounter, departureTick, arrivalTick, vehicle));
     }
 
     /**
@@ -100,6 +100,7 @@ public class PT_Route implements Serializable {
         int index = getStopIndex(location);
         ListIterator<PT_Stop> it = stops.listIterator(index);
         PT_Stop nextStop;
+        nextStop = it.next();
 
         //Check if the given stop has a successor, if not then it´s the last stop of the route an the nex stop equals null
         if (it.hasNext()){
