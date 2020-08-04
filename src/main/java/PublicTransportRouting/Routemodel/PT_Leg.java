@@ -34,7 +34,7 @@ public class PT_Leg implements Serializable {
         //only to create a PT_Leg from a JSON File
     }
 
-    public PT_Leg(Location startLocation, Location endLocation, LocalTime departureTime, LocalTime arrivalTime, String legType, int legId, int departureTick, int arrivalTick) {
+    public PT_Leg(Location startLocation, Location endLocation, LocalTime departureTime, LocalTime arrivalTime, String legType, int legId, int departureTick, int arrivalTick, String vehicle) {
         this.legId = legId;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
@@ -43,7 +43,7 @@ public class PT_Leg implements Serializable {
         this.arrivalTime = arrivalTime;
         this.arrivalTick = arrivalTick;
         this.legType = legType;
-        this.vehicle = null;                        //isn´t implemented yet, gtfs files need to contain this information, listed because seems like an important information
+        this.vehicle = vehicle;                        //isn´t implemented yet, gtfs files need to contain this information, listed because seems like an important information
         this.stopCounter = 0;
 
         //Only creates a list of stops, if the type of the leg is an public transit (pt) leg,

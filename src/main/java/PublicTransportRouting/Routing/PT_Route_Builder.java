@@ -101,10 +101,10 @@ public class PT_Route_Builder {
                 int departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departureTime));             //transform time to simulation tick
                 int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrivalTime));                 //transform time to simulation tick
                 String legType = ptLeg.type;
-                String vehicle;                                                 // TODO MUSS NOCH GEMACHT WERDEN !!!!!  IDEE: ptleg.trip_headsign / dort sind die ersten x char´s dann fast immer eine linie oder Fahrzeug
+                String vehicle = getVehicleLine(ptLeg.trip_headsign);
 
 
-                PT_Leg routeLeg = new PT_Leg(start, end, departureTime, arrivalTime, legType, 0, departureTick, arrivalTick);  //legId 0 because if the leg is later added to it´s route the legId is set correctly
+                PT_Leg routeLeg = new PT_Leg(start, end, departureTime, arrivalTime, legType, 0, departureTick, arrivalTick, vehicle);  //legId 0 because if the leg is later added to it´s route the legId is set correctly
                 buildStops(ptLeg, routeLeg);            //build and adds all stop to the route
                 route.addLeg(routeLeg);
             } else {
@@ -118,11 +118,11 @@ public class PT_Route_Builder {
                 int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrival));
 
                 String legType = walkLeg.type;
-                Coordinate[] coordinates = walkLeg.geometry.getCoordinates();                                           //array of all corner points coordinates of the walk leg
-                Location start = new Location(coordinates[0].y, coordinates[0].x);                                       //first point in the list is then the start point of the walkleg
-                Location end = new Location(coordinates[coordinates.length - 1].y, coordinates[coordinates.length - 1].x);   //last point in  the list is then the end point of the walkleg
+                Coordinate[] coordinates = walkLeg.geometry.getCoordinates();                                               //array of all corner points coordinates of the walk leg
+                Location start = new Location(coordinates[0].y, coordinates[0].x);                                          //first point in the list is then the start point of the walkleg
+                Location end = new Location(coordinates[coordinates.length - 1].y, coordinates[coordinates.length - 1].x);  //last point in  the list is then the end point of the walkleg
 
-                route.addLeg(start, end, departure, arrival, legType, departureTick, arrivalTick);
+                route.addLeg(start, end, departure, arrival, legType, departureTick, arrivalTick, "foot");
             }
 
         }
@@ -249,11 +249,18 @@ public class PT_Route_Builder {
         }
 
         //for every entry in the list the associated stop is deleted in PT_Route stops list
-        for (PT_Stop deleteStop : deleteList){
+        for (PT_Stop deleteStop : deleteList) {
             route.getStops().remove(deleteStop);
         }
-        route.setStopCounter(route.getStopCounter()-deleteList.size());
+        route.setStopCounter(route.getStopCounter() - deleteList.size());
         System.out.println("Stop list cleaned ..........");
+    }
+
+    private String getVehicleLine(String trip_headsign) {
+        String vehicleLine;
+        String[] headsignSplit = trip_headsign.split(" ");
+        vehicleLine = headsignSplit[0];
+        return vehicleLine;
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
