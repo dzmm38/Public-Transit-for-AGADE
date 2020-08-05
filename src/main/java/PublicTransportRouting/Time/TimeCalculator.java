@@ -80,13 +80,21 @@ public class TimeCalculator {
      *             simulation Tick
      * @return int value, represents the simulation cycle in which the time is reached
      */
-    public int tickAfterStart(int tick){
+    public int tickAfterStart(int tick) {
         return tick - tickZero;
+    }
+
+    public int calculateSimulationTick(LocalTime time) {
+        return tickAfterStart(convertTimeToTick(time));
+    }
+
+    public int calculateSimulationTick(String time) {
+        return tickAfterStart(convertTimeToTick(LocalTime.parse(time)));
     }
 
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
-    public int getTickZero_Tick(){
+    public int getTickZero_Tick() {
         return tickZero;
     }
 

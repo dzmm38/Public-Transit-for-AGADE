@@ -6,15 +6,9 @@ import PublicTransportRouting.Routemodel.PT_Stop;
 import PublicTransportRouting.Time.TimeCalculator;
 import PublicTransportRouting.Time.TimeConverter;
 import PublicTransportRouting.supClass.Location;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.graphhopper.ResponsePath;
 import com.graphhopper.Trip;
 import org.locationtech.jts.geom.Coordinate;
-import java.io.File;
-import java.io.IOException;
 import java.time.*;
 import java.util.ArrayList;
 
@@ -99,8 +93,8 @@ public class PT_Route_Builder {
                  */
                 LocalTime departureTime = LocalDateTime.ofEpochSecond(ptLeg.getDepartureTime().getTime() / 1000, 0, offset).toLocalTime();
                 LocalTime arrivalTime = LocalDateTime.ofEpochSecond(ptLeg.getArrivalTime().getTime() / 1000, 0, offset).toLocalTime();
-                int departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departureTime));             //transform time to simulation tick
-                int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrivalTime));                 //transform time to simulation tick
+                int departureTick = calculator.calculateSimulationTick(departureTime);          //transform time to simulation tick
+                int arrivalTick = calculator.calculateSimulationTick(arrivalTime);              //transform time to simulation tick
                 String legType = ptLeg.type;
                 String vehicle = getVehicleLine(ptLeg.trip_headsign);
 
@@ -115,13 +109,14 @@ public class PT_Route_Builder {
                 //TODO diese methode und die Methode bei ptleg in eigene Methode da hier complett gleich --> spart platz !!!
                 LocalTime departure = LocalDateTime.ofEpochSecond(walkLeg.getDepartureTime().getTime() / 1000, 0, offset).toLocalTime();
                 LocalTime arrival = LocalDateTime.ofEpochSecond(walkLeg.getArrivalTime().getTime() / 1000, 0, offset).toLocalTime();
-                int departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departure));
-                int arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrival));
+                int departureTick = calculator.calculateSimulationTick(departure);
+                int arrivalTick = calculator.calculateSimulationTick(arrival);
 
                 String legType = walkLeg.type;
-                Coordinate[] coordinates = walkLeg.geometry.getCoordinates();                                               //array of all corner points coordinates of the walk leg
-                Location start = new Location(coordinates[0].y, coordinates[0].x);                                          //first point in the list is then the start point of the walkleg
-                Location end = new Location(coordinates[coordinates.length - 1].y, coordinates[coordinates.length - 1].x);  //last point in  the list is then the end point of the walkleg
+                Coordinate[] coordinates = walkLeg.geometry.getCoordinates();                                           //array of all corner points coordinates of the walk leg
+                Location start = new Location(cutGpsDecimals(coordinates[0].y), cutGpsDecimals(coordinates[0].x));      //first point in the list is then the start point of the walkleg
+                Location end = new Location(cutGpsDecimals(coordinates[coordinates.length - 1].y),
+                        cutGpsDecimals(coordinates[coordinates.length - 1].x));                     //last point in  the list is then the end point of the walkleg
 
                 route.addLeg(start, end, departure, arrival, legType, departureTick, arrivalTick, "foot");
             }
@@ -168,27 +163,27 @@ public class PT_Route_Builder {
             }else if (stop.departureTime == null){
                 arrivalTime = LocalDateTime.ofEpochSecond(stop.arrivalTime.getTime()/1000,0,offset).toLocalTime();
                 departureTime = LocalTime.of(0,0);      //first set departure time to O if non is available, time is set correctly later
-            }else{
+            }else {
                 /*
                 Arrival and departure times from the stops are given in milliseconds and in epochal time
                 It´s needed to first divide it with 1000 to get seconds and then create a LocalDateTime of the epochal seconds.
                 The offset is set above an since there isn´t any nano seconds given it can be set to 0.
                 Last its needed to get the LocalTime from the LocalDateTime an set it as departure an arrival time.
                  */
-                arrivalTime = LocalDateTime.ofEpochSecond(stop.arrivalTime.getTime()/1000,0,offset).toLocalTime();
-                departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime()/1000),0,offset).toLocalTime();
+                arrivalTime = LocalDateTime.ofEpochSecond(stop.arrivalTime.getTime() / 1000, 0, offset).toLocalTime();
+                departureTime = LocalDateTime.ofEpochSecond((stop.departureTime.getTime() / 1000), 0, offset).toLocalTime();
             }
 
             //Converts the set arrival an departure times to ticks dependent on the simulation start time
-            arrivalTick = calculator.tickAfterStart(calculator.convertTimeToTick(arrivalTime));
-            departureTick = calculator.tickAfterStart(calculator.convertTimeToTick(departureTime));
+            arrivalTick = calculator.calculateSimulationTick(arrivalTime);
+            departureTick = calculator.calculateSimulationTick(departureTime);
 
             //Checks if an stop is the first or the last of a leg
-            if (stopCounter == 0){
+            if (stopCounter == 0) {
                 routeLeg.setStartLocation(location);            //sets the start location for given leg which was set to null at creation
-            }else if (stopCounter == ptLeg.stops.size()-1){
+            } else if (stopCounter == ptLeg.stops.size() - 1) {
                 routeLeg.setEndLocation(location);              //sets the end location for given leg which was set to null at creation
-                lastStopOfLeg = new PT_Stop(location,stopName,stopId,departureTime,arrivalTime,departureTick,arrivalTick);  //because was checked to  be last stop of leg -> set to last stop
+                lastStopOfLeg = new PT_Stop(location, stopName, stopId, departureTime, arrivalTime, departureTick, arrivalTick);  //because was checked to  be last stop of leg -> set to last stop
             }
 
             //Add the stops to both lists (stop list in PT_Leg and stop list in PT_Route)
@@ -210,7 +205,7 @@ public class PT_Route_Builder {
 
         PT_Stop stop = route.getStops().get(route.getStopIndex(lastStopOfLeg.getLocation()));           //gets the index of the last stop of the leg to edit the stop in the list
         stop.setDepartureTime(departureTime.toString());
-        stop.setDepartureTick(calculator.tickAfterStart(calculator.convertTimeToTick(departureTime)));  //sets the departure tick which also cloudn´t be set because no time was given
+        stop.setDepartureTick(calculator.calculateSimulationTick(departureTime));                       //sets the departure tick which also cloudn´t be set because no time was given
 
         return arrivalTime;
     }
@@ -222,7 +217,7 @@ public class PT_Route_Builder {
                 stop = legs.getStops().get((int) legs.getStopCounter() - 1);
                 PT_Leg nextLeg = route.getNextLeg(legs.getLegId());
                 stop.setDepartureTime(nextLeg.getDepartureTime());
-                stop.setDepartureTick(calculator.tickAfterStart(calculator.convertTimeToTick(LocalTime.parse(stop.getDepartureTime()))));
+                stop.setDepartureTick(calculator.calculateSimulationTick(stop.getDepartureTime()));
             }
         }
     }
@@ -245,7 +240,7 @@ public class PT_Route_Builder {
             }
             if (i == route.getStops().size() - 1) {
                 stop.setDepartureTime(route.getArrivalTime());
-                stop.setDepartureTick(calculator.tickAfterStart(calculator.convertTimeToTick(LocalTime.parse(stop.getArrivalTime()))));
+                stop.setDepartureTick(calculator.calculateSimulationTick(stop.getArrivalTime()));
             }
         }
 
@@ -261,6 +256,12 @@ public class PT_Route_Builder {
         String[] headsignSplit = trip_headsign.split(" ");
         vehicleLine = headsignSplit[0];
         return vehicleLine;
+    }
+
+    private double cutGpsDecimals(double latOrlon) {
+        double normal = latOrlon * 1000000;
+        long cut = (long) normal;
+        return ((double) cut) / 1000000;
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
