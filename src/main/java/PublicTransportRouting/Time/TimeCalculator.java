@@ -4,18 +4,16 @@ import java.time.LocalTime;
 
 /**
  * Class to calculate some time format changes and tick calculations
- *
+ * <p>
  * Contains a timeConverter to do these calculation
  * Some Advanced Methods for calculations with ticks and times
  */
-public class TimeCalculator {
+public class TimeCalculator extends TimeConverter {
     //------------------------------------------ Variable -------------------------------------------//
-    private TimeConverter timeConverter;
     private static int tickZero;
 
     //----------------------------------------- Constructor -----------------------------------------//
     public TimeCalculator() {
-        timeConverter = new TimeConverter();
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -45,7 +43,7 @@ public class TimeCalculator {
         tickZero_Time = convertLocalTimeToTime(startTime);
 
         double result;
-        result = timeConverter.hours_to_min(timeConverter.Time_To_DecimalTime(tickZero_Time));        //the time needs to be in Minutes because 1 Tick = 1 Min
+        result = hours_to_min(Time_To_DecimalTime(tickZero_Time));        //the time needs to be in Minutes because 1 Tick = 1 Min
 
         System.out.println("TickZero is set to : " + result + " Minutes of the Day");
         this.tickZero = (int) result;           //result should no longer have decimals so to set to TickZero it needs to be casted to int
@@ -58,17 +56,17 @@ public class TimeCalculator {
      * @param time LocalTime which should be transformed in an tick
      * @return a tick (represents a minute) as an int value
      */
-    public int convertTimeToTick(LocalTime time){            //MUSS NOCH GESCHAUT WERDEN OB DAS SO FUNKTIONIERT WIE ICH MIR DAS VORGESTELLT HABE
+    public int convertTimeToTick(LocalTime time) {            //MUSS NOCH GESCHAUT WERDEN OB DAS SO FUNKTIONIERT WIE ICH MIR DAS VORGESTELLT HABE
         int tick;
         double hour;
         double min;
         double result;
         hour = time.getHour();
         min = time.getMinute();
-        min = min/100;
-        result = hour+min;
-        result = timeConverter.Time_To_DecimalTime(result);
-        tick = timeConverter.hours_to_min(result);
+        min = min / 100;
+        result = hour + min;
+        result = Time_To_DecimalTime(result);
+        tick = hours_to_min(result);
         return tick;
     }
 
@@ -101,7 +99,7 @@ public class TimeCalculator {
     //Here to get TickZero back in double it first needs to be transformed form tick to time format
     public double getTickZero_Time() {
         double result;
-        result = timeConverter.DecimalTime_To_Time(timeConverter.min_to_hours(tickZero));
+        result = DecimalTime_To_Time(min_to_hours(tickZero));
         return result;
     }
 

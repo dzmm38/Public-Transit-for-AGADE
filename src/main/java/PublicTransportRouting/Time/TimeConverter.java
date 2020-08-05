@@ -38,7 +38,7 @@ public class TimeConverter {
      * @return decimal time as long (represents the seconds)
      */
     public Long Time_To_DecimalTime(long time_in_seconds){
-        return (Long) hours_to_Sec(Time_To_DecimalTime((Sec_to_Hours(time_in_seconds))));
+        return hours_to_Sec(Time_To_DecimalTime((Sec_to_Hours(time_in_seconds))));
     }
 
     /**
@@ -74,7 +74,7 @@ public class TimeConverter {
      * @return time in minutes
      */
     public int Sec_To_Min(long seconds){
-        return (int) (Math.round(((double)seconds/60)));                         //NOCHMAL SCHAUEN WEGEN 2TER NACHKOMMASTELLE !!!!!!!!
+        return (int) (Math.round((((double) seconds) / 60)));
     }
 
     /**
