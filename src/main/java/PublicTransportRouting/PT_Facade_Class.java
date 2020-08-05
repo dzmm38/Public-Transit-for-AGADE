@@ -32,7 +32,7 @@ public class PT_Facade_Class {
         this.zoneId = ZoneId.of(zoneId);
         this.dateTime = LocalDateTime.of(year,month,day,hour,min);
         this.fileFormat = fileFormat;
-        new TimeCalculator().calculateTickZero(dateTime.toLocalTime());
+        new TimeCalculator().calculateTickZero(dateTime.toLocalTime());     //TickZero Variable is static so the same over all calculator classes
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -106,4 +106,5 @@ public class PT_Facade_Class {
     }
 
     //----------------------------------------- Additional ------------------------------------------//
+    //TODO für Kosten und Graphmanipulation noch ein paar Methoden zur freien verfügung schreiben
 }

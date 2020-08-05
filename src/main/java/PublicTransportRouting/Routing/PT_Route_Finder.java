@@ -28,7 +28,7 @@ public class PT_Route_Finder {
     PT_Route_Builder builder;                       //builder class to create the routes which get returned
     public ArrayList<PT_Route> routes;
     ZoneId zoneId;
-    LocalDateTime dateTime;                         //TODO wie genau war das nochmal mit der Zeit hier wofür steht die ? brauche ich zwei zeiten für simulationsstart und abfragezeit???
+    LocalDateTime dateTime;
 
     //----------------------------------------- Constructor -----------------------------------------//
     public PT_Route_Finder(ZoneId zoneId, LocalDateTime dateTime){
@@ -52,14 +52,12 @@ public class PT_Route_Finder {
         response = PT.route(ptQuery.getRequest());              //routing form graphhopper and setting the response
         path = new ArrayList<>();
 
-
+        //selects the how much an which routes should be created "all" and "best" --> default = "best"
         switch (routeSelection){
-            case "best":
-                path.add(response.getBest());
-                break;
             case "all":
                 path.addAll(response.getAll());
                 break;
+            case "best":
             default:
                 path.add(response.getBest());
                 break;
@@ -72,33 +70,41 @@ public class PT_Route_Finder {
      *
      * @param fileFormat format in which the file should be saved
      */
-    private void createRoute(String fileFormat){
+    private void createRoute(String fileFormat) {
         System.out.println("Creating Routes ..........");
         routes = new ArrayList<>();
         PT_Route route;
 
-        for (ResponsePath responsePath : path){
-            builder = new PT_Route_Builder(responsePath,zoneId,dateTime);
+        for (ResponsePath responsePath : path) {
+            builder = new PT_Route_Builder(responsePath, zoneId, dateTime);
 
             route = builder.build();
             routes.add(route);
         }
-        switch (fileFormat){
-            case "JSON" : toJSON(); break;
-            case "YAML" : toYAML(); break;
-            default: toJSON();
+        System.out.println("Routes created");
+        //selects which data format should be chosen to save the route
+        switch (fileFormat) {
+            case "YAML":
+                toYAML();
+                break;
+            case "JSON":
+            default:
+                toJSON();
         }
     }
+
     /*
     Methode to create a YAML file which contains the route
      */
-    private void toYAML(){
-        String extraFileName =  path.get(0).getWaypoints().getLat(0)+","+path.get(0).getWaypoints().getLon(0)+"_" +
-                                path.get(0).getWaypoints().getLat(1)+","+path.get(0).getWaypoints().getLon(1);
-        System.out.println("Create and saves Route_"+extraFileName+".yml ..........");
+    private void toYAML() {
+        //Name of the File contains the start and end location (as Gps coordinates)
+        String extraFileName = cutDecimals(path.get(0).getWaypoints(), 0) + " -- " + //path index doesnt matter cause all routes start and end the same
+                cutDecimals(path.get(0).getWaypoints(), 1);           //waypoint only contains start und end Locations so index 0 for start and 1 for end
+
+        System.out.println("Create and saves Route_" + extraFileName + ".yml ..........");
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
         try {
-            om.writeValue(new File("src\\main\\resources\\Routes\\Route_"+extraFileName+".yml"),routes);
+            om.writeValue(new File("src\\main\\resources\\Routes\\Route_" + extraFileName + ".yml"), routes);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +114,10 @@ public class PT_Route_Finder {
     Methode to create a JSON file which contains the route
      */
     private void toJSON() {
-        String extraFileName = cutDecimals(path.get(0).getWaypoints(), 0) + " -- " + cutDecimals(path.get(0).getWaypoints(), 1);
+        //Name of the File contains the start and end location (as Gps coordinates)
+        String extraFileName = cutDecimals(path.get(0).getWaypoints(), 0) + " -- " + //path index doesnt matter cause all routes start and end the same
+                cutDecimals(path.get(0).getWaypoints(), 1);           //waypoint only contains start und end Locations so index 0 for start and 1 for end
+
         System.out.println("Creates and saves Route_" + extraFileName + ".json ..........");
         ObjectMapper om = new ObjectMapper(new JsonFactory());
         om.enable(SerializationFeature.INDENT_OUTPUT);
@@ -119,13 +128,17 @@ public class PT_Route_Finder {
         }
     }
 
+    /*
+    Method to cut decimals for a Gps Point to the sixth decimal
+    then returning it as a String
+     */
     private String cutDecimals(PointList pointList, int index) {
         long lat = (long) (pointList.getLat(index) * 1000000);
         long lon = (long) (pointList.getLon(index) * 1000000);
-        double latfertig = ((double) lat) / 1000000;
-        double lonfertig = ((double) lon) / 1000000;
+        double latCut = ((double) lat) / 1000000;
+        double lonCut = ((double) lon) / 1000000;
 
-        return latfertig + "," + lonfertig;
+        return latCut + "," + lonCut;
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//

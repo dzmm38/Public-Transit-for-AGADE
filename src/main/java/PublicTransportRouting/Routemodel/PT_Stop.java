@@ -38,7 +38,7 @@ public class PT_Stop implements Serializable {
     //------------------------------------------- Methods -------------------------------------------//
     //--------------------------------------- Getter & Setter ---------------------------------------//
     /*
-    There is an getter & Setter method for all variabels so the class can be written and constructed
+    There is an getter & Setter method for all variabel´s so the class can be written and constructed
     to or from a JSON file.
      */
     public String getStopId() {
@@ -48,16 +48,6 @@ public class PT_Stop implements Serializable {
     public void setStopId(String stopId) {
         this.stopId = stopId;
     }
-
-    //TODO kann vllt raus da name jetzt über die Location an sich geregelt wird getStopName
-//    public String getStopName() {
-//        return this.location.getLocationName();
-//    }
-
-    //TODO kann vllt raus da name jetzt über die Location an sich geregelt wird setStopName
-//    public void setStopName(String stopName) {
-//        this.location.setLocationName(stopName);
-//    }
 
     public Location getLocation() {
         return location;

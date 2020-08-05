@@ -35,6 +35,7 @@ public class FileDownloader {
         URL url = new URL(URL);
         String fileName = filenameUtils.getName(url.getPath());             //to get the name of the file so it can be stored correctly
 
+        //Reading an Writing the File
         try {
             ReadableByteChannel readChannel = Channels.newChannel(url.openStream());
             FileOutputStream fileOS = new FileOutputStream("src\\main\\resources\\OSM_Files\\"+fileName);
@@ -57,6 +58,7 @@ public class FileDownloader {
         URL url = new URL(URL);
         String fileName = filenameUtils.getName(url.getPath());             //to get the name of the file so it can be stored correctly
 
+        //Reading an Writing the File
         try {
             ReadableByteChannel readChannel = Channels.newChannel(url.openStream());
             FileOutputStream fileOS = new FileOutputStream("src\\main\\resources\\GTFS_Files\\"+fileName);
@@ -69,12 +71,5 @@ public class FileDownloader {
     }
     //--------------------------------------- Getter & Setter ---------------------------------------//
     //----------------------------------------- Additional ------------------------------------------//
-    /*
-    -----------------------------------------------------------------------------------------------------------
-    TEST FILES:
-    OSM download from --> https://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
-    GTFS download from --> http://transitfeeds.com/p/verkehrsverbund-berlin-brandenburg/213/latest/download
-                           https://www.vbb.de/media/download/2029/GTFS.zip
-     -----------------------------------------------------------------------------------------------------------
-     */
+
 }

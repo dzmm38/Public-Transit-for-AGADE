@@ -37,7 +37,7 @@ public class PT_Route implements Serializable {
         this.arrivalTime = arrivalTime;
         this.durationInMin = durationInMin;
         this.walkDistanceInMeters = walkDistanceInMeters;
-        this.cost = 0.0;                                    //not implemented yet, also gtfs files need to have both of the fare files with corresponding content, but could be an important information later on
+        this.cost = 0.0;                                    //TODO Method for costs to add this criteria even if no fare data is given in gtfs / atm not implemented cause no fare data is given in gtfs
         this.transfers = transfers;                         //is set if legs are added. Because without legs or stops the transfers are always 0
         this.stopCounter = 0;                               //is set if stops are added.
 
@@ -171,18 +171,16 @@ public class PT_Route implements Serializable {
         //if the stop couldn´t be found a console message and null instead of the index
         System.out.println("The stop couldn´t be found in the list of all stops of the route");
         return null;
-
-        /*
-        ------------------------------------------------------------------------------
-        HIER NOCHMAL SCHAUEN DAS ICH EINE EXPETION MACH WENN KEIN STOP GEFUNDEN WURDE
-        ------------------------------------------------------------------------------
-         */
     }
 
-    /*
-    ------------------------------------------------------------------------------------------
-    MUSS NOCHMAL NEU GEMACHT UND ÜBERARBEITET WERDEN WIE BEI DEN STOPS für alle legs
-    ------------------------------------------------------------------------------------------
+
+    //TODO vllt nochmal mehr methoden um abfragen auf der Route zu machen --> getStops getLegs auch mit anderen param
+
+    /**
+     * Method to get the next leg in the Route given an leg Id
+     *
+     * @param legId Id of the current Leg
+     * @return the nex PT_Leg of the Route
      */
     public PT_Leg getNextLeg(int legId) {
         ListIterator<PT_Leg> it = legs.listIterator(legId);
@@ -194,6 +192,12 @@ public class PT_Route implements Serializable {
         }
     }
 
+    /**
+     * Method to get the previous leg in the Route given a leg Id
+     *
+     * @param legId Id of the current leg
+     * @return previous PT_Leg of the Route
+     */
     public PT_Leg getPreviousLeg(int legId) {
         ListIterator<PT_Leg> it = legs.listIterator(legId);
         if (it.hasPrevious()) {
@@ -204,6 +208,12 @@ public class PT_Route implements Serializable {
         }
     }
 
+    /**
+     * Method to get the current leg given a leg Id
+     *
+     * @param legId Id of the leg which should be returned
+     * @return current PT_Leg
+     */
     public PT_Leg getcurrentLeg(int legId) {
         boolean legFound = false;
         PT_Leg currentLeg = null;
