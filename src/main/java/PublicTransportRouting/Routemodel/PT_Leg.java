@@ -20,38 +20,38 @@ public class PT_Leg implements Serializable {
     private String legType;
     private Location startLocation;
     private Location endLocation;
-    private LocalTime departureTime;
-    private int departureTick;
-    private LocalTime arrivalTime;
-    private int arrivalTick;
+    private LocalTime legStartTime;        //departure at current leg (LegStartTime)
+    private int legStartTick;
+    private LocalTime legEndTime;          //arrival at next stop (LegEndTime)
+    private int legEndTick;
     private String vehicle;
     private long stopCounter;
 
     private List<PT_Stop> stops;
 
     //----------------------------------------- Constructor -----------------------------------------//
-    public PT_Leg(){
+    public PT_Leg() {
         //only to create a PT_Leg from a JSON File
     }
 
-    public PT_Leg(Location startLocation, Location endLocation, LocalTime departureTime, LocalTime arrivalTime, String legType, int legId, int departureTick, int arrivalTick, String vehicle) {
+    public PT_Leg(Location startLocation, Location endLocation, LocalTime legStartTime, LocalTime legEndTime,
+                  String legType, int legId, int legStartTick, int legEndTick, String vehicle) {
         this.legId = legId;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
-        this.departureTime = departureTime;
-        this.departureTick = departureTick;
-        this.arrivalTime = arrivalTime;
-        this.arrivalTick = arrivalTick;
+        this.legStartTime = legStartTime;
+        this.legStartTick = legStartTick;
+        this.legEndTime = legEndTime;
+        this.legEndTick = legEndTick;
         this.legType = legType;
-        this.vehicle = vehicle;                        //isn´t implemented yet, gtfs files need to contain this information, listed because seems like an important information
+        this.vehicle = vehicle;         //vehicle is implemented so that if shows the transit line and possibly the vehicle type //TODO vllt noch eigene klasse dafür und dann über andere daten immer den typ finden
         this.stopCounter = 0;
 
-        //Only creates a list of stops, if the type of the leg is an public transit (pt) leg,
-        //because legs of the type walk don´t have stops
+        //Only creates a list of stops, if the type of the leg is an public transit (pt) leg
         if (legType.equals("pt")) {
             stops = new LinkedList<>();
         } else {
-            stops = null;
+            stops = null;               //because legs of the type walk don´t have stops
         }
     }
 
@@ -133,20 +133,20 @@ public class PT_Leg implements Serializable {
         return vehicle;
     }
 
-    public int getDepartureTick() {
-        return departureTick;
+    public int getLegStartTick() {
+        return legStartTick;
     }
 
-    public void setDepartureTick(int departureTick) {
-        this.departureTick = departureTick;
+    public void setLegStartTick(int legStartTick) {
+        this.legStartTick = legStartTick;
     }
 
-    public int getArrivalTick() {
-        return arrivalTick;
+    public int getLegEndTick() {
+        return legEndTick;
     }
 
-    public void setArrivalTick(int arrivalTick) {
-        this.arrivalTick = arrivalTick;
+    public void setLegEndTick(int legEndTick) {
+        this.legEndTick = legEndTick;
     }
 
     /*
@@ -158,20 +158,20 @@ public class PT_Leg implements Serializable {
         Setter need String´s to build the LocalTime´s. Reason why are explained above and so are needed
         ---------------------------------------------------------------------------------------------------
          */
-    public String getDepartureTime() {
-        return departureTime.toString();
+    public String getLegStartTime() {
+        return legStartTime.toString();
     }
 
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = LocalTime.parse(departureTime);
+    public void setLegStartTime(String legStartTime) {
+        this.legStartTime = LocalTime.parse(legStartTime);
     }
 
-    public String getArrivalTime() {
-        return arrivalTime.toString();
+    public String getLegEndTime() {
+        return legEndTime.toString();
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = LocalTime.parse(arrivalTime);
+    public void setLegEndTime(String legEndTime) {
+        this.legEndTime = LocalTime.parse(legEndTime);
     }
 
     //----------------------------------------- Additional ------------------------------------------//
