@@ -21,7 +21,7 @@ public class TestMain {
     public static void main(String[] args) {
         TestMain testMain = new TestMain();
         testMain.doAll();
-//        testMain.loadTest();
+        testMain.loadTest();
     }
     //----------------------------------------- Constructor -----------------------------------------//
 
@@ -29,13 +29,13 @@ public class TestMain {
         //Download Files from an URL link (OSM and GTFS Files) if non is available locally
         //(Folder to save: resources/OSM_Files and resources/GTFS_Files)
         //Example given is for Berlin !!!
-//        PT_Facade_Class.downloadFiles("https://download.geofabrik.de/europe/germany/nordrhein-westfalen-latest.osm.pbf",
-//                                       "http://download.vrsinfo.de/gtfs/GTFS_VRS_mit_SPNV.zip");
+        PT_Facade_Class.downloadFiles("https://download.geofabrik.de/europe/germany/nordrhein-westfalen-latest.osm.pbf",
+                "http://download.vrsinfo.de/gtfs/GTFS_VRS_mit_SPNV.zip");
 
         //Creating a Graph if this exact Graph isn´t already build
         //(Folder to save: resources/graph/ Name of the Osm File + _with_Transit)
         //Example given is for Berlin with the associated Gtfs File
-//        PT_Facade_Class.createGraph("nordrhein-westfalen-latest.osm.pbf","GTFS_VRS_mit_SPNV.zip");
+        PT_Facade_Class.createGraph("nordrhein-westfalen-latest.osm.pbf", "GTFS_VRS_mit_SPNV.zip");
 
         //loading an existing Graph from an folder
         //(Folder where the graphs are saved: resources/graph)
