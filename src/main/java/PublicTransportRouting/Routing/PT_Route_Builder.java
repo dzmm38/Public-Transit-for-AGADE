@@ -57,12 +57,18 @@ public class PT_Route_Builder {
      */
     private void buildRoute(){
         offset = zoneId.getRules().getOffset(startTime);                            //sets the offset of the given zone
-        long duration = calculator.Sec_To_Min((path.getTime() / 1000));               //the time which the ResponePath returns are in milliseconds, divide with 1000 to get seconds
+        long duration = calculator.Sec_To_Min((path.getTime() / 1000));             //the time which the ResponePath returns are in milliseconds, divide with 1000 to get seconds
         LocalTime arrivalTime = startTime.plusMinutes(duration).toLocalTime();      //to get the arrival time, the duration is added to the startTime
         double distance = Math.round(path.getDistance());
-        int transfers = path.getNumChanges();
+        int transfers;
 
-        route = new PT_Route(arrivalTime,duration,distance,transfers);
+        if (path.getNumChanges() != -1) {
+            transfers = path.getNumChanges();
+        } else {
+            transfers = 0;
+        }
+
+        route = new PT_Route(arrivalTime, duration, distance, transfers);
     }
 
     /*
