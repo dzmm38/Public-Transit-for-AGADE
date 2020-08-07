@@ -45,16 +45,16 @@ public class TimeConverter {
      * Converts the decimal time in the "normal" time format (7.50 --> 7.30)
      * time has to be in a double format and needs to represent hours and minutes
      *
-     * @param decimalTime_in_std_and_min decimal time which should be transformed to into "normal" time
-     *                                   (needs to be in a double which represents hours and minutes)
+     * @param decimalTime_hours_minutes decimal time which should be transformed to into "normal" time
+     *                                  (needs to be in a double which represents hours and minutes)
      * @return time in the normal time format with hours and minutes as a double
      */
-    public double DecimalTime_To_Time(double decimalTime_in_std_and_min){
-        int std = (int) decimalTime_in_std_and_min;                                 //to get only the hours cast to int
-        double min = (Math.round((decimalTime_in_std_and_min%1)*100.0))/100.0;      //modulo 1 to get the decimals, multiply with 100 and then round to only get two decimals
+    public double DecimalTime_To_Time(double decimalTime_hours_minutes) {
+        int std = (int) decimalTime_hours_minutes;                                 //to get only the hours cast to int
+        double min = (Math.round((decimalTime_hours_minutes % 1) * 100.0)) / 100.0;      //modulo 1 to get the decimals, multiply with 100 and then round to only get two decimals
 
-        min = Math.round(min*60)/100.0;                                             //transformation in decimal times cause it only differs in minutes and sec
-        return std+min;
+        min = Math.round(min * 60) / 100.0;                                             //transformation in decimal times cause it only differs in minutes and sec
+        return std + min;
     }
 
     /**
