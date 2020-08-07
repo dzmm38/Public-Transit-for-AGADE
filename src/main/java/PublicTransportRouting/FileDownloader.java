@@ -1,4 +1,4 @@
-package PublicTransportRouting.supClass;
+package PublicTransportRouting;
 
 import org.apache.commons.io.FilenameUtils;
 

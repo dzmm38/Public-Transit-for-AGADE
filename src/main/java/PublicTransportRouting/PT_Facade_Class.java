@@ -1,13 +1,12 @@
 package PublicTransportRouting;
 
-import PublicTransportRouting.PT_Graph.PT_Graph;
 import PublicTransportRouting.Routing.PT_Query;
 import PublicTransportRouting.Routing.PT_Route_Finder;
 import PublicTransportRouting.Time.TimeCalculator;
-import PublicTransportRouting.supClass.FileDownloader;
-import PublicTransportRouting.supClass.Location;
+import PublicTransportRouting.Routemodel.Location;
 import com.graphhopper.reader.gtfs.PtRouteResource;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -80,16 +79,27 @@ public class PT_Facade_Class {
      * Method to download Osm and Gtfs files for an zone
      * saves them in resources/  OSM_Files and GTFS_Files
      *
-     * @param OsmFile_URL the URL of an Osm file to download
+     * @param OsmFile_URL  the URL of an Osm file to download
      * @param GtfsFile_URL the URL of an Gtfs file to download
      */
-    public static void downloadFiles(String OsmFile_URL,String GtfsFile_URL){
+    public static void downloadFiles(String OsmFile_URL, String GtfsFile_URL) {
         try {
             FileDownloader.downloadOsmFile(OsmFile_URL);
             FileDownloader.downloadGtfsFile(GtfsFile_URL);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void loadRoute(String filePath) {
+        Route_Loader loader = new Route_Loader();
+
+        try {
+            loader.loadRouteFromFile(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        loader.test();
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
