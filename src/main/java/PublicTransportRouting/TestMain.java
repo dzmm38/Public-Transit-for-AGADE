@@ -1,7 +1,7 @@
 package PublicTransportRouting;
 
-import PublicTransportRouting.Test.Route_Loader;
-import PublicTransportRouting.supClass.Location;
+import PublicTransportRouting.Routemodel.Location;
+import PublicTransportRouting.Routemodel.PT_Route;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,7 +21,7 @@ public class TestMain {
     public static void main(String[] args) {
         TestMain testMain = new TestMain();
         testMain.doAll();
-        testMain.loadTest();
+        testMain.loadRoute();
     }
     //----------------------------------------- Constructor -----------------------------------------//
 
@@ -56,18 +56,11 @@ public class TestMain {
     /*
     Loading an existing Route
     On the loaded Route is it possible to make some test or queries
+    default it prints the criteria of the routes to the console
+    can be edited by change the methode test() in RouteLoader
      */
-    public void loadTest() {
-        String FilePath;
-        FilePath = "src\\main\\resources\\Routes\\RoutenListe.json";
-        Route_Loader loader = new Route_Loader();
-
-        try {
-            loader.loadRouteFromFile(FilePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        loader.test();
+    public void loadRoute() {
+        PT_Facade_Class.loadRoute("src\\main\\resources\\Routes\\Route_52.456672,13.140033 -- 52.503737,13.502879.json");
     }
     //--------------------------------------- Getter & Setter ---------------------------------------//
     //----------------------------------------- Additional ------------------------------------------//
