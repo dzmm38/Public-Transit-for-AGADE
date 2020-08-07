@@ -1,6 +1,6 @@
 package PublicTransportRouting.Routing;
 
-import PublicTransportRouting.supClass.Location;
+import PublicTransportRouting.Routemodel.Location;
 import com.graphhopper.reader.gtfs.Request;
 
 import java.time.LocalDateTime;

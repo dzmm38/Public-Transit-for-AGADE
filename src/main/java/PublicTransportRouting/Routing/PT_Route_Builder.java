@@ -4,7 +4,7 @@ import PublicTransportRouting.Routemodel.PT_Leg;
 import PublicTransportRouting.Routemodel.PT_Route;
 import PublicTransportRouting.Routemodel.PT_Stop;
 import PublicTransportRouting.Time.TimeCalculator;
-import PublicTransportRouting.supClass.Location;
+import PublicTransportRouting.Routemodel.Location;
 import com.graphhopper.ResponsePath;
 import com.graphhopper.Trip;
 import org.locationtech.jts.geom.Coordinate;

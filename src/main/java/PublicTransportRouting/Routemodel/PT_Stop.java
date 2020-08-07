@@ -1,8 +1,6 @@
 package PublicTransportRouting.Routemodel;
 
 
-import PublicTransportRouting.supClass.Location;
-
 import java.io.Serializable;
 import java.time.LocalTime;
 
