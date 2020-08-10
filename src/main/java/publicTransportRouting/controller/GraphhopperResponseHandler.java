@@ -5,8 +5,8 @@ import com.graphhopper.Trip;
 import org.locationtech.jts.geom.Coordinate;
 import publicTransportRouting.model.Leg;
 import publicTransportRouting.model.Location;
-import publicTransportRouting.model.PT_Stop;
 import publicTransportRouting.model.Route;
+import publicTransportRouting.model.Stop;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -29,7 +29,7 @@ public class GraphhopperResponseHandler {
     TimeController calculator;
     ZoneOffset offset;                              //time difference between the given zone and the UTC (Coordinated Universal Time)
     boolean firstStopOfRoute = true;                //to check which is the first stop of an route, to set later the arrival time to the start time
-    PT_Stop lastStopOfLeg = null;                   //to save the last stop of an leg to then set it´s correct departure time an the correct arrival time of the first stop of the next leg
+    Stop lastStopOfLeg = null;                   //to save the last stop of an leg to then set it´s correct departure time an the correct arrival time of the first stop of the next leg
 
     //----------------------------------------- Constructor -----------------------------------------//
     public GraphhopperResponseHandler(ResponsePath path, ZoneId zoneId, LocalDateTime dateTime) {
@@ -130,7 +130,7 @@ public class GraphhopperResponseHandler {
     /*
     Method to create all stops of an leg and then add it to the stops list in Leg and Route
     To build the stops the Method needs an Trip.PtLeg to get the stops an Leg to add it to
-    The information form the Trip.Stop from graphhopper are then converted to a PT_Stop
+    The information form the Trip.Stop from graphhopper are then converted to a Stop
      */
     private void buildStops(Trip.PtLeg ptLeg, Leg routeLeg) {
         int stopCounter = 0;
@@ -185,7 +185,7 @@ public class GraphhopperResponseHandler {
                 routeLeg.setStartLocation(location);            //sets the start location for given leg which was set to null at creation
             } else if (stopCounter == ptLeg.stops.size() - 1) {
                 routeLeg.setEndLocation(location);              //sets the end location for given leg which was set to null at creation
-                lastStopOfLeg = new PT_Stop(location, stopName, stopId, departureTime, arrivalTime, departureTick, arrivalTick);  //because was checked to  be last stop of leg -> set to last stop
+                lastStopOfLeg = new Stop(location, stopName, stopId, departureTime, arrivalTime, departureTick, arrivalTick);  //because was checked to  be last stop of leg -> set to last stop
             }
 
             //Add the stops to both lists (stop list in Leg and stop list in Route)
@@ -205,7 +205,7 @@ public class GraphhopperResponseHandler {
     private LocalTime fixStops(LocalTime departureTime) {
         LocalTime arrivalTime = LocalTime.parse(lastStopOfLeg.getArrivalTime());                        //parse arrival time because the getter is returning a String
 
-        PT_Stop stop = route.getStops().get(route.getStopIndex(lastStopOfLeg.getLocation()));           //gets the index of the last stop of the leg to edit the stop in the list
+        Stop stop = route.getStops().get(route.getStopIndex(lastStopOfLeg.getLocation()));           //gets the index of the last stop of the leg to edit the stop in the list
         stop.setDepartureTime(departureTime.toString());
         stop.setDepartureTick(calculator.calculateSimulationTick(departureTime));                       //sets the departure tick which also cloudn´t be set because no time was given
 
@@ -219,7 +219,7 @@ public class GraphhopperResponseHandler {
     private void fixLegStops() {
         for (Leg legs : route.getLegs()) {
             if (legs.getLegType().equals("pt")) {                       //only necessary if the leg if form type pt
-                PT_Stop stop = legs.getStops().get((int) legs.getStopCounter() - 1);
+                Stop stop = legs.getStops().get((int) legs.getStopCounter() - 1);
                 Leg nextLeg = route.getNextLeg(legs.getLegId());     //based on the leg if searches for the next
                 stop.setDepartureTime(nextLeg.getLegStartTime());
                 stop.setDepartureTick(calculator.calculateSimulationTick(stop.getDepartureTime()));
@@ -233,8 +233,8 @@ public class GraphhopperResponseHandler {
     leg and first stop of the next leg)
      */
     private void deleteDoubleStops() {
-        ArrayList<PT_Stop> deleteList = new ArrayList<>();
-        PT_Stop stop;
+        ArrayList<Stop> deleteList = new ArrayList<>();
+        Stop stop;
         for (int i = 0; i < route.getStops().size(); i++) {
             stop = route.getStops().get(i);
             if (i < route.getStops().size() - 1) {
@@ -252,7 +252,7 @@ public class GraphhopperResponseHandler {
         }
 
         //for every entry in the list the associated stop is deleted in Route stops list
-        for (PT_Stop deleteStop : deleteList) {
+        for (Stop deleteStop : deleteList) {
             route.getStops().remove(deleteStop);
         }
         route.setStopCounter(route.getStopCounter() - deleteList.size());   //updates the stop Counter because some stops could have been deleted

@@ -25,7 +25,7 @@ public class Leg implements Serializable {
     private String vehicle;
     private long stopCounter;
 
-    private List<PT_Stop> stops;
+    private List<Stop> stops;
 
     //----------------------------------------- Constructor -----------------------------------------//
     public Leg() {
@@ -66,7 +66,7 @@ public class Leg implements Serializable {
      * @param arrivalTick simulation cycle at which the stop is reached within the route
      */
     public void addStop(Location location,String stopName,String stopId,LocalTime departureTime,LocalTime arrivalTime,int departureTick,int arrivalTick){
-        stops.add(new PT_Stop(location,stopName,stopId,departureTime,arrivalTime,departureTick,arrivalTick));
+        stops.add(new Stop(location, stopName, stopId, departureTime, arrivalTime, departureTick, arrivalTick));
         stopCounter++;
     }
 
@@ -119,11 +119,11 @@ public class Leg implements Serializable {
         this.stopCounter = stopCounter;
     }
 
-    public List<PT_Stop> getStops() {
+    public List<Stop> getStops() {
         return stops;
     }
 
-    public void setStops(List<PT_Stop> stops) {
+    public void setStops(List<Stop> stops) {
         this.stops = stops;
     }
 

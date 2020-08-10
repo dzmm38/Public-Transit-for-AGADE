@@ -9,7 +9,7 @@ import java.time.LocalTime;
  * Contains all information about a stop
  * X stops can be part of a leg or a route
 */
-public class PT_Stop implements Serializable {
+public class Stop implements Serializable {
     //------------------------------------------ Variable -------------------------------------------//
     private String stopId;
     private Location location;
@@ -19,11 +19,11 @@ public class PT_Stop implements Serializable {
     private LocalTime arrivalTime;
 
     //----------------------------------------- Constructor -----------------------------------------//
-    public PT_Stop(){
-        //only to create a PT_Stop from a JSON File
+    public Stop() {
+        //only to create a Stop from a JSON File
     }
 
-    public PT_Stop(Location location,String stopName,String stopId,LocalTime departureTime,LocalTime arrivalTime,int departureTick,int arrivalTick){
+    public Stop(Location location, String stopName, String stopId, LocalTime departureTime, LocalTime arrivalTime, int departureTick, int arrivalTick) {
         this.stopId = stopId;
         this.location = location;
         this.location.setLocationName(stopName);

@@ -25,7 +25,7 @@ public class Route implements Serializable {
     private int stopCounter;
 
     private LinkedList<Leg> legs;
-    private LinkedList<PT_Stop> stops;
+    private LinkedList<Stop> stops;
 
     //----------------------------------------- Constructor -----------------------------------------//
     public Route() {
@@ -83,7 +83,7 @@ public class Route implements Serializable {
      * @param arrivalTick simulation cycle at which the stop is reached within the route
      */
     public void addStop(Location location, String stopName, String stopId,LocalTime departureTime,LocalTime arrivalTime,int departureTick,int arrivalTick){
-        stops.add(new PT_Stop(location,stopName,stopId,departureTime,arrivalTime,departureTick,arrivalTick));
+        stops.add(new Stop(location, stopName, stopId, departureTime, arrivalTime, departureTick, arrivalTick));
         stopCounter++;
     }
 
@@ -93,12 +93,12 @@ public class Route implements Serializable {
      * Uses the LinkedList stops
      *
      * @param location location of a stop of the route
-     * @return gives back, the next PT_Stop within the route
+     * @return gives back, the next Stop within the route
      */
-    public PT_Stop getNextStop(Location location){
+    public Stop getNextStop(Location location) {
         int index = getStopIndex(location);
-        ListIterator<PT_Stop> it = stops.listIterator(index);
-        PT_Stop nextStop;
+        ListIterator<Stop> it = stops.listIterator(index);
+        Stop nextStop;
         nextStop = it.next();
 
         //Check if the given stop has a successor, if not then it´s the last stop of the route an the nex stop equals null
@@ -117,12 +117,12 @@ public class Route implements Serializable {
      * Uses LinkedList stops
      *
      * @param location location of a stop of the route
-     * @return the previous PT_Stop of the same route
+     * @return the previous Stop of the same route
      */
-    public PT_Stop getPreviousStop(Location location) {
+    public Stop getPreviousStop(Location location) {
         int index = getStopIndex(location);
-        ListIterator<PT_Stop> it = stops.listIterator(index);
-        PT_Stop previousStop;
+        ListIterator<Stop> it = stops.listIterator(index);
+        Stop previousStop;
 
         //Checks if the given stop has a predecessor, if not then it´s the first stop of a route and the stop equals null
         if (it.hasPrevious()){
@@ -141,7 +141,7 @@ public class Route implements Serializable {
      * @param location location of a stop of the route
      * @return a stop to the given location
      */
-    public PT_Stop getCurrentStop(Location location){
+    public Stop getCurrentStop(Location location) {
         int index = getStopIndex(location);
         return stops.get(index);
     }
@@ -154,12 +154,12 @@ public class Route implements Serializable {
      * @return index of a stop (of List stops) which belongs to given location
      */
     public Integer getStopIndex(Location location) {
-        PT_Stop stop;
+        Stop stop;
         int index = -1;                                     //-1 because first entry of the list has the index 0
 
         //iterates over the list until the stop is found or the list ends
-        for (PT_Stop pt_stop : stops) {
-            stop = pt_stop;
+        for (Stop _stop : stops) {
+            stop = _stop;
             index++;
 
             //checks if the given location and the location of the current stop are the same
@@ -287,11 +287,11 @@ public class Route implements Serializable {
         this.legs = legs;
     }
 
-    public LinkedList<PT_Stop> getStops() {
+    public LinkedList<Stop> getStops() {
         return stops;
     }
 
-    public void setStops(LinkedList<PT_Stop> stops) {
+    public void setStops(LinkedList<Stop> stops) {
         this.stops = stops;
     }
 
