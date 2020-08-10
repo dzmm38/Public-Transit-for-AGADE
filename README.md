@@ -43,7 +43,7 @@ durchzuführen. <br>
           (pro Abfrage eine JSON).
         - Nutzt so gut wie alle andern Klassen.
         
-Gibt auch eine Testklasse, TestMain, welche all dies einmal durchgeht und eine Route beispielsweise wiedergibt.<br>
+Gibt auch eine Testklasse, FacadeTest, welche all dies einmal durchgeht und eine Route beispielsweise wiedergibt.<br>
 URL´s zum testen:   OSM --> https://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf <br>
 URL´s zum testen:   GTFS -> https://www.vbb.de/media/download/2029/gtfs-vbb.zip
  
