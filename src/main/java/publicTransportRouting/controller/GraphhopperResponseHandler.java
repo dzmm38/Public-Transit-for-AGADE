@@ -8,6 +8,7 @@ import publicTransportRouting.model.Location;
 import publicTransportRouting.model.Route;
 import publicTransportRouting.model.Stop;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -64,6 +65,7 @@ public class GraphhopperResponseHandler {
         LocalTime arrivalTime = startTime.plusMinutes(duration).toLocalTime();      //to get the arrival time, the duration is added to the startTime
         double distance = Math.round(path.getDistance());
         int transfers;
+        BigDecimal cost = path.getFare();
 
         if (path.getNumChanges() != -1) {
             transfers = path.getNumChanges();
@@ -71,7 +73,7 @@ public class GraphhopperResponseHandler {
             transfers = 0;
         }
 
-        route = new Route(arrivalTime, duration, distance, transfers);
+        route = new Route(arrivalTime, duration, distance, transfers,cost);
     }
 
     /*

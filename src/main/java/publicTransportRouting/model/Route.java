@@ -1,6 +1,7 @@
 package publicTransportRouting.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -21,7 +22,7 @@ public class Route implements Serializable {
     private long durationInMin;
     private int transfers;
     private double walkDistanceInMeters;
-    private double cost;
+    private BigDecimal cost;
     private int stopCounter;
 
     private LinkedList<Leg> legs;
@@ -32,11 +33,11 @@ public class Route implements Serializable {
         //only to create a Route from a JSON File
     }
 
-    public Route(LocalTime arrivalTime, long durationInMin, double walkDistanceInMeters, int transfers) {
+    public Route(LocalTime arrivalTime, long durationInMin, double walkDistanceInMeters, int transfers,BigDecimal cost) {
         this.arrivalTime = arrivalTime;
         this.durationInMin = durationInMin;
         this.walkDistanceInMeters = walkDistanceInMeters;
-        this.cost = 0.0;                                    //TODO Method for costs to add this criteria even if no fare data is given in gtfs / atm not implemented cause no fare data is given in gtfs
+        this.cost = cost;                                   //TODO Method for costs to add this criteria even if no fare data is given in gtfs / atm not implemented cause no fare data is given in gtfs
         this.transfers = transfers;                         //is set if legs are added. Because without legs or stops the transfers are always 0
         this.stopCounter = 0;                               //is set if stops are added.
 
@@ -263,11 +264,11 @@ public class Route implements Serializable {
         this.walkDistanceInMeters = walkDistanceInMeters;
     }
 
-    public double getCost() {
+    public BigDecimal getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 
