@@ -8,11 +8,13 @@ import publicTransportRouting.model.Location;
 import publicTransportRouting.model.Route;
 import publicTransportRouting.model.Stop;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Class to build a route which then can be saved as a JSON or YAML file.
@@ -64,6 +66,7 @@ public class GraphhopperResponseHandler {
         LocalTime arrivalTime = startTime.plusMinutes(duration).toLocalTime();      //to get the arrival time, the duration is added to the startTime
         double distance = Math.round(path.getDistance());
         int transfers;
+        BigDecimal cost = path.getFare();
 
         if (path.getNumChanges() != -1) {
             transfers = path.getNumChanges();
@@ -71,7 +74,7 @@ public class GraphhopperResponseHandler {
             transfers = 0;
         }
 
-        route = new Route(arrivalTime, duration, distance, transfers);
+        route = new Route(arrivalTime, duration, distance, transfers,cost);
     }
 
     /*
@@ -107,7 +110,7 @@ public class GraphhopperResponseHandler {
                 end = null;
 
                 legType = ptLeg.type;
-                String vehicle = getVehicleLine(ptLeg.trip_headsign);
+                String vehicle = getVehicleLine(ptLeg.route_id);        //the gtfs file and graphhopper are setting the route id so it contains the route type (vehicle type)
 
                 Leg routeLeg = new Leg(start, end, departureTime, arrivalTime, legType, 0, departureTick, arrivalTick, vehicle);  //legId 0 because if the leg is later added to it´s route the legId is set correctly
                 buildStops(ptLeg, routeLeg);            //build and adds all stop to the route
@@ -121,7 +124,7 @@ public class GraphhopperResponseHandler {
                 end = new Location(cutGpsDecimals(coordinates[coordinates.length - 1].y),
                         cutGpsDecimals(coordinates[coordinates.length - 1].x));                     //last point in  the list is then the end point of the walkleg
 
-                route.addLeg(start, end, departureTime, arrivalTime, legType, departureTick, arrivalTick, "foot");
+                route.addLeg(start, end, departureTime, arrivalTime, legType, departureTick, arrivalTick, "FOOT");
             }
         }
         fixLegStops();
@@ -266,11 +269,34 @@ public class GraphhopperResponseHandler {
 
     the first part then is retuned as a String
      */
-    private String getVehicleLine(String trip_headsign) {
-        String vehicleLine;
-        String[] headsignSplit = trip_headsign.split(" ");    //splits the given String in x parts after every space symbol and saves them in an array
-        vehicleLine = headsignSplit[0];                             //gets the first entry in the array which represents the vehicle line or type
-        return vehicleLine;
+    private String getVehicleLine(String routeId) {
+        String vehicle;
+        String[] routeIdSplit = routeId.split("_");    //splits the given String in x parts after every space symbol and saves them in an array
+        vehicle = routeIdSplit[1];                                 //gets the second entry in the array which represents the vehicle line or type
+
+        int vehicleNumber = Integer.parseInt(vehicle);
+        Map map = com.conveyal.gtfs.model.Route.EXTENTED_ROUTE_TYPE_MAPPING; //extended definition of Route types mapped to the simple types
+
+        //if no simple route type, get the simple route type from the mapped extended ones
+        if (vehicleNumber>12){
+            vehicleNumber = (int) map.get(vehicleNumber);
+        }
+
+        //TODO kann man hier vllt sogar noch mit enums machen !!!!
+        switch (vehicleNumber){
+            case 0 : vehicle = "TRAM"; break;
+            case 1 : vehicle = "SUBWAY"; break;
+            case 2 : vehicle = "RAIL"; break;
+            case 3 : vehicle = "BUS"; break;
+            case 4 : vehicle = "FERRY"; break;
+            case 5 : vehicle = "CABLE TRAM"; break;
+            case 6 : vehicle = "AERIAL LIFT"; break;
+            case 7 : vehicle = "FUNICULAR"; break;
+            case 11 : vehicle = "TROLLEYBUS"; break;
+            case 12 : vehicle = "MONORAIL"; break;
+            default: vehicle = "No specific Vehicle found"; break;
+        }
+        return vehicle;
     }
 
     /*
