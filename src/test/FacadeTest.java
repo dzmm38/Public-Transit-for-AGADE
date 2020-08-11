@@ -21,6 +21,9 @@ public class FacadeTest {
     public void performCompleteTest() {
         downloadFiles();
         createGraph();
+        loadGraph();
+        ptRouteQuery();
+        loadRoute();
     }
     //----------------------------------------- Constructor -----------------------------------------//
 
