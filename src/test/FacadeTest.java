@@ -26,7 +26,7 @@ public class FacadeTest {
 
 
     @Test
-    public static void downloadFiles() {
+    public void downloadFiles() {
         String osmFile_URL = "https://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf";
         String gtfsFile_URL = "https://www.vbb.de/media/download/2029/GTFS.zip";
 
@@ -38,9 +38,9 @@ public class FacadeTest {
     }
 
     @Test
-    public static void createGraph() {
+    public void createGraph() {
         String osmFile = "berlin-latest.osm.pbf";
-        String gtfsFile = "GTFS.zip";
+        String gtfsFile = "gtfs.zip";
 
 
         //Creating a Graph if this exact Graph isn´t already build
@@ -55,7 +55,7 @@ public class FacadeTest {
 
         //loading an existing Graph from an folder
         //(Folder where the graphs are saved: resources/graph)
-        PT_Facade_Class pt = new PT_Facade_Class("Europe/Paris", 2020, 7, 31, 13, 0, "JSON");
+        PT_Facade_Class pt = new PT_Facade_Class("Europe/Paris", 2020, 8, 6, 10, 0, "JSON");
         pt.loadGraph(graphFolderName);
     }
 
@@ -63,12 +63,12 @@ public class FacadeTest {
     public void ptRouteQuery() {
         Location from = new Location(52.456428, 13.139477);
         Location to = new Location(52.503893, 13.502197);
-        LocalDateTime queryTime = LocalDateTime.of(2020, 7, 31, 13, 0);
+        LocalDateTime queryTime = LocalDateTime.of(2020, 8, 6, 11, 34);
         String routeSelection = "all"; //alternatives: best
 
         //Creating a Query on a loaded Graph
         //Saves returning Routes in resources/Routes
-        PT_Facade_Class pt = new PT_Facade_Class("Europe/Paris", 2020, 7, 31, 13, 0, "JSON");
+        PT_Facade_Class pt = new PT_Facade_Class("Europe/Paris", 2020, 8, 6, 10, 0, "JSON");
         pt.loadGraph("berlin-latest.osm.pbf_with_Transit");
         pt.ptRouteQuery(from, to, queryTime, routeSelection);
 
