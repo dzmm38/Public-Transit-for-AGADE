@@ -208,7 +208,9 @@ public class GraphhopperResponseHandler {
     private LocalTime fixStops(LocalTime departureTime) {
         LocalTime arrivalTime = LocalTime.parse(lastStopOfLeg.getArrivalTime());                        //parse arrival time because the getter is returning a String
 
-        Stop stop = route.getStops().get(route.getStopIndex(lastStopOfLeg.getLocation()));           //gets the index of the last stop of the leg to edit the stop in the list
+        RouteIterator routeIt = new RouteIterator(route);                                               //To be able to call up some queries on a Route
+
+        Stop stop = route.getStops().get(routeIt.getStopIndex(lastStopOfLeg.getLocation()));            //gets the index of the last stop of the leg to edit the stop in the list
         stop.setDepartureTime(departureTime.toString());
         stop.setDepartureTick(calculator.calculateSimulationTick(departureTime));                       //sets the departure tick which also cloudn´t be set because no time was given
 
@@ -220,10 +222,12 @@ public class GraphhopperResponseHandler {
     the start of the next leg.
      */
     private void fixLegStops() {
+        RouteIterator routeIt = new RouteIterator(route);               //To be able to call up some queries on a Route
+
         for (Leg legs : route.getLegs()) {
             if (legs.getLegType().equals("pt")) {                       //only necessary if the leg if form type pt
                 Stop stop = legs.getStops().get((int) legs.getStopCounter() - 1);
-                Leg nextLeg = route.getNextLeg(legs.getLegId());     //based on the leg if searches for the next
+                Leg nextLeg = routeIt.getNextLeg(legs.getLegId());     //based on the leg if searches for the next
                 stop.setDepartureTime(nextLeg.getLegStartTime());
                 stop.setDepartureTick(calculator.calculateSimulationTick(stop.getDepartureTime()));
             }
@@ -238,11 +242,13 @@ public class GraphhopperResponseHandler {
     private void deleteDoubleStops() {
         ArrayList<Stop> deleteList = new ArrayList<>();
         Stop stop;
+        RouteIterator routeIt = new RouteIterator(route);       //To be able to call up some queries on a Route
+
         for (int i = 0; i < route.getStops().size(); i++) {
             stop = route.getStops().get(i);
             if (i < route.getStops().size() - 1) {
                 //for each stop it is checked if the name of the location is the same as the name of the next stop
-                if (stop.getLocation().getLocationName().equals(route.getNextStop(stop.getLocation()).getLocation().getLocationName())) {
+                if (stop.getLocation().getLocationName().equals(routeIt.getNextStop(stop.getLocation()).getLocation().getLocationName())) {
                     deleteList.add(stop);
                 }
             }
