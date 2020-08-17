@@ -38,8 +38,14 @@ public class GraphhopperController {
     }
 
     //------------------------------------------- Methods -------------------------------------------//
-       /*
-    Method to create the request with given parameters and then returns the request
+
+    /**
+     * Method to create a Request to Graphhopper for Routing
+     *
+     * @param from Location to start from
+     * @param to Location as destination
+     * @param dateTime Time at which the request should start
+     * @param zoneId zone in which the request is given
      */
     public void createRequest(Location from, Location to, LocalDateTime dateTime, ZoneId zoneId) {
         Request request = new Request(from.getLat(), from.getLon(), to.getLat(), to.getLon());  //creating the graphhopper request

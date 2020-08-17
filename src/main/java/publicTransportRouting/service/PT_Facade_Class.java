@@ -117,5 +117,4 @@ public class PT_Facade_Class {
     }
 
     //----------------------------------------- Additional ------------------------------------------//
-    //TODO für Kosten und Graphmanipulation noch ein paar Methoden zur freien verfügung schreiben
 }

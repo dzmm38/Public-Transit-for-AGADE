@@ -21,8 +21,6 @@ public class GtfsGraphController {
     //----------------------------------------- Constructor -----------------------------------------//
     public GtfsGraphController() {
         //Nothing to initialize because this class is only for the functions
-
-        //IDEA: in the Constructor call loadGraph ?!?!?
     }
 
     //------------------------------------------- Methods -------------------------------------------//

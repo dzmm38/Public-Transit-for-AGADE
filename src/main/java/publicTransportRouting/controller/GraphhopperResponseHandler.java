@@ -282,7 +282,7 @@ public class GraphhopperResponseHandler {
             vehicleNumber = (int) map.get(vehicleNumber);
         }
 
-        //TODO kann man hier vllt sogar noch mit enums machen !!!!
+        // Can also be made as an Enumeration to simply add more Options
         switch (vehicleNumber){
             case 0 : vehicle = "TRAM"; break;
             case 1 : vehicle = "SUBWAY"; break;
