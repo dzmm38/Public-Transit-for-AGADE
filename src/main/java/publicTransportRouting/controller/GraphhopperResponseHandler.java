@@ -110,7 +110,11 @@ public class GraphhopperResponseHandler {
                 end = null;
 
                 legType = ptLeg.type;
-                String vehicle = getVehicleLine(ptLeg.route_id);        //the gtfs file and graphhopper are setting the route id so it contains the route type (vehicle type)
+                /*
+                Disabled the Function to get the used vehicle because of some issues
+                with some GTFS Data (routeID has another structure than the ones used for now
+                 */
+                String vehicle = ""; //getVehicleLine(ptLeg.route_id);        //the gtfs file and graphhopper are setting the route id so it contains the route type (vehicle type)
 
                 Leg routeLeg = new Leg(start, end, departureTime, arrivalTime, legType, 0, departureTick, arrivalTick, vehicle);  //legId 0 because if the leg is later added to it´s route the legId is set correctly
                 buildStops(ptLeg, routeLeg);            //build and adds all stop to the route
