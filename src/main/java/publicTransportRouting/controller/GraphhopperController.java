@@ -69,7 +69,7 @@ public class GraphhopperController {
      *                       ("JSON" or "YAML")
      */
     public void findRoute(Request request, PtRouter ptRouter, String routeSelection, String saveFileFormat) {
-        System.out.println("Searching Routes ..........");
+        //System.out.println("Searching Routes ..........");
         response = ptRouter.route(request);              //routing form graphhopper and setting the response
         path = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class GraphhopperController {
      * @param fileFormat format in which the file should be saved
      */
     private void createRoute(String fileFormat) {
-        System.out.println("Creating Routes ..........");
+        //System.out.println("Creating Routes ..........");
         routes = new ArrayList<>();
         Route route;
 
@@ -102,7 +102,7 @@ public class GraphhopperController {
             route = graphhopperResponseHandler.build();
             routes.add(route);
         }
-        System.out.println("Routes created");
+        //System.out.println("Routes created");
         //selects which data format should be chosen to save the route
         switch (fileFormat) {
             case "YAML":

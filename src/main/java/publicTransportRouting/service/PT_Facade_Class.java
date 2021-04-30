@@ -65,7 +65,7 @@ public class PT_Facade_Class {
      * @param queryTime time at which the query is requestet
      */
     public void ptRouteQuery(Location from, Location to, LocalDateTime queryTime,String routeSelection){
-        System.out.println("Constructing Query ..........");
+        //System.out.println("Constructing Query ..........");
 
         GraphhopperController graphhopperController = new GraphhopperController();
         graphhopperController.createRequest(from, to, queryTime, zoneId);
