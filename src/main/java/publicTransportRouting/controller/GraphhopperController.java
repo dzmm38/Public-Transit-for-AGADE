@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.graphhopper.GHResponse;
 import com.graphhopper.ResponsePath;
-import com.graphhopper.reader.gtfs.PtRouteResource;
-import com.graphhopper.reader.gtfs.Request;
+import com.graphhopper.gtfs.PtRouter;
+import com.graphhopper.gtfs.Request;
 import com.graphhopper.util.PointList;
 import publicTransportRouting.model.Location;
 import publicTransportRouting.model.Route;
@@ -51,8 +51,8 @@ public class GraphhopperController {
         Request request = new Request(from.getLat(), from.getLon(), to.getLat(), to.getLon());  //creating the graphhopper request
         request.setEarliestDepartureTime(dateTime.atZone(zoneId).toInstant());                  //setting the start time for the earliest departure time within a time zone
         request.setProfileQuery(true);
-        request.setIgnoreTransfers(false);         //Transfers are taken into consideration
-        request.setLimitSolutions(5);              //setting a maximum of resulting Routes
+        request.setIgnoreTransfers(true);         //Transfers are taken into consideration if false
+        request.setLimitSolutions(5);             //setting a maximum of resulting Routes +1
 
         this.request = request;
     }
@@ -62,15 +62,15 @@ public class GraphhopperController {
      * Method which addresses graphhopper to get the response with some routes
      *
      * @param request the query for which the routing should be done
-     * @param PT Object form graphhopper on which the routing happens
+     * @param ptRouter Object form graphhopper on which the routing happens
      * @param routeSelection String which selects which routes are returned ("all" or "best")
      *                       best relates to earliestArrivalTime
      * @param saveFileFormat String which selects the file format as which the route should be saved
      *                       ("JSON" or "YAML")
      */
-    public void findRoute(Request request, PtRouteResource PT, String routeSelection, String saveFileFormat) {
+    public void findRoute(Request request, PtRouter ptRouter, String routeSelection, String saveFileFormat) {
         System.out.println("Searching Routes ..........");
-        response = PT.route(request);              //routing form graphhopper and setting the response
+        response = ptRouter.route(request);              //routing form graphhopper and setting the response
         path = new ArrayList<>();
 
         //selects the how much an which routes should be created "all" and "best" --> default = "best"

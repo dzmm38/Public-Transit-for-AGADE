@@ -3,9 +3,10 @@ package publicTransportRouting.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.graphhopper.GraphHopperConfig;
-import com.graphhopper.reader.gtfs.GraphHopperGtfs;
-import com.graphhopper.reader.gtfs.GtfsStorage;
-import com.graphhopper.reader.gtfs.PtRouteResource;
+import com.graphhopper.gtfs.GraphHopperGtfs;
+import com.graphhopper.gtfs.GtfsStorage;
+import com.graphhopper.gtfs.PtRouter;
+import com.graphhopper.gtfs.PtRouterImpl;
 import com.graphhopper.storage.index.LocationIndex;
 import com.graphhopper.util.TranslationMap;
 
@@ -72,7 +73,7 @@ public class GtfsGraphController {
      *                        (have to be located in the graphs folder in resources)
      * @return PTRouteResource Object which contains the graph an can be routed on
      */
-    public PtRouteResource loadGraph(String graphFolderName){
+    public PtRouter loadGraph(String graphFolderName){
         System.out.println("Loading Graph ..........");
 
         GraphHopperConfig config;
@@ -86,9 +87,9 @@ public class GtfsGraphController {
         //Creating some Objects which are needed to then create the PtRouteResource
         LocationIndex index = hopper.getLocationIndex();
         GtfsStorage storage = hopper.getGtfsStorage();
-        PtRouteResource PT = PtRouteResource.createFactory(new TranslationMap().doImport(),hopper,index,storage).createWithoutRealtimeFeed();
+        PtRouter ptRouter = PtRouterImpl.createFactory(new TranslationMap().doImport(),hopper,index,storage).createWithoutRealtimeFeed();
 
-        return PT;
+        return ptRouter;
     }
     /*
     Creating a Config and set some attributes with the given parameter

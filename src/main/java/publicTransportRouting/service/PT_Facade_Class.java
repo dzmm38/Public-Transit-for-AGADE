@@ -1,6 +1,6 @@
 package publicTransportRouting.service;
 
-import com.graphhopper.reader.gtfs.PtRouteResource;
+import com.graphhopper.gtfs.PtRouter;
 import publicTransportRouting.controller.*;
 import publicTransportRouting.model.Location;
 
@@ -21,7 +21,7 @@ public class PT_Facade_Class {
     //------------------------------------------ Variable -------------------------------------------//
     private ZoneId zoneId;                      //zone for which routing should be done for Example "Europe/Paris"
     private LocalDateTime dateTime;             //simulation start time (or time which should be simulated
-    private PtRouteResource PT;                 //Object on with routing is done initialized by calling load graph
+    private PtRouter ptRouter;                 //Object on with routing is done initialized by calling load graph
     private String fileFormat;                  //fileFormat in which the route should be saved ("JSON" or "YAML") default = JSON
 
     //----------------------------------------- Constructor -----------------------------------------//
@@ -54,7 +54,7 @@ public class PT_Facade_Class {
      */
     public void loadGraph(String graphFolderName){
         GtfsGraphController graph = new GtfsGraphController();
-        PT = graph.loadGraph(graphFolderName);
+        ptRouter = graph.loadGraph(graphFolderName);
     }
 
     /**
@@ -72,7 +72,7 @@ public class PT_Facade_Class {
         graphhopperController.setZoneId(zoneId);
         graphhopperController.setDateTime(queryTime);
 
-        graphhopperController.findRoute(graphhopperController.getRequest(), PT, routeSelection, fileFormat);
+        graphhopperController.findRoute(graphhopperController.getRequest(), ptRouter, routeSelection, fileFormat);
 
     }
 
@@ -112,8 +112,8 @@ public class PT_Facade_Class {
         return dateTime;
     }
 
-    public PtRouteResource getPT() {
-        return PT;
+    public PtRouter getPT() {
+        return ptRouter;
     }
 
     //----------------------------------------- Additional ------------------------------------------//
