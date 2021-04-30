@@ -104,14 +104,14 @@ public class GraphhopperController {
         }
         //System.out.println("Routes created");
         //selects which data format should be chosen to save the route
-        switch (fileFormat) {
-            case "YAML":
-                toYAML();
-                break;
-            case "JSON":
-            default:
-                toJSON();
-        }
+//        switch (fileFormat) {
+//            case "YAML":
+//                toYAML();
+//                break;
+//            case "JSON":
+//            default:
+//                toJSON();
+//        }
     }
 
     /*
