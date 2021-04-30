@@ -1,6 +1,11 @@
 package publicTransportRouting.service;
 
+import com.graphhopper.gtfs.GraphHopperGtfs;
+import com.graphhopper.gtfs.GtfsStorage;
 import com.graphhopper.gtfs.PtRouter;
+import com.graphhopper.gtfs.PtRouterImpl;
+import com.graphhopper.storage.index.LocationIndex;
+import com.graphhopper.util.TranslationMap;
 import publicTransportRouting.controller.*;
 import publicTransportRouting.model.Location;
 
@@ -21,7 +26,8 @@ public class PT_Facade_Class {
     //------------------------------------------ Variable -------------------------------------------//
     private ZoneId zoneId;                      //zone for which routing should be done for Example "Europe/Paris"
     private LocalDateTime dateTime;             //simulation start time (or time which should be simulated
-    private PtRouter ptRouter;                 //Object on with routing is done initialized by calling load graph
+    private PtRouter ptRouter;                  //Object on with routing is done initialized by calling load graph
+    private GraphHopperGtfs gtfsHopper;         //Object which is used to create a PtRouter (optional only if "loadHopper" was used)
     private String fileFormat;                  //fileFormat in which the route should be saved ("JSON" or "YAML") default = JSON
 
     //----------------------------------------- Constructor -----------------------------------------//
@@ -55,6 +61,27 @@ public class PT_Facade_Class {
     public void loadGraph(String graphFolderName){
         GtfsGraphController graph = new GtfsGraphController();
         ptRouter = graph.loadGraph(graphFolderName);
+    }
+
+    /**
+     * Method to load an existing graph in resources/graph and sets it to the GraphhopperGtfs
+     *
+     * @param graphFolderName Name of the folder in which the graph is located
+     *                       (have to be located in the graphs folder in resources)
+     */
+    public void loadHopper(String graphFolderName){
+        GtfsGraphController graphController = new GtfsGraphController();
+        gtfsHopper = graphController.loadHopperForGraph(graphFolderName);
+    }
+
+    /*
+    creates the PtRouteResource
+     */
+    private PtRouter createPtRouteRessource(GraphHopperGtfs gtfsHopper){
+        LocationIndex index = gtfsHopper.getLocationIndex();
+        GtfsStorage storage = gtfsHopper.getGtfsStorage();
+        PtRouter router = PtRouterImpl.createFactory(new TranslationMap().doImport(),gtfsHopper,index,storage).createWithoutRealtimeFeed();
+        return router;
     }
 
     /**
@@ -112,8 +139,16 @@ public class PT_Facade_Class {
         return dateTime;
     }
 
-    public PtRouter getPT() {
+    public PtRouter getPtRouter() {
         return ptRouter;
+    }
+
+    public GraphHopperGtfs getGtfsHopper() {
+        return gtfsHopper;
+    }
+
+    public String getFileFormat() {
+        return fileFormat;
     }
 
     //----------------------------------------- Additional ------------------------------------------//
