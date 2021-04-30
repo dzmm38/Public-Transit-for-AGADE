@@ -91,6 +91,29 @@ public class GtfsGraphController {
 
         return ptRouter;
     }
+
+    /**
+     * Method to load an exiting Graph from an file name
+     *
+     * @param graphFolderName Name of the folder in which the graph is located
+     *                        (have to be located in the graphs folder in resources)
+     * @return GraphHopperGtfs a hopper Object which contains the Graph -- can be used to create a PtRouteRessource
+     */
+    public GraphHopperGtfs loadHopperForGraph(String graphFolderName){
+        System.out.println("Loading Graph ..........");
+
+        GraphHopperConfig config;
+        config = loadConfig(graphFolderName);           //Load the config of an existing graph to load the graph again
+
+        GraphHopperGtfs hopper = new GraphHopperGtfs(config);
+
+        hopper.init(config);
+        hopper.load(config.getString("graph.location",config.toString()));         //loading the graph from the location given in the config file
+
+        System.out.println("Graph loaded");
+        return hopper;
+    }
+
     /*
     Creating a Config and set some attributes with the given parameter
     so the graph can be created
