@@ -38,6 +38,21 @@ public class PT_Facade_Class {
         new TimeController().calculateTickZero(dateTime.toLocalTime());     //TickZero Variable is static so the same over all calculator classes
     }
 
+    //Copy Constructor if more than one Facade Classes are needed
+    public PT_Facade_Class(PT_Facade_Class facade_class){
+        this.zoneId = ZoneId.of(facade_class.getZoneId().toString());
+        this.dateTime = LocalDateTime.of(facade_class.getDateTime().getYear(),facade_class.getDateTime().getMonthValue(),facade_class.getDateTime().getDayOfMonth(),
+                                         facade_class.getDateTime().getHour(),facade_class.getDateTime().getMinute());
+        this.fileFormat = facade_class.getFileFormat();
+
+        //Checks if the cloned Facade Class has an hopper to create a new Facade Class or an PtRouter
+        if (facade_class.getGtfsHopper() != null){
+            ptRouter = createPtRouteRessource(facade_class.getGtfsHopper());
+        }else {
+            this.ptRouter = facade_class.getPtRouter();
+        }
+    }
+
     //------------------------------------------- Methods -------------------------------------------//
     /**
      * Static Method on GtfsGraphController to create a Graph with passed File names,
@@ -152,4 +167,10 @@ public class PT_Facade_Class {
     }
 
     //----------------------------------------- Additional ------------------------------------------//
+    //Trying to clone the PT_Facade_Class so the Routing is done on different Routers
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        //return super.clone();
+        return new PT_Facade_Class(this);
+    }
 }
