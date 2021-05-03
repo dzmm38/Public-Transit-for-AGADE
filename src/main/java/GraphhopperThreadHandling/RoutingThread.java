@@ -32,7 +32,7 @@ public class RoutingThread implements Runnable{
         this.threadNumber = threadNumber;
 
         this.thread = new Thread(this, this.threadNumber + "_" + routingName);    //creates the thread with this class and the routingName
-        System.out.println("Thread Nr. " + threadNumber + " created");
+        //System.out.println("Thread Nr. " + threadNumber + " created");
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -44,8 +44,8 @@ public class RoutingThread implements Runnable{
     @Override
     public void run() {
         //For Logging, creates a ThreadLog Object to later comprehend times etc.
-        LocalTime startTime = LocalTime.now();
-        ThreadLog threadLog = new ThreadLog(startTime,threadNumber,routingName);
+        //LocalTime startTime = LocalTime.now();
+        //ThreadLog threadLog = new ThreadLog(startTime,threadNumber,routingName);
 
         //Printing a message to the console with the time the Thread is starting + it´s number and description Name
         //System.out.println(startTime + " ---- " + "Starting Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
@@ -61,12 +61,12 @@ public class RoutingThread implements Runnable{
 
         //For Logging, creates a ThreadLog Object to later comprehend times etc.
         LocalTime endTime = LocalTime.now();
-        threadLog.setThreadEnd(endTime);
+        //threadLog.setThreadEnd(endTime);
 
         //Printing a message to the console with the time the Thread is stopped + it´s number and description Name
         System.out.println(endTime + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
 
-        ThreadLogHandler.addLog(threadLog);
+        //ThreadLogHandler.addLog(threadLog);
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
