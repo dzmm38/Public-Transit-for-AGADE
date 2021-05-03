@@ -18,9 +18,9 @@ import java.util.concurrent.Executors;
 //TODO: Hier noch schauen das Routen (Namen dieser) etwas anders gespeichert werden damit nicht nur max 10 Routen gespeichert werden.
 public class Main {
     //------------------------------------------ Settings -------------------------------------------//
-    int AmountOfThreads = 50;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int AmountOfThreads = 1000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
     int AmountOfFacadeClasses = 2;      //Defines the Amount of Facade Classes, only works if testingType = ManyFacades
-    String testingType = "Referenz";       //Alternativen sind "Referenz" , "ManyFacades" , "Clone"
+    String testingType = "Referenz";       //Alternativen sind "Referenz" , "ManyFacades" , "Clone" , "ExecutorService"
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -73,9 +73,11 @@ public class Main {
         main.logHandler = new ThreadLogHandler(main.AmountOfThreads);
         ThreadLogHandler.calculatePreparationTime(preparationStart,preparationEnd);
 
-        main.startThreads();        //starts all threads nearly simultaneously
-
-//        main.createAndStartTest();    //Test Methode wurde als vorschlag betrachtet wird aber nicht verwendet während der Tests
+        if(main.testingType == "ExecutorService"){
+            main.createAndStartTest();    //Test Methode
+        } else {
+            main.startThreads();        //starts all threads nearly simultaneously
+        }
     }
 
     //----------------------------------------- Constructor -----------------------------------------//
@@ -264,20 +266,22 @@ public class Main {
      */
     public void createAndStartTest(){
         Random rand = new Random();
-        ExecutorService executorService = Executors.newFixedThreadPool(100);
+        ExecutorService executorService = Executors.newFixedThreadPool(AmountOfThreads);
 
-            for(int i = 0; i<100; i++) {
+            for(int i = 0; i<AmountOfThreads; i++) {
                 int finalI = i;
                 executorService.execute(new RoutingThread(i+1,testingRequests,facade_class,rand.nextInt(10)));
             }
 
-            while(true){
-                try {
-                    Thread.sleep(500l);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            executorService.shutdown();
+
+//            while(true){
+//                try {
+//                    Thread.sleep(500l);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
     }
 }
 //--------------------------------------- Getter & Setter ---------------------------------------//
