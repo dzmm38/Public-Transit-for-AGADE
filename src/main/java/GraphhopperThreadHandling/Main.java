@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     //------------------------------------------ Settings -------------------------------------------//
     int AmountOfThreads = 500;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int ThreadPool = 100;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -74,7 +75,7 @@ public class Main {
         int routeChoice;
 
         Random rand = new Random();
-        ExecutorService executorService = Executors.newFixedThreadPool(60);
+        ExecutorService executorService = Executors.newFixedThreadPool(ThreadPool);
 
             for(int i = 0; i<AmountOfThreads; i++) {
                 routeChoice = rand.nextInt(10);
