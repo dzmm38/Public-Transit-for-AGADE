@@ -27,7 +27,12 @@ public class RoutingThread implements Runnable{
     //----------------------------------------- Constructor -----------------------------------------//
     public RoutingThread(int threadNumber, ArrayList<RoutingRequest> testRequestList, PT_Facade_Class facade_class, int threadSelectionNr){
         this.testRequest = testRequestList.get(threadSelectionNr);   //sets the request from the testRequestList with the threadSelectionNr (Random form 1 to 10)
-        this.facade_class = facade_class;
+
+        try {
+            this.facade_class = (PT_Facade_Class) facade_class.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         this.routingName = testRequest.getRoutingName();
         this.threadNumber = threadNumber;
 
