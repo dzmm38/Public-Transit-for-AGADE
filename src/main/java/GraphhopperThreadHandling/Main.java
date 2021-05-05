@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Main Class --> Start Point of the Testing Process
@@ -18,7 +19,7 @@ import java.util.concurrent.Executors;
 //TODO: Hier noch schauen das Routen (Namen dieser) etwas anders gespeichert werden damit nicht nur max 10 Routen gespeichert werden.
 public class Main {
     //------------------------------------------ Settings -------------------------------------------//
-    int AmountOfThreads = 1000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int AmountOfThreads = 500;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
     int AmountOfFacadeClasses = 2;      //Defines the Amount of Facade Classes, only works if testingType = ManyFacades
     String testingType = "Referenz";       //Alternativen sind "Referenz" , "ManyFacades" , "Clone" , "ExecutorService"
 
@@ -274,6 +275,11 @@ public class Main {
             }
 
             executorService.shutdown();
+        try {
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 //            while(true){
 //                try {
