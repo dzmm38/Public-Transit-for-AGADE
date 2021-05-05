@@ -167,10 +167,4 @@ public class PT_Facade_Class {
     }
 
     //----------------------------------------- Additional ------------------------------------------//
-    //Trying to clone the PT_Facade_Class so the Routing is done on different Routers
-    @Override
-    public Object clone() throws CloneNotSupportedException{
-        //return super.clone();
-        return new PT_Facade_Class(this);
-    }
 }
