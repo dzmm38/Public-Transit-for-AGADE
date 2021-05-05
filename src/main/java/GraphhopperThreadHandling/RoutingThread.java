@@ -1,13 +1,10 @@
 package GraphhopperThreadHandling;
 
-import GraphhopperThreadHandling.Logs.ThreadLog;
-import GraphhopperThreadHandling.Logs.ThreadLogHandler;
 import GraphhopperThreadHandling.model.RoutingRequest;
 import publicTransportRouting.model.Location;
 import publicTransportRouting.service.PT_Facade_Class;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -22,22 +19,15 @@ public class RoutingThread implements Runnable{
 
     private int threadNumber;               //The number of the Thread which is created
     private String routingName;             //The name describing the Routing request of this thread
-    public Thread thread;
 
     //----------------------------------------- Constructor -----------------------------------------//
     public RoutingThread(int threadNumber, ArrayList<RoutingRequest> testRequestList, PT_Facade_Class facade_class, int threadSelectionNr){
         this.testRequest = testRequestList.get(threadSelectionNr);   //sets the request from the testRequestList with the threadSelectionNr (Random form 1 to 10)
-
-        try {
-            this.facade_class = (PT_Facade_Class) facade_class.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        this.facade_class = facade_class;
         this.routingName = testRequest.getRoutingName();
         this.threadNumber = threadNumber;
 
-        this.thread = new Thread(this, this.threadNumber + "_" + routingName);    //creates the thread with this class and the routingName
-        //System.out.println("Thread Nr. " + threadNumber + " created");
+        //System.out.println("RoutingThread Nr. " + threadNumber + " " + routingName + " created!");
     }
 
     //------------------------------------------- Methods -------------------------------------------//
@@ -48,12 +38,8 @@ public class RoutingThread implements Runnable{
      */
     @Override
     public void run() {
-        //For Logging, creates a ThreadLog Object to later comprehend times etc.
-        //LocalTime startTime = LocalTime.now();
-        //ThreadLog threadLog = new ThreadLog(startTime,threadNumber,routingName);
-
         //Printing a message to the console with the time the Thread is starting + it´s number and description Name
-        //System.out.println(startTime + " ---- " + "Starting Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
+        //System.out.println(LocalTime.now() + " ---- " + "Starting Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
 
         //Taking the testRequest and forming all necessary parts for an Graphhopper request
         Location from = testRequest.getFrom();
@@ -64,14 +50,15 @@ public class RoutingThread implements Runnable{
         //Sending the Request to Graphhopper for routing
         facade_class.ptRouteQuery(from,to,queryTime,routeSelection);
 
-        //For Logging, creates a ThreadLog Object to later comprehend times etc.
-        LocalTime endTime = LocalTime.now();
-        //threadLog.setThreadEnd(endTime);
-
         //Printing a message to the console with the time the Thread is stopped + it´s number and description Name
-        System.out.println(endTime + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
+        //System.out.println(LocalTime.now() + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
 
-        //ThreadLogHandler.addLog(threadLog);
+        try {
+            System.out.println("test");
+            Main.ThreadCounter();       //Adding 1 to the ThreadCounter
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
@@ -83,5 +70,4 @@ public class RoutingThread implements Runnable{
         return routingName;
     }
 }
-
     //----------------------------------------- Additional ------------------------------------------//
