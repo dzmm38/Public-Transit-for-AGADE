@@ -88,39 +88,6 @@ public class FacadeTest {
      */
         PT_Facade_Class.loadRoute("src\\main\\resources\\Routes\\Route_52.456672,13.140033 -- 52.503737,13.502879.json");
     }
-
-    @Test
-    public void cloneTestWithHopperOnly(){
-        PT_Facade_Class original = new PT_Facade_Class("Europe/Paris", 2020, 8, 6, 10, 0, "JSON");
-        original.loadHopper("berlin-latest.osm.pbf_with_Transit");
-
-        PT_Facade_Class clone = null;
-        try {
-            clone = (PT_Facade_Class) original.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Fuer breakpoint");
-        assert !original.equals(clone);
-    }
-
-    @Test
-    public void cloneTestWithPtRouter(){
-        PT_Facade_Class original = new PT_Facade_Class("Europe/Paris", 2020, 8, 6, 10, 0, "JSON");
-        original.loadGraph("berlin-latest.osm.pbf_with_Transit");
-
-        PT_Facade_Class clone = null;
-
-        try {
-            clone = (PT_Facade_Class) original.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Fuer breakpoint");
-        assert !original.equals(clone);
-    }
     //--------------------------------------- Getter & Setter ---------------------------------------//
     //----------------------------------------- Additional ------------------------------------------//
 }
