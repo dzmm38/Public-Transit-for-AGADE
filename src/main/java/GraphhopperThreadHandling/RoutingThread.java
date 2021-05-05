@@ -5,6 +5,7 @@ import publicTransportRouting.model.Location;
 import publicTransportRouting.service.PT_Facade_Class;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -51,14 +52,14 @@ public class RoutingThread implements Runnable{
         facade_class.ptRouteQuery(from,to,queryTime,routeSelection);
 
         //Printing a message to the console with the time the Thread is stopped + it´s number and description Name
-        //System.out.println(LocalTime.now() + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
+        System.out.println(LocalTime.now() + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
 
-        try {
-            System.out.println("test");
-            Main.ThreadCounter();       //Adding 1 to the ThreadCounter
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //System.out.println("test");
+//            Main.ThreadCounter();       //Adding 1 to the ThreadCounter
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     //--------------------------------------- Getter & Setter ---------------------------------------//
