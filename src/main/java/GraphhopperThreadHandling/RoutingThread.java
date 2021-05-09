@@ -19,15 +19,12 @@ public class RoutingThread implements Runnable{
     public PT_Facade_Class facade_class;    //A copy of the PT_Facade_Class for the Routing Method which can called by this thread  [Graphhopper only]
 
     private int threadNumber;               //The number of the Thread which is created
-    private String routingName;             //The name describing the Routing request of this thread
 
     //----------------------------------------- Constructor -----------------------------------------//
-    public RoutingThread(int threadNumber, ArrayList<RoutingRequest> testRequestList, PT_Facade_Class facade_class, int threadSelectionNr){
-        this.testRequest = testRequestList.get(threadSelectionNr);   //sets the request from the testRequestList with the threadSelectionNr (Random form 1 to 10)
+    public RoutingThread(int threadNumber, RoutingRequest testRequest, PT_Facade_Class facade_class){
+        this.testRequest = testRequest;   //sets the request from the testRequestList with the threadSelectionNr (Random form 1 to 10)
         this.facade_class = facade_class;
-        this.routingName = testRequest.getRoutingName();
         this.threadNumber = threadNumber;
-
         //System.out.println("RoutingThread Nr. " + threadNumber + " " + routingName + " created!");
     }
 
@@ -52,7 +49,7 @@ public class RoutingThread implements Runnable{
         facade_class.ptRouteQuery(from,to,queryTime,routeSelection);
 
         //Printing a message to the console with the time the Thread is stopped + it´s number and description Name
-        System.out.println(LocalTime.now() + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + routingName);
+        System.out.println(LocalTime.now() + " ---- " + "Stopping Thread Nr. " + threadNumber + "  -----  " + "Name: " + testRequest.getRoutingName());
 
 //        try {
 //            //System.out.println("test");
@@ -65,10 +62,6 @@ public class RoutingThread implements Runnable{
     //--------------------------------------- Getter & Setter ---------------------------------------//
     public int getThreadNumber() {
         return threadNumber;
-    }
-
-    public String getRoutingName() {
-        return routingName;
     }
 }
     //----------------------------------------- Additional ------------------------------------------//

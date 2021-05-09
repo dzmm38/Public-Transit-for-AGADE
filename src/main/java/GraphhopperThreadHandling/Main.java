@@ -20,9 +20,9 @@ import java.util.concurrent.TimeUnit;
 //TODO: Hier noch schauen das Routen (Namen dieser) etwas anders gespeichert werden damit nicht nur max 10 Routen gespeichert werden.
 public class Main {
     //------------------------------------------ Settings -------------------------------------------//
-    static int AmountOfThreads = 200;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
-    int ThreadPool = 200;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
-    static int ThreadUpdateCycle = 1;      //Defines at which rate an Update on the ThreadCounter should happen in minutes
+    static int AmountOfThreads = 100;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int ThreadPool = 100;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
+    static int ThreadUpdateCycle = 2;      //Defines at which rate an Update on the ThreadCounter should happen in minutes
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -93,20 +93,20 @@ public class Main {
             for(int i = 0; i<AmountOfThreads; i++) {
                 routeChoice = rand.nextInt(10);
 
-                executorService.execute(new RoutingThread(i+1,testingRequests,facade_class,routeChoice));   //creates an executes the RoutingThreads
+                executorService.execute(new RoutingThread(i+1,new RoutingRequest(testingRequests.get(routeChoice)),facade_class));   //creates an executes the RoutingThreads
                 pickedRouteList.add(routeChoice);
             }
 
         executorService.shutdown();
 
-        while (ThreadsDone != AmountOfThreads){
-             try {
-                 Thread.sleep(ThreadUpdateCycle*60000);
-                 System.out.println(LocalTime.now() + " RoutingThreads Finished.... " + "   " + ThreadsDone + " / " + AmountOfThreads);
-             } catch (InterruptedException e) {
-                 e.printStackTrace();
-             }
-        }
+//        while (ThreadsDone != AmountOfThreads){
+//             try {
+//                 Thread.sleep(ThreadUpdateCycle*60000);
+//                 System.out.println(LocalTime.now() + " RoutingThreads Finished.... " + "   " + ThreadsDone + " / " + AmountOfThreads);
+//             } catch (InterruptedException e) {
+//                 e.printStackTrace();
+//             }
+//        }
 
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
@@ -180,6 +180,7 @@ public class Main {
         printTime("Routing time:     ",Duration.between(prepEnd,routingEnd));
         printTime("Completion time:  ",Duration.between(startTime,LocalTime.now()));
         System.out.println("--------------------------------------------------------------------------------");
+        System.out.println(LocalTime.now());
     }
 
     public synchronized static void ThreadCounter() throws InterruptedException {

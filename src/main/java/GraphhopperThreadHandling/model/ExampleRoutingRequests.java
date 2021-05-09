@@ -71,6 +71,22 @@ public class ExampleRoutingRequests {
         RoutingRequest r4 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 4 created");
 
+//        //----------------- Creating the Routing Request 4 (Lang Ort zu Ort) ------------------//
+//        from = new Location(52.431662, 13.193653);                                 //Zehlendorf
+//        to = new Location(52.440872, 13.440159);                                   //Wesenberger Ring
+//        queryTime = LocalDateTime.of(2020,8,6,13,15);   //13:15
+//        routingName = "VON: Zehlendorf / NACH: Wesenberger Ring";
+//        RoutingRequest r4 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 4 created");
+
+//        //------------------------- Creating the Routing Request 4 (Mittlere Strecke) --------------------------------//
+//        from = new Location(52.632995,13.509852);                                 //Berlin mitte
+//        to = new Location(52.517805,13.442522);                                   //Golfresort
+//        queryTime = LocalDateTime.of(2020,8,6,12,15);   //12:15
+//        routingName = "VON: Berlin mitte / NACH: Golfresort";
+//        RoutingRequest r4 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 4 created");
+
         //------------------------ Creating the Routing Request 5 (Relativ kurz Berlin Mitte) ------------------------//
         from = new Location(52.516998,13.417763);                                 //The Student Hotel Berlin (Berlin Mitte)
         to = new Location(52.526551,13.378090);                                   //Charité – Universitätsmedizin Berlin
@@ -79,11 +95,19 @@ public class ExampleRoutingRequests {
         RoutingRequest r5 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 5 created");
 
-        //------------------ Creating the Routing Request 6 (Relativ kurz innerhalb Bezirk Spandau) ------------------//
-        from = new Location(52.527813,13.174053);                                 //Wohngebiet innerhalb Spandau
-        to = new Location(52.534352,13.197452);                                   //Spandau Hbf (Bezirk Spandau)
-        queryTime = LocalDateTime.of(2020,8,6,11,35);   //11:35
-        routingName = "VON: Wohngebiet innerhalb Spandau / NACH: Spandau Hbf (Bezirk Spandau)";
+//        //------------------ Creating the Routing Request 6 (Relativ kurz innerhalb Bezirk Spandau) ------------------//
+//        from = new Location(52.527813,13.174053);                                 //Wohngebiet innerhalb Spandau
+//        to = new Location(52.534352,13.197452);                                   //Spandau Hbf (Bezirk Spandau)
+//        queryTime = LocalDateTime.of(2020,8,6,11,35);   //11:35
+//        routingName = "VON: Wohngebiet innerhalb Spandau / NACH: Spandau Hbf (Bezirk Spandau)";
+//        RoutingRequest r6 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 6 created");
+
+        //------------------------- Creating the Routing Request 6 (Mittlere Strecke) --------------------------------//
+        from = new Location(52.440791,13.444667);                                 //Bezirk Neukölln
+        to = new Location(52.437963,13.346589);                                   //Lankwitz
+        queryTime = LocalDateTime.of(2020,8,6,18,00);   //18:00
+        routingName = "VON: Bezirk Neukölln / NACH: Lankwitz";
         RoutingRequest r6 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 6 created");
 
@@ -103,11 +127,27 @@ public class ExampleRoutingRequests {
         RoutingRequest r7 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 7 created");
 
-        //------------------ Creating the Routing Request 8 (kurze Stecke von Ort zu naheliegendem) ------------------//
-        from = new Location(52.520344,13.387177);                                 //Bahnhof Berlin Friedrichstraße (Berlin Mitte)
-        to = new Location(52.429641,13.273599);                                   //Zehlendorf (Berliner Ort)
-        queryTime = LocalDateTime.of(2020,8,6,18,20);   //18:20
-        routingName = "VON: Bahnhof Berlin Friedrichstraße (Berlin Mitte) / NACH: Zehlendorf (Berliner Ort)";
+//        //------------------ Creating the Routing Request 8 (kurze Stecke von Ort zu naheliegendem) ------------------//
+//        from = new Location(52.520344,13.387177);                                 //Bahnhof Berlin Friedrichstraße (Berlin Mitte)
+//        to = new Location(52.429641,13.273599);                                   //Zehlendorf (Berliner Ort)
+//        queryTime = LocalDateTime.of(2020,8,6,18,20);   //18:20
+//        routingName = "VON: Bahnhof Berlin Friedrichstraße (Berlin Mitte) / NACH: Zehlendorf (Berliner Ort)";
+//        RoutingRequest r8 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 8 created");
+
+//        //------------------ Creating the Routing Request 8 (kurze Stecke von Ort zu naheliegendem) ------------------//
+//        from = new Location(52.520344,13.387177);                                 //Bahnhof Berlin Friedrichstraße (Berlin Mitte)
+//        to = new Location(52.491520, 13.339576);                                   //Schöneberg
+//        queryTime = LocalDateTime.of(2020,8,6,18,20);   //18:20
+//        routingName = "VON: Bahnhof Berlin Friedrichstraße (Berlin Mitte) / NACH: Schöneberg (Berliner Ort)";
+//        RoutingRequest r8 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 8 created");
+
+        //------------------------- Creating the Routing Request 8 (Mittlere Strecke) --------------------------------//
+        from = new Location(52.434861, 13.260825);                                 //Zehlendorf
+        to = new Location(52.480684, 13.263863);                                   //Grünwald
+        queryTime = LocalDateTime.of(2020,8,6,14,15);   //14:15
+        routingName = "VON: Zehlendorf / NACH: Grünwald";
         RoutingRequest r8 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 8 created");
 
@@ -119,11 +159,19 @@ public class ExampleRoutingRequests {
 //        RoutingRequest r9 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
 //        System.out.println("Test Request 9 created");
 
-        //------------------ Alternative Creating the Routing Request 9 (Schönleinstr. Berlin (U-Bahn) /Burger King Mitte Berlin) -------------------//
-        from = new Location(52.493042,13.422109);                                 //Schönleinstr. Berlin (U-Bahn)
-        to = new Location(52.520193,13.387457);                                   //Burger King Mitte Berlin
-        queryTime = LocalDateTime.of(2020,8,6,13,45);   //13:45
-        routingName = "VON: Schönleinstr. Berlin (U-Bahn) / NACH: Burger King Mitte Berlin";
+//        //------------------ Alternative Creating the Routing Request 9 (Schönleinstr. Berlin (U-Bahn) /Burger King Mitte Berlin) -------------------//
+//        from = new Location(52.493042,13.422109);                                 //Schönleinstr. Berlin (U-Bahn)
+//        to = new Location(52.520193,13.387457);                                   //Burger King Mitte Berlin
+//        queryTime = LocalDateTime.of(2020,8,6,13,45);   //13:45
+//        routingName = "VON: Schönleinstr. Berlin (U-Bahn) / NACH: Burger King Mitte Berlin";
+//        RoutingRequest r9 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
+//        System.out.println("Test Request 9 created");
+
+        //------------------------- Creating the Routing Request 9 (Mittlere Lange Stecke) --------------------------------//
+        from = new Location(52.596076,13.335111);                                 //Wittenau
+        to = new Location(52.525929, 13.367809);                                   //Berlin HbF
+        queryTime = LocalDateTime.of(2020,8,6,10,25);   //10:25
+        routingName = "VON: Wittenau / NACH: Berlin HbF";
         RoutingRequest r9 = new RoutingRequest(from,to,queryTime,routeSelection,routingName);
         System.out.println("Test Request 9 created");
 

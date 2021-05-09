@@ -25,6 +25,15 @@ public class RoutingRequest {
         this.routingName = routingName;
     }
 
+    public RoutingRequest(RoutingRequest routingRequest){
+        this.from = new Location(routingRequest.from.getLat(),routingRequest.getFrom().getLon());
+        this.to = new Location(routingRequest.to.getLat(),routingRequest.to.getLon());
+        this.queryTime = LocalDateTime.of(routingRequest.getQueryTime().getYear(),routingRequest.getQueryTime().getMonthValue(),routingRequest.getQueryTime().getDayOfMonth(),
+                                          routingRequest.getQueryTime().getHour(),routingRequest.getQueryTime().getMinute());
+        this.routeSelection = routingRequest.getRouteSelection();
+        this.routingName = routingRequest.getRoutingName();
+    }
+
     //------------------------------------------- Methods -------------------------------------------//
     //--------------------------------------- Getter & Setter ---------------------------------------//
     public Location getFrom() {

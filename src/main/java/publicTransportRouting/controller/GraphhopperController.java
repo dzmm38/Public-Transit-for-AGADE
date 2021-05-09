@@ -52,7 +52,7 @@ public class GraphhopperController {
         request.setEarliestDepartureTime(dateTime.atZone(zoneId).toInstant());                  //setting the start time for the earliest departure time within a time zone
         request.setProfileQuery(true);
         request.setIgnoreTransfers(true);         //Transfers are taken into consideration if false
-        request.setLimitSolutions(5);             //setting a maximum of resulting Routes +1
+        request.setLimitSolutions(4);             //setting a maximum of resulting Routes +1
 
         this.request = request;
     }
