@@ -82,6 +82,9 @@ public class GtfsGraphController {
         GraphHopperGtfs hopper = new GraphHopperGtfs(config);
 
         hopper.init(config);
+//        hopper.forDesktop();
+//        hopper.setInMemory();
+//        hopper.setStoreOnFlush(true);
         hopper.load(config.getString("graph.location",config.toString()));         //loading the graph from the location given in the config file
 
         //Creating some Objects which are needed to then create the PtRouteResource
