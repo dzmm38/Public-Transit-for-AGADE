@@ -35,6 +35,7 @@ public class ThreadTesting_Main {
     public PT_Facade_Class facade_class;         //the PT_Facade_Class used to set the ones in the Threads / which then is used for Routing Methods [Graphhopper only]
     public ArrayList<Integer> pickedRouteList;          //List containing the choosen Amount of the TestRequests
 
+    //Monitoring Variables
     public LocalTime startTime;
     public LocalTime prepEnd;
     public LocalTime routingStart;
@@ -91,11 +92,11 @@ public class ThreadTesting_Main {
 
         ExecutorService executorService = Executors.newFixedThreadPool(ThreadPool);
         System.out.println("Creating all Threads");
-            for(int i = 0; i<AmountOfThreads; i++) {
+        for(int i = 0; i<AmountOfThreads; i++) {
                 routeChoice = rand.nextInt(10);
                 executorService.execute(new RoutingThread(i+1,new RoutingRequest(testingRequests.get(routeChoice)),facade_class));   //creates an executes the RoutingThreads
                 pickedRouteList.add(routeChoice);
-            }
+        }
 
         //Preparing the Shutdown of the ExecutorService
         executorService.shutdown();
