@@ -4,7 +4,6 @@ import GraphhopperThreadHandling.model.ExampleRoutingRequests;
 import GraphhopperThreadHandling.model.RoutingRequest;
 import publicTransportRouting.service.PT_Facade_Class;
 
-
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -17,12 +16,10 @@ import java.util.concurrent.TimeUnit;
  * Main Class --> Start Point of the Testing Process
  * Unter Settings you can change the variables to adjust the testing settings
  */
-//TODO: Hier noch schauen das Routen (Namen dieser) etwas anders gespeichert werden damit nicht nur max 10 Routen gespeichert werden.
 public class Main {
     //------------------------------------------ Settings -------------------------------------------//
     static int AmountOfThreads = 100;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
     int ThreadPool = 100;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
-    static int ThreadUpdateCycle = 2;      //Defines at which rate an Update on the ThreadCounter should happen in minutes
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -36,14 +33,12 @@ public class Main {
     //------------------------------------------ Variable -------------------------------------------//
     public ArrayList<RoutingRequest> testingRequests;   //List of all Requests created for testing --- in ExampleRoutingRequests.class
     public PT_Facade_Class facade_class;         //the PT_Facade_Class used to set the ones in the Threads / which then is used for Routing Methods [Graphhopper only]
+    public ArrayList<Integer> pickedRouteList;          //List containing the choosen Amount of the TestRequests
 
-    //Monitoring Variables
-    static int ThreadsDone;     //To monitor how much threads are done
     public LocalTime startTime;
     public LocalTime prepEnd;
+    public LocalTime routingStart;
     public LocalTime routingEnd;
-
-    public static int lastupdate;
 
     /**
      * Method to start the Benchmarking / Testing
@@ -65,6 +60,13 @@ public class Main {
         main.GraphhopperHandling(); //loads a Graph an initialises the PT_FacadeClass [Graphhopper only]
 
         main.prepEnd = LocalTime.now();     //Timestamp --> for preparation (graph loading / test route creating) end
+        try {
+            System.out.println("Starting The Routing test.....");
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        main.routingStart = LocalTime.now();     //Timestamp --> for Routing Start
 
         main.createAndStartTest();    //Test Methode
     }
@@ -80,34 +82,23 @@ public class Main {
     }
 
     /*
-    Test Method for Thread creation an multithreading tests
+    Creates then Start the Threads nearly simultaneously
      */
     public void createAndStartTest(){
-        ArrayList pickedRouteList = new ArrayList<Integer>();        // list of Integers representing the picked Example Route
+        pickedRouteList = new ArrayList<>();        // list of Integers representing the picked Example Route
+        Random rand = new Random();
         int routeChoice;                                    // number of the example Request
 
-        Random rand = new Random();
         ExecutorService executorService = Executors.newFixedThreadPool(ThreadPool);
-
-        System.out.println("Routing now starts.....");
+        System.out.println("Creating all Threads");
             for(int i = 0; i<AmountOfThreads; i++) {
                 routeChoice = rand.nextInt(10);
-
                 executorService.execute(new RoutingThread(i+1,new RoutingRequest(testingRequests.get(routeChoice)),facade_class));   //creates an executes the RoutingThreads
                 pickedRouteList.add(routeChoice);
             }
 
+        //Preparing the Shutdown of the ExecutorService
         executorService.shutdown();
-
-//        while (ThreadsDone != AmountOfThreads){
-//             try {
-//                 Thread.sleep(ThreadUpdateCycle*60000);
-//                 System.out.println(LocalTime.now() + " RoutingThreads Finished.... " + "   " + ThreadsDone + " / " + AmountOfThreads);
-//             } catch (InterruptedException e) {
-//                 e.printStackTrace();
-//             }
-//        }
-
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } catch (InterruptedException e) {
@@ -177,21 +168,10 @@ public class Main {
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("--------------------------------------------------------------------------------");
         printTime("Preparation time: ",Duration.between(startTime,prepEnd));
-        printTime("Routing time:     ",Duration.between(prepEnd,routingEnd));
+        printTime("Routing time:     ",Duration.between(routingStart,routingEnd));
         printTime("Completion time:  ",Duration.between(startTime,LocalTime.now()));
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println(LocalTime.now());
-    }
-
-    public synchronized static void ThreadCounter() throws InterruptedException {
-        Thread.sleep(5);
-        ThreadsDone++;
-
-//        if ((lastupdate+ThreadUpdateCycle-1) != LocalTime.now().getMinute()){
-//            lastupdate = LocalTime.now().getMinute();
-//            System.out.println(LocalTime.now() + " RoutingThreads Finished.... " + "   " + ThreadsDone + " / " + AmountOfThreads);
-//        }
-
     }
 
     public void printTime(String Time,Duration duration){
