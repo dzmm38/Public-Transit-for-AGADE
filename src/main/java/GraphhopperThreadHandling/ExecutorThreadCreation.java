@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * Main Class --> Start Point of the Testing Process
  * Unter Settings you can change the variables to adjust the testing settings
  */
-public class Main {
+public class ExecutorThreadCreation {
     //------------------------------------------ Settings -------------------------------------------//
     static int AmountOfThreads = 100;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
     int ThreadPool = 100;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
@@ -52,23 +52,23 @@ public class Main {
      */
     //----------------------------------------- Main Method -----------------------------------------//
     public static void main(String[] args) {
-        Main main = new Main();
+        ExecutorThreadCreation executorThreadCreation = new ExecutorThreadCreation();
 
-        main.startTime = LocalTime.now();   //Timestamp --> for programm starting time
+        executorThreadCreation.startTime = LocalTime.now();   //Timestamp --> for programm starting time
 
-        main.testingRequests = new ExampleRoutingRequests().getTestRequest();   //creates the testingRequests and sets them
-        main.GraphhopperHandling(); //loads a Graph an initialises the PT_FacadeClass [Graphhopper only]
+        executorThreadCreation.testingRequests = new ExampleRoutingRequests().getTestRequest();   //creates the testingRequests and sets them
+        executorThreadCreation.GraphhopperHandling(); //loads a Graph an initialises the PT_FacadeClass [Graphhopper only]
 
-        main.prepEnd = LocalTime.now();     //Timestamp --> for preparation (graph loading / test route creating) end
+        executorThreadCreation.prepEnd = LocalTime.now();     //Timestamp --> for preparation (graph loading / test route creating) end
         try {
             System.out.println("Starting The Routing test.....");
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        main.routingStart = LocalTime.now();     //Timestamp --> for Routing Start
+        executorThreadCreation.routingStart = LocalTime.now();     //Timestamp --> for Routing Start
 
-        main.createAndStartTest();    //Test Methode
+        executorThreadCreation.createAndStartTest();    //Test Methode
     }
 
     //----------------------------------------- Constructor -----------------------------------------//
