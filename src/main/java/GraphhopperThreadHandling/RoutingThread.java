@@ -45,6 +45,12 @@ public class RoutingThread implements Runnable{
         LocalDateTime queryTime = testRequest.getQueryTime();
         String routeSelection = testRequest.getRouteSelection();    //[Graphhopper only]
 
+        try {
+            Thread.sleep(60000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         //Sending the Request to Graphhopper for routing
         facade_class.ptRouteQuery(from,to,queryTime,routeSelection);
 

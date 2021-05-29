@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadTesting_Main {
     //------------------------------------------ Settings -------------------------------------------//
-    static int AmountOfThreads = 100;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
-    int ThreadPool = 100;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
+    static int AmountOfThreads = 50000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int ThreadPool = 50000;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -97,6 +97,7 @@ public class ThreadTesting_Main {
                 executorService.execute(new RoutingThread(i+1,new RoutingRequest(testingRequests.get(routeChoice)),facade_class));   //creates an executes the RoutingThreads
                 pickedRouteList.add(routeChoice);
         }
+        System.out.println("All Threads created");
 
         //Preparing the Shutdown of the ExecutorService
         executorService.shutdown();
@@ -172,7 +173,8 @@ public class ThreadTesting_Main {
         printTime("Routing time:     ",Duration.between(routingStart,routingEnd));
         printTime("Completion time:  ",Duration.between(startTime,LocalTime.now()));
         System.out.println("--------------------------------------------------------------------------------");
-        System.out.println(LocalTime.now());
+        System.out.println("Start Time: " + startTime);
+        System.out.println("End Time: " + LocalTime.now());
     }
 
     public void printTime(String Time,Duration duration){
