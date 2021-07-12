@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadTesting_Main {
     //------------------------------------------ Settings -------------------------------------------//
-    static int AmountOfThreads = 50000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
-    int ThreadPool = 50000;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
+    static int AmountOfThreads = 20000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int ThreadPool = 20000;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -69,7 +69,8 @@ public class ThreadTesting_Main {
         }
         threadTestingMain.routingStart = LocalTime.now();     //Timestamp --> for Routing Start
 
-        threadTestingMain.createAndStartTest();    //Test Methode
+        //threadTestingMain.createAndStartTest();    //Test Methode
+        threadTestingMain.createAndStartTestWithoutService();   //Test Method for the Limitation test only (500k Requests)
     }
 
     //----------------------------------------- Constructor -----------------------------------------//
@@ -86,6 +87,9 @@ public class ThreadTesting_Main {
     Creates then Start the Threads nearly simultaneously
      */
     public void createAndStartTest(){
+        Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+        System.out.println("Thread = Max Prio");
+        System.out.println(Thread.currentThread().getPriority());
         pickedRouteList = new ArrayList<>();        // list of Integers representing the picked Example Route
         Random rand = new Random();
         int routeChoice;                                    // number of the example Request
@@ -100,7 +104,9 @@ public class ThreadTesting_Main {
         System.out.println("All Threads created");
 
         //Preparing the Shutdown of the ExecutorService
+        Thread.currentThread().setPriority(Thread.NORM_PRIORITY);
         executorService.shutdown();
+
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } catch (InterruptedException e) {
@@ -190,10 +196,45 @@ public class ThreadTesting_Main {
 
         System.out.println(Time + min + ":" + sec + "." + milli);
     }
-}
+
 //--------------------------------------- Getter & Setter ---------------------------------------//
 //----------------------------------------- Additional ------------------------------------------//
+public void createAndStartTestWithoutService(){
 
+    int count = Thread.activeCount();
+    System.out.println(Thread.activeCount());
+
+    //Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+    //System.out.println("Thread = Max Prio");
+    System.out.println(Thread.currentThread().getPriority());
+    pickedRouteList = new ArrayList();           // list of Integers representing the picked Example Route
+    Random rand = new Random();
+    int routeChoice;                     // number of the example Request
+
+    System.out.println("Creating all Threads");
+    for(int i = 0; i<AmountOfThreads; i++) {
+        routeChoice = rand.nextInt(10);
+        new RoutingThread2(i+1, new RoutingRequest(testingRequests.get(routeChoice)),facade_class).start();
+        pickedRouteList.add(routeChoice++);
+    }
+    System.out.println("All Threads Created");
+
+    //Thread.currentThread().setPriority(Thread.NORM_PRIORITY);
+    //Preparing the Shutdown of the ExecutorService
+    while (Thread.activeCount() != count){
+        try {
+            System.out.println("Noch aktive Threads:" + Thread.activeCount());
+            Thread.sleep(120000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    routingEnd = LocalTime.now();           //Timestamp --> for the end of the Routing
+
+    checkHowOftenWhichRoute2(pickedRouteList);      //for analysing
+    getTimes();                                     //for analysing
+}
+}
 
 
 

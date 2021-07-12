@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadListTesting_Main {
     //------------------------------------------ Settings -------------------------------------------//
-    int AmountOfThreads = 10000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
-    int ThreadPool = 10000;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
+    int AmountOfThreads = 30000;           //TODO: Dann testen mit 100/1tsd/10tsd/etc.
+    int ThreadPool = 30000;                //Wenn der Thread Pool = Anzahl der Threads dann werden alle gleichzeitig bearbeitet
 
     String ZoneId = "Europe/Berlin";
     int simulationYear = 2020;
@@ -125,6 +125,7 @@ public class ThreadListTesting_Main {
     Method to start all Threads in the created threadList
      */
     private void startThreads(){
+        Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
         ExecutorService executorService = Executors.newFixedThreadPool(ThreadPool);
 
         for (RoutingThread rt: threadList) {
